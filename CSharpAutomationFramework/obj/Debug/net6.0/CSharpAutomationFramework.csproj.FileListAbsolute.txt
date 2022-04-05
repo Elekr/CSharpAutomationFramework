@@ -181,3 +181,4 @@ C:\Users\thomas.crosby\Documents\Projects\C#\CSharpAutomationFramework\CSharpAut
 C:\Users\thomas.crosby\Documents\Projects\C#\CSharpAutomationFramework\CSharpAutomationFramework\bin\Debug\net6.0\System.IO.Pipelines.dll
 C:\Users\thomas.crosby\Documents\Projects\C#\CSharpAutomationFramework\CSharpAutomationFramework\bin\Debug\net6.0\runtimes\win-x64\nativeassets\netcoreapp2.2\aspnetcorev2_inprocess.dll
 C:\Users\thomas.crosby\Documents\Projects\C#\CSharpAutomationFramework\CSharpAutomationFramework\bin\Debug\net6.0\runtimes\win-x86\nativeassets\netcoreapp2.2\aspnetcorev2_inprocess.dll
+C:\Users\thomas.crosby\Documents\Projects\C#\CSharpAutomationFramework\CSharpAutomationFramework\bin\Debug\net6.0\log4net.config

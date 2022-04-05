@@ -29,9 +29,17 @@
 
   <ItemGroup>
     <Folder Include="Drivers\" />
+    <Folder Include="Features\RestSharp\" />
+    <Folder Include="Features\NUnit\" />
+    <Folder Include="Features\Selenium\" />
     <Folder Include="Logs\" />
     <Folder Include="Reports\" />
-    <Folder Include="RestSharp\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

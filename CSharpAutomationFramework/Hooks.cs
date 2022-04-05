@@ -101,8 +101,15 @@ namespace CSharpAutomationFramework
         [AfterScenario]
         public void TearDown()
         {
+            _driverHelper.webDriver.Close();
             _driverHelper.webDriver.Dispose();
-
         }
+    }
+
+    enum WebDriver
+    {
+        Chrome,
+        Firefox,
+        IE
     }
 }
