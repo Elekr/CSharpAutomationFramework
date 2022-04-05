@@ -1,9 +1,12 @@
-using System;
-using TechTalk.SpecFlow;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using CSharpAutomationFramework.Pages;
 using NUnit.Framework;
 
-namespace CSharpAutomationFramework.StepDefinitions
+namespace CSharpAutomationFramework.StepDefinitions.Selenium
 {
     [Binding]
     public class TC01_DriverNavigationStepDefinitions

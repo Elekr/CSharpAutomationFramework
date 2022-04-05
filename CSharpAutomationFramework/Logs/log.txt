@@ -1,1 +1,6 @@
 2022-04-05 13:28:29,373 [16] INFO CSharpAutomationFramework.StepDefinitions.TC01_DriverNavigationStepDefinitions - Test passed correctly
+2022-04-05 13:49:11,248 [16] INFO CSharpAutomationFramework.StepDefinitions.Selenium.TC01_DriverNavigationStepDefinitions - Test passed correctly
+2022-04-05 14:03:15,126 [NonParallelWorker] INFO CSharpAutomationFramework.StepDefinitions.Selenium.TC01_DriverNavigationStepDefinitions - Test passed correctly
+2022-04-05 14:40:31,052 [16] INFO CSharpAutomationFramework.StepDefinitions.Selenium.TC01_DriverNavigationStepDefinitions - Test passed correctly
+2022-04-05 14:45:14,007 [16] INFO CSharpAutomationFramework.StepDefinitions.Selenium.TC01_DriverNavigationStepDefinitions - Test passed correctly
+2022-04-05 14:49:01,109 [16] INFO CSharpAutomationFramework.StepDefinitions.Selenium.TC01_DriverNavigationStepDefinitions - Test passed correctly

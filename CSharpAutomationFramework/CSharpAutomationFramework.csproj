@@ -34,6 +34,7 @@
     <Folder Include="Features\Selenium\" />
     <Folder Include="Logs\" />
     <Folder Include="Reports\" />
+    <Folder Include="StepDefinitions\NUnit\" />
   </ItemGroup>
 
   <ItemGroup>

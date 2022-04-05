@@ -1,8 +1,8 @@
 ﻿Feature: TC01_DriverNavigation
 
-A short summary of the feature
+This feature goes through using the navigation method of Selenium
 
-@TC01
+@Selenium
 Scenario: [Moving driver to a website]
 	Given [I have a browser driver]
 	When [I use the Navigate method]

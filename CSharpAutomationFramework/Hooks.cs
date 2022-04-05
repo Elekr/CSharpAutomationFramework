@@ -10,8 +10,6 @@ namespace CSharpAutomationFramework
     [Binding]
     class Hook
     {
-        //TODO: make it system aware
-        const string outputFolder = "C:/Users/thomas.crosby/Documents/Projects/C#/CSharpAutomationFramework/CSharpAutomationFramework/Reports/";
 
         private static ExtentTest? featureName;
         private static ExtentTest? scenario;
@@ -27,7 +25,7 @@ namespace CSharpAutomationFramework
         [BeforeTestRun]
         public static void InitializeReport()
         {
-            var htmlReporter = new ExtentHtmlReporter(outputFolder);
+            var htmlReporter = new ExtentHtmlReporter(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Reports\\");
             htmlReporter.Config.Theme = AventStack.ExtentReports.Reporter.Configuration.Theme.Dark;
 
             extent = new ExtentReports();
@@ -91,9 +89,8 @@ namespace CSharpAutomationFramework
         {
             ChromeOptions options = new ChromeOptions();
             options.AddArgument("-headless");
-            _driverHelper.webDriver = new ChromeDriver("C:/Users/thomas.crosby/Documents/Projects/Browser Drivers", options);
-            
-
+            _driverHelper.webDriver = new ChromeDriver(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Drivers\\", options);
+           
             //Create dynamic scenario name
             scenario = featureName.CreateNode<Scenario>(ScenarioContext.Current.ScenarioInfo.Title);
         }
