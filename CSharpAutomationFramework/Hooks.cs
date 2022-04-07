@@ -27,6 +27,8 @@ namespace CSharpAutomationFramework
         {
             var htmlReporter = new ExtentHtmlReporter(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Reports\\");
             htmlReporter.Config.Theme = AventStack.ExtentReports.Reporter.Configuration.Theme.Dark;
+            htmlReporter.Config.EnableTimeline = true;
+            htmlReporter.Config.DocumentTitle = "myreport";
 
             extent = new ExtentReports();
             extent.AttachReporter(htmlReporter);
@@ -56,14 +58,16 @@ namespace CSharpAutomationFramework
             }
             if (sc.TestError != null)
             {
+                // https://www.extentreports.com/docs/versions/4/net/index.html
+                // MediaEntityBuilder.CreateScreenCaptureFromPath("screenshot.png").Build()); used to take the screenshots
                 if (stepType == "Given")
-                    scenario.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text).Fail(sc.TestError.Message);
+                    scenario.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text).Fail(sc.TestError.Message, MediaEntityBuilder.CreateScreenCaptureFromPath("screenshot.png").Build());
                 if (stepType == "When")
-                    scenario.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text).Fail(sc.TestError.Message);
+                    scenario.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text).Fail(sc.TestError.Message, MediaEntityBuilder.CreateScreenCaptureFromPath("screenshot.png").Build());
                 if (stepType == "Then")
-                    scenario.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text).Fail(sc.TestError.Message);
+                    scenario.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text).Fail(sc.TestError.Message, MediaEntityBuilder.CreateScreenCaptureFromPath("screenshot.png").Build());
                 if (stepType == "And")
-                    scenario.CreateNode<And>(ScenarioStepContext.Current.StepInfo.Text).Fail(sc.TestError.Message);
+                    scenario.CreateNode<And>(ScenarioStepContext.Current.StepInfo.Text).Fail(sc.TestError.Message, MediaEntityBuilder.CreateScreenCaptureFromPath("screenshot.png").Build());
             }
                         //Pending Status
             if (TestResult.ToString() == "StepDefinitionPending")

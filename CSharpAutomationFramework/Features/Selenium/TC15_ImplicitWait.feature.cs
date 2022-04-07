@@ -20,22 +20,23 @@ namespace CSharpAutomationFramework.Features.Selenium
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("TC01_DriverNavigation")]
-    public partial class TC01_DriverNavigationFeature
+    [NUnit.Framework.DescriptionAttribute("TC15_ImplicitWait")]
+    public partial class TC15_ImplicitWaitFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "TC01_DriverNavigation.feature"
+#line 1 "TC15_ImplicitWait.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/Selenium", "TC01_DriverNavigation", "This feature goes through using the navigation method of Selenium", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/Selenium", "TC15_ImplicitWait", "This feature goes through how to set up a wait for an element to load on the webp" +
+                    "age", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -74,14 +75,14 @@ namespace CSharpAutomationFramework.Features.Selenium
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("[Moving driver to a website]")]
+        [NUnit.Framework.DescriptionAttribute("[Successfully set up an implicit wait on a web driver]")]
         [NUnit.Framework.CategoryAttribute("Selenium")]
-        public virtual void MovingDriverToAWebsite()
+        public virtual void SuccessfullySetUpAnImplicitWaitOnAWebDriver()
         {
             string[] tagsOfScenario = new string[] {
                     "Selenium"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[Moving driver to a website]", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[Successfully set up an implicit wait on a web driver]", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -102,14 +103,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
+#line 7
+    testRunner.Given("[I have supplied the correct setup to add an implicit wait]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
 #line 8
- testRunner.Given("[I have a browser driver]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.When("[I navigate to the \"TC15Page\"]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
- testRunner.When("[I use the Navigate method]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 10
- testRunner.Then("[The correct page will be displayed]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("[The driver will implicitly wait before the test fails]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
