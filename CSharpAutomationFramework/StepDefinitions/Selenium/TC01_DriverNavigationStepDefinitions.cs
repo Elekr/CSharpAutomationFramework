@@ -8,6 +8,7 @@ using NUnit.Framework;
 
 namespace CSharpAutomationFramework.StepDefinitions.Selenium
 {
+    [TestFixture]
     [Binding]
     public class TC01_DriverNavigationStepDefinitions
     {

@@ -1,4 +1,5 @@
 ﻿using CSharpAutomationFramework.Pages;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace CSharpAutomationFramework.StepDefinitions.Selenium
 {
+    [TestFixture]
     [Binding]
     public class TC03_TextInputStepDefinitions
     {

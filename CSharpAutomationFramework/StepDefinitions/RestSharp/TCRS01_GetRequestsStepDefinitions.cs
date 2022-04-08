@@ -42,6 +42,7 @@ namespace CSharpAutomationFramework.StepDefinitions.RestSharp
         {
             log.Info(content.Content.ToString());
             Data m = JsonConvert.DeserializeObject<Data>(content.Content);
+            //TODO: figure out why this isnt being turned into an object
             log.Info("first name is: " + m.first_name);
         }
 

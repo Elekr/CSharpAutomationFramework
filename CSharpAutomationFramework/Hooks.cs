@@ -32,11 +32,13 @@ namespace CSharpAutomationFramework
             extent = new ExtentReports();
             extent.AttachReporter(htmlReporter);
         }
+
         [AfterTestRun]
         public static void TearDownReport()
         {
             extent.Flush();
         }
+
         [AfterStep]
         public void InsertReportingSteps(ScenarioContext sc)
         {
@@ -58,7 +60,7 @@ namespace CSharpAutomationFramework
             if (sc.TestError != null)
             {
                 // https://www.extentreports.com/docs/versions/4/net/index.html
-                // MediaEntityBuilder.CreateScreenCaptureFromPath("screenshot.png").Build()); used to take the screenshots
+                // MediaEntityBuilder.CreateScreenCaptureFromPath("screenshot.png").Build()); used to take the screenshots when the tests fail
                 if (stepType == "Given")
                     scenario.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text).Fail(sc.TestError.Message, MediaEntityBuilder.CreateScreenCaptureFromPath("screenshot.png").Build());
                 if (stepType == "When")
@@ -68,7 +70,8 @@ namespace CSharpAutomationFramework
                 if (stepType == "And")
                     scenario.CreateNode<And>(ScenarioStepContext.Current.StepInfo.Text).Fail(sc.TestError.Message, MediaEntityBuilder.CreateScreenCaptureFromPath("screenshot.png").Build());
             }
-                        //Pending Status
+
+            //Pending Status
             if (TestResult.ToString() == "StepDefinitionPending")
             {
                 if (stepType == "Given")
