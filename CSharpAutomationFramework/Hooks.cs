@@ -25,7 +25,7 @@ namespace CSharpAutomationFramework
         [BeforeTestRun]
         public static void InitializeReport()
         {
-            var htmlReporter = new ExtentHtmlReporter(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Reports\\TestingReport.html");
+            var htmlReporter = new ExtentHtmlReporter(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Reports\\" + "ExtentReports.html");
             htmlReporter.Config.Theme = AventStack.ExtentReports.Reporter.Configuration.Theme.Dark;
             htmlReporter.Config.DocumentTitle = "C# Automation Framework Report";
 

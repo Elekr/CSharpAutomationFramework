@@ -30,6 +30,7 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
         public void GivenIHaveABrowserDriver()
         {
             hubPage = new HUBPage(_driverHelper.webDriver);
+            
         }
 
         [When(@"\[I use the Navigate method]")]

@@ -39,11 +39,20 @@ namespace CSharpAutomationFramework.StepDefinitions.RestSharp
         [Then(@"\[I am able to validate the returned object]")]
         public void ThenIAmAbleToValidateTheReturnedObject()
         {
-            log.Info(content.Content.ToString());
-            Root m = JsonConvert.DeserializeObject<Root>(content.Content);
+            Root person = JsonConvert.DeserializeObject<Root>(content.Content);
 
-            //TODO: figure out why this isnt being turned into an object
-            log.Info(m.data.id);
+            (int id, string email, string first_name, string last_name,
+             string avatar) testPerson = (2, "janet.weaver@reqres.in", 
+                                          "Janet", "Weaver", 
+                                          "https://reqres.in/img/faces/2-image.jpg");
+
+            Assert.AreEqual(testPerson.id, person.data.id, "id doesn't match");
+            Assert.AreEqual(testPerson.email, person.data.email, "email doesn't match");
+            Assert.AreEqual(testPerson.first_name, person.data.first_name, "first_name doesn't match");
+            Assert.AreEqual(testPerson.last_name, person.data.last_name, "last_name doesn't match");
+            Assert.AreEqual(testPerson.avatar, person.data.avatar, "avatar doesn't match");
+
+            log.Info(person.data.id);
         }
 
     }
