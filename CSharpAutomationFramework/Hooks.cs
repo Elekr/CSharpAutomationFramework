@@ -27,8 +27,7 @@ namespace CSharpAutomationFramework
         {
             var htmlReporter = new ExtentHtmlReporter(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Reports\\");
             htmlReporter.Config.Theme = AventStack.ExtentReports.Reporter.Configuration.Theme.Dark;
-            htmlReporter.Config.EnableTimeline = true;
-            htmlReporter.Config.DocumentTitle = "myreport";
+            htmlReporter.Config.DocumentTitle = "C# Automation Framework Report";
 
             extent = new ExtentReports();
             extent.AttachReporter(htmlReporter);

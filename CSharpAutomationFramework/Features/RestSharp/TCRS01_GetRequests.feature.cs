@@ -20,8 +20,8 @@ namespace CSharpAutomationFramework.Features.RestSharp
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("TC01_GetRequests")]
-    public partial class TC01_GetRequestsFeature
+    [NUnit.Framework.DescriptionAttribute("TCRS01_GetRequests")]
+    public partial class TCRS01_GetRequestsFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
@@ -35,7 +35,7 @@ namespace CSharpAutomationFramework.Features.RestSharp
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/RestSharp", "TC01_GetRequests", "This feature goes over get requests using the Rest Sharp API", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/RestSharp", "TCRS01_GetRequests", "This feature goes over get requests using the Rest Sharp API", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -102,13 +102,13 @@ namespace CSharpAutomationFramework.Features.RestSharp
             else
             {
                 this.ScenarioStart();
-#line 8
+#line 7
     testRunner.Given("[I send a request for a single object]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 9
+#line 8
     testRunner.When("[The request is successful]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 10
+#line 9
     testRunner.Then("[I am able to validate the returned object]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

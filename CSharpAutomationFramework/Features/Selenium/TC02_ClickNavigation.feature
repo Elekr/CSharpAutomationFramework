@@ -1,4 +1,4 @@
-﻿Feature: Click a link to navigate to another page
+﻿Feature: TC02_ClickNavigation
 
 This feature goes through using links to navigate the browser.
 
