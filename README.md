@@ -8,6 +8,7 @@ This project uses:
 - ExtentReports
 - RestSharp
 
+## Running the tests
 Tests can be ran from the test explorer or the command line. 
 Test > Test Explorer > Run  
 Ctrl + R , A runs all the tests  
