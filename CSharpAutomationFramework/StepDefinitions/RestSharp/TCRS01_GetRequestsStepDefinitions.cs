@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CSharpAutomationFramework.StepDefinitions.RestSharp.API;
 
 namespace CSharpAutomationFramework.StepDefinitions.RestSharp
 {
@@ -19,14 +20,12 @@ namespace CSharpAutomationFramework.StepDefinitions.RestSharp
         dynamic jsonResponse;
 
         [Given(@"\[I send a request for a single object]")]
-        public async void GivenISendARequestForASingleObject()
+        public void GivenISendARequestForASingleObject()
         {
             var client = new RestClient("https://reqres.in/api/users/2");
             var request = new RestRequest("", Method.Get);
 
-
-
-
+           
             content = client.ExecuteAsync(request).Result;
         }
 
@@ -41,9 +40,10 @@ namespace CSharpAutomationFramework.StepDefinitions.RestSharp
         public void ThenIAmAbleToValidateTheReturnedObject()
         {
             log.Info(content.Content.ToString());
-            Data m = JsonConvert.DeserializeObject<Data>(content.Content);
+            Root m = JsonConvert.DeserializeObject<Root>(content.Content);
+
             //TODO: figure out why this isnt being turned into an object
-            log.Info("first name is: " + m.first_name);
+            log.Info(m.data.id);
         }
 
     }
