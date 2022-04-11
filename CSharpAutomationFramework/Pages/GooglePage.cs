@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace CSharpAutomationFramework.Pages
 {
-    internal class HUBPage
+    internal class GooglePage
     {
         private readonly IWebDriver driver;
-        //private IWebElement searchBar => driver.FindElement(By.CssSelector("#sbcId > form > input"));
         private IWebElement googleBar => driver.FindElement(By.XPath("/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input"));
         private IWebElement cookiesButton => driver.FindElement(By.Id("L2AGLb"));
-        public HUBPage(IWebDriver driver)
+        public GooglePage(IWebDriver driver)
         {
             this.driver = driver;
         }

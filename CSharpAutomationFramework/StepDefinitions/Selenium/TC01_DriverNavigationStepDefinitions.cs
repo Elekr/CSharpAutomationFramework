@@ -14,7 +14,7 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        HUBPage hubPage;
+        GooglePage googlePage;
 
         private DriverHelper _driverHelper;
 
@@ -29,7 +29,7 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
         [Given(@"\[I have a browser driver]")]
         public void GivenIHaveABrowserDriver()
         {
-            hubPage = new HUBPage(_driverHelper.webDriver);
+            googlePage = new GooglePage(_driverHelper.webDriver);
             
         }
 
@@ -37,12 +37,15 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
         public void WhenIUseTheNavigateMethod()
         {
             _driverHelper.webDriver.Navigate().GoToUrl(homePage.websiteURL);
+
+            //Check that the website is correct
+            Assert.AreEqual(homePage.websiteURL, googlePage.ReturnURL(), "incorrect URL");
         }
 
         [Then(@"\[The correct page will be displayed]")]
         public void ThenTheCorrectPageWillBeDisplayed()
         {
-            Assert.AreEqual(homePage.websiteTitle, hubPage.ReturnTitle(), "URLs do not match");
+            Assert.AreEqual(homePage.websiteTitle, googlePage.ReturnTitle(), "URLs do not match");
             log.Info("Test passed correctly");
         }
     }
