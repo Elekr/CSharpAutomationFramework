@@ -8,6 +8,9 @@ This project uses:
 - ExtentReports
 - RestSharp
 
+## Opening the Project
+This project can be run using visual studio 2022, the project can be run without any additional dependencies or set up.
+
 ## Running the tests
 Tests can be ran from the test explorer or the command line. 
 Test > Test Explorer > Run  
