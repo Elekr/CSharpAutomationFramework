@@ -73,6 +73,10 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
         public void ThenTheExtraTextIsAddedToTheField()
         {
             Assert.AreEqual("", pracPage.ReturnText(), "Field not cleared");
+
+            //Testing for screenshots of a failed test
+            bool g = false;
+            Assert.IsTrue(g);
         }
 
     }

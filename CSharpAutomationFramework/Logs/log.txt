@@ -68,3 +68,13 @@
 2022-04-11 11:35:41,655 [16] INFO CSharpAutomationFramework.StepDefinitions.Selenium.TC01_DriverNavigationStepDefinitions - Test passed correctly
 2022-04-11 11:37:37,247 [16] INFO CSharpAutomationFramework.StepDefinitions.RestSharp.TCRS01_GetRequestsStepDefinitions - 2
 2022-04-11 11:37:45,683 [16] INFO CSharpAutomationFramework.StepDefinitions.Selenium.TC01_DriverNavigationStepDefinitions - Test passed correctly
+2022-04-13 08:54:21,084 [16] INFO CSharpAutomationFramework.StepDefinitions.RestSharp.TCRS01_GetRequestsStepDefinitions - 2
+2022-04-13 08:54:31,131 [16] INFO CSharpAutomationFramework.StepDefinitions.Selenium.TC01_DriverNavigationStepDefinitions - Test passed correctly
+2022-04-13 08:56:18,498 [16] INFO CSharpAutomationFramework.StepDefinitions.RestSharp.TCRS01_GetRequestsStepDefinitions - 2
+2022-04-13 08:56:25,962 [16] INFO CSharpAutomationFramework.StepDefinitions.Selenium.TC01_DriverNavigationStepDefinitions - Test passed correctly
+2022-04-13 08:59:30,358 [16] INFO CSharpAutomationFramework.StepDefinitions.RestSharp.TCRS01_GetRequestsStepDefinitions - 2
+2022-04-13 08:59:39,696 [16] INFO CSharpAutomationFramework.StepDefinitions.Selenium.TC01_DriverNavigationStepDefinitions - Test passed correctly
+2022-04-13 09:02:10,027 [16] INFO CSharpAutomationFramework.StepDefinitions.RestSharp.TCRS01_GetRequestsStepDefinitions - 2
+2022-04-13 09:02:17,261 [16] INFO CSharpAutomationFramework.StepDefinitions.Selenium.TC01_DriverNavigationStepDefinitions - Test passed correctly
+2022-04-13 09:15:14,359 [16] INFO CSharpAutomationFramework.StepDefinitions.RestSharp.TCRS01_GetRequestsStepDefinitions - 2
+2022-04-13 09:15:22,271 [16] INFO CSharpAutomationFramework.StepDefinitions.Selenium.TC01_DriverNavigationStepDefinitions - Test passed correctly
