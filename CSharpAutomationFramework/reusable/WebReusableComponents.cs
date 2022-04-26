@@ -1,0 +1,110 @@
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSharpAutomationFramework.reusable
+{
+    public abstract class WebReusableComponents : GeneralReusableComponents
+    {
+        protected IWebDriver driver;
+        protected (string websiteURL, string websiteTitle) homePage;
+
+        public WebReusableComponents(IWebDriver driver, (string websiteURL, string websiteTitle) homePage)
+        {
+            this.driver = driver;
+            this.homePage = homePage;
+        }
+
+        /// <summary>
+        ///     Function to wait until the page loads completely
+        /// </summary>
+        /// <param name="timeOutInSeconds">The wait timeout in seconds</param>
+        public void waitUntilPageReadyStateComplete(long timeOutInSeconds)
+        {
+            bool isPageReady(IWebDriver drv)
+            {
+                return ((IJavaScriptExecutor)drv).ExecuteScript("return document.readyState").Equals("complete");
+            }
+            (new WebDriverWait(driver, TimeSpan.FromSeconds(timeOutInSeconds))).Until(drv => isPageReady(drv));
+        }
+
+        /// <summary>
+        ///     Can the specified element currently be located?
+        /// </summary>
+        /// <param name="by">The locator used to identify the element</param>
+        /// <returns></returns>
+        public bool canLocateElement(By by)
+        {
+            try
+            {
+                driver.FindElement(by);
+                return true;
+            }
+            catch (NoSuchElementException e)
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        ///     Function to wait until the specified element is located
+        /// </summary>
+        /// <param name="by">The locator used to identify the element</param>
+        /// <param name="timeOutInSeconds">The wait timeout in seconds</param>
+        public void waitUntilElementLocated(By by, long timeOutInSeconds)
+        {
+            TimeSpan timeOut = TimeSpan.FromSeconds(timeOutInSeconds);
+            (new WebDriverWait(driver, timeOut)).Until(_ => canLocateElement(by));
+        }
+
+        /// <summary>
+        ///     Is the specified element currently visible?
+        /// </summary>
+        /// <param name="by">The locator used to identify the element</param>
+        public bool isElementVisible(By by)
+        {
+            return canLocateElement(by) && driver.FindElement(by).Displayed;
+        }
+
+        /// <summary>
+        ///     Function to wait until the specified element is visible
+        /// </summary>
+        /// <param name="by">The locator used to identify the element</param>
+        /// <param name="timeOutInSeconds">The wait timeout in seconds</param>
+        public void waitUntilElementVisible(By by, long timeOutInSeconds)
+        {
+            TimeSpan timeOut = TimeSpan.FromSeconds(timeOutInSeconds);
+            (new WebDriverWait(driver, timeOut)).Until(_ => isElementVisible(by));
+        }
+
+        /// <summary>
+        ///     Is the specified element currently enabled?
+        /// </summary>
+        /// <param name="by">The locator used to identify the element</param>
+        public bool isElementEnabled(By by)
+        {
+            return isElementVisible(by) && driver.FindElement(by).Enabled;
+        }
+        
+        /// <summary>
+        ///     Function to wait until the specified element is enabled
+        /// </summary>
+        /// <param name="by">the locator used to identify the element</param>
+        /// <param name="timeOutInSeconds">The wait timeout in seconds</param>
+        public void waitUntilElementEnabled(By by, long timeOutInSeconds)
+        {
+            TimeSpan timeOut = TimeSpan.FromSeconds(timeOutInSeconds);
+            (new WebDriverWait(driver, timeOut)).Until(_ => isElementEnabled(by));
+        }
+
+
+        public void navigateHome()
+        {
+            driver.Navigate().GoToUrl(homePage.websiteURL);
+        }
+    }
+}
