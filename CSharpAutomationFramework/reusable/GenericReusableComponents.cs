@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CSharpAutomationFramework.reusable
 {
-    public abstract class GeneralReusableComponents
+    public abstract class GenericReusableComponents
     {
         /// <summary>
         ///     Function to generate Locator

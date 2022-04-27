@@ -10464,19 +10464,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\thomas.crosby\\.nuget\\packages\\": {}
+    "C:\\Users\\leigh\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\thomas.crosby\\Documents\\Projects\\C#\\CSharpAutomationFramework\\CSharpAutomationFramework\\CSharpAutomationFramework.csproj",
+      "projectUniqueName": "E:\\Work\\Jobs\\Qualitest\\csharpautomationframework\\CSharpAutomationFramework\\CSharpAutomationFramework.csproj",
       "projectName": "CSharpAutomationFramework",
-      "projectPath": "C:\\Users\\thomas.crosby\\Documents\\Projects\\C#\\CSharpAutomationFramework\\CSharpAutomationFramework\\CSharpAutomationFramework.csproj",
-      "packagesPath": "C:\\Users\\thomas.crosby\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\thomas.crosby\\Documents\\Projects\\C#\\CSharpAutomationFramework\\CSharpAutomationFramework\\obj\\",
+      "projectPath": "E:\\Work\\Jobs\\Qualitest\\csharpautomationframework\\CSharpAutomationFramework\\CSharpAutomationFramework.csproj",
+      "packagesPath": "C:\\Users\\leigh\\.nuget\\packages\\",
+      "outputPath": "E:\\Work\\Jobs\\Qualitest\\csharpautomationframework\\CSharpAutomationFramework\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\thomas.crosby\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\leigh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10558,7 +10563,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

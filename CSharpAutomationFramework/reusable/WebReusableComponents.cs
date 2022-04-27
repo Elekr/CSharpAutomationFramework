@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CSharpAutomationFramework.reusable
 {
-    public abstract class WebReusableComponents : GeneralReusableComponents
+    public abstract class WebReusableComponents : GenericReusableComponents
     {
         protected IWebDriver driver;
         protected (string websiteURL, string websiteTitle) homePage;
