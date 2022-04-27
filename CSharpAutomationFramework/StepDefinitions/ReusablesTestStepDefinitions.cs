@@ -21,14 +21,12 @@ namespace CSharpAutomationFramework.StepDefinitions
         {
             navigateHome();
             loadBtnForgotPassword();
-            //Assert.AreEqual(this.homePage.websiteTitle, driver.Title); // Sanity check
         }
 
         [When(@"\[We click the forgot password buttton]")]
         public void WhenWeClickTheForgotPasswordButton()
         {
             driver.FindElement(btnForgotPassword).Click();
-            //wait(2); // Just testing this function
         }
 
         [When(@"\[Don't wait]")]
@@ -40,7 +38,7 @@ namespace CSharpAutomationFramework.StepDefinitions
         [When(@"\[Wait for element enabled]")]
         public void WaitForElementEnabled()
         {
-            //waitUntilElementEnabled(btnBackToLogin, 2L);
+            waitUntilElementEnabled(btnBackToLogin, 2L);
         }
 
         [Then(@"\[Clicking the go back button should fail]")]
@@ -52,9 +50,8 @@ namespace CSharpAutomationFramework.StepDefinitions
         [Then(@"\[Clicking the go back button should succeed]")]
         public void ThenClickingGoBackNoWaitShouldNotFail()
         {
-            //driver.FindElement(btnBackToLogin).Click();
-            clickElement(btnBackToLogin);
-            log.Info("Test");
+            driver.FindElement(btnBackToLogin).Click();
+
         }
     }
 }
