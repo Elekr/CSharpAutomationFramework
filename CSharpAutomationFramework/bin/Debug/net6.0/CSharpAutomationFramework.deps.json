@@ -14,7 +14,6 @@
           "NUnit3TestAdapter": "4.2.1",
           "RestSharp": "107.3.0",
           "Selenium.WebDriver": "4.1.0",
-          "SpecFlow": "3.9.69",
           "SpecFlow.NUnit": "3.9.69",
           "SpecFlow.Plus.LivingDocPlugin": "3.9.57",
           "log4net": "2.0.14",

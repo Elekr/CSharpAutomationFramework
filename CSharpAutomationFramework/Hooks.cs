@@ -95,7 +95,7 @@ namespace CSharpAutomationFramework
         {
             ChromeOptions options = new ChromeOptions();
             //options.AddArgument("-headless");
-            _driverHelper.webDriver = new ChromeDriver(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Drivers\\Driver99\\", options);
+            _driverHelper.webDriver = new ChromeDriver(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Drivers\\", options);
            
             //Create dynamic scenario name
             scenario = featureName.CreateNode<Scenario>(ScenarioContext.Current.ScenarioInfo.Title);

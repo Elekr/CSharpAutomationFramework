@@ -12,6 +12,12 @@ namespace CSharpAutomationFramework.Pages
         private readonly IWebDriver driver;
         private IWebElement textField => driver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/form/div[3]/input"));
 
+        //pageObject
+        private By name1 = By.Id("idname");
+        private By name2 = By.Id("idname");
+        private By name3 = By.Id("idname");
+        private By name4 = By.Id("idname");
+
         public PracticePage(IWebDriver driver)
         {
             this.driver = driver;

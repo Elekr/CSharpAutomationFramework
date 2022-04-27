@@ -20,7 +20,6 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
     <PackageReference Include="RestSharp" Version="107.3.0" />
     <PackageReference Include="Selenium.WebDriver" Version="4.1.0" />
-    <PackageReference Include="SpecFlow" Version="3.9.69" />
     <PackageReference Include="SpecFlow.Plus.LivingDocPlugin" Version="3.9.57" />
     <PackageReference Include="SpecFlow.NUnit" Version="3.9.69" />
     <PackageReference Include="nunit" Version="3.13.3" />
@@ -29,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Drivers\" />
     <Folder Include="Features\NUnit\" />
     <Folder Include="Logs\" />
     <Folder Include="Reports\" />

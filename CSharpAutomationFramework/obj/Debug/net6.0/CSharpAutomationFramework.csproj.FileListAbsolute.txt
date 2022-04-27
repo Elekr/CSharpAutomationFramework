@@ -193,8 +193,8 @@ C:\Users\Ulisses.Dasilva\source\repos\CSharpAutomationFramework\CSharpAutomation
 C:\Users\Ulisses.Dasilva\source\repos\CSharpAutomationFramework\CSharpAutomationFramework\bin\Debug\net6.0\nunit.engine.api.dll
 C:\Users\Ulisses.Dasilva\source\repos\CSharpAutomationFramework\CSharpAutomationFramework\bin\Debug\net6.0\nunit.engine.core.dll
 C:\Users\Ulisses.Dasilva\source\repos\CSharpAutomationFramework\CSharpAutomationFramework\bin\Debug\net6.0\testcentric.engine.metadata.dll
-C:\Users\Ulisses.Dasilva\source\repos\CSharpAutomationFramework\CSharpAutomationFramework\bin\Debug\net6.0\Microsoft.TestPlatform.PlatformAbstractions.dll
 C:\Users\Ulisses.Dasilva\source\repos\CSharpAutomationFramework\CSharpAutomationFramework\bin\Debug\net6.0\log4net.config
+C:\Users\Ulisses.Dasilva\source\repos\CSharpAutomationFramework\CSharpAutomationFramework\bin\Debug\net6.0\Microsoft.TestPlatform.PlatformAbstractions.dll
 C:\Users\Ulisses.Dasilva\source\repos\CSharpAutomationFramework\CSharpAutomationFramework\bin\Debug\net6.0\CSharpAutomationFramework.deps.json
 C:\Users\Ulisses.Dasilva\source\repos\CSharpAutomationFramework\CSharpAutomationFramework\bin\Debug\net6.0\CSharpAutomationFramework.runtimeconfig.json
 C:\Users\Ulisses.Dasilva\source\repos\CSharpAutomationFramework\CSharpAutomationFramework\bin\Debug\net6.0\CSharpAutomationFramework.dll
