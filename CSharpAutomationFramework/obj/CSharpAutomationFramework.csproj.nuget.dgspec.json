@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\thomas.crosby\\Documents\\Projects\\C#\\CSharpAutomationFramework\\CSharpAutomationFramework\\CSharpAutomationFramework.csproj": {}
+    "C:\\Users\\Ulisses.Dasilva\\source\\repos\\CSharpAutomationFramework\\CSharpAutomationFramework\\CSharpAutomationFramework.csproj": {}
   },
   "projects": {
-    "C:\\Users\\thomas.crosby\\Documents\\Projects\\C#\\CSharpAutomationFramework\\CSharpAutomationFramework\\CSharpAutomationFramework.csproj": {
+    "C:\\Users\\Ulisses.Dasilva\\source\\repos\\CSharpAutomationFramework\\CSharpAutomationFramework\\CSharpAutomationFramework.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\thomas.crosby\\Documents\\Projects\\C#\\CSharpAutomationFramework\\CSharpAutomationFramework\\CSharpAutomationFramework.csproj",
+        "projectUniqueName": "C:\\Users\\Ulisses.Dasilva\\source\\repos\\CSharpAutomationFramework\\CSharpAutomationFramework\\CSharpAutomationFramework.csproj",
         "projectName": "CSharpAutomationFramework",
-        "projectPath": "C:\\Users\\thomas.crosby\\Documents\\Projects\\C#\\CSharpAutomationFramework\\CSharpAutomationFramework\\CSharpAutomationFramework.csproj",
-        "packagesPath": "C:\\Users\\thomas.crosby\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\thomas.crosby\\Documents\\Projects\\C#\\CSharpAutomationFramework\\CSharpAutomationFramework\\obj\\",
+        "projectPath": "C:\\Users\\Ulisses.Dasilva\\source\\repos\\CSharpAutomationFramework\\CSharpAutomationFramework\\CSharpAutomationFramework.csproj",
+        "packagesPath": "C:\\Users\\Ulisses.Dasilva\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ulisses.Dasilva\\source\\repos\\CSharpAutomationFramework\\CSharpAutomationFramework\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\thomas.crosby\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Ulisses.Dasilva\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -64,9 +64,13 @@
               "target": "Package",
               "version": "[4.1.0, )"
             },
+            "SpecFlow": {
+              "target": "Package",
+              "version": "[3.9.69, )"
+            },
             "SpecFlow.NUnit": {
               "target": "Package",
-              "version": "[3.9.58, )"
+              "version": "[3.9.69, )"
             },
             "SpecFlow.Plus.LivingDocPlugin": {
               "target": "Package",
@@ -96,7 +100,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

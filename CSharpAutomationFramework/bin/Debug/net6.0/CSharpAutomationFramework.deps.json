@@ -14,7 +14,8 @@
           "NUnit3TestAdapter": "4.2.1",
           "RestSharp": "107.3.0",
           "Selenium.WebDriver": "4.1.0",
-          "SpecFlow.NUnit": "3.9.58",
+          "SpecFlow": "3.9.69",
+          "SpecFlow.NUnit": "3.9.69",
           "SpecFlow.Plus.LivingDocPlugin": "3.9.57",
           "log4net": "2.0.14",
           "NUnit": "3.13.3"
@@ -1371,7 +1372,7 @@
           }
         }
       },
-      "SpecFlow/3.9.58": {
+      "SpecFlow/3.9.69": {
         "dependencies": {
           "BoDi": "1.5.0",
           "Gherkin": "19.0.3",
@@ -1384,7 +1385,7 @@
         "runtime": {
           "lib/netstandard2.0/TechTalk.SpecFlow.dll": {
             "assemblyVersion": "3.9.0.0",
-            "fileVersion": "3.9.58.50678"
+            "fileVersion": "3.9.69.5214"
           }
         }
       },
@@ -1396,24 +1397,24 @@
           }
         }
       },
-      "SpecFlow.NUnit/3.9.58": {
+      "SpecFlow.NUnit/3.9.69": {
         "dependencies": {
           "NUnit": "3.13.3",
-          "SpecFlow": "3.9.58",
-          "SpecFlow.Tools.MsBuild.Generation": "3.9.58"
+          "SpecFlow": "3.9.69",
+          "SpecFlow.Tools.MsBuild.Generation": "3.9.69"
         },
         "runtime": {
           "lib/net6.0/TechTalk.SpecFlow.NUnit.SpecFlowPlugin.dll": {
             "assemblyVersion": "3.9.0.0",
-            "fileVersion": "3.9.58.50678"
+            "fileVersion": "3.9.69.5214"
           }
         }
       },
       "SpecFlow.Plus.LivingDocPlugin/3.9.57": {
         "dependencies": {
-          "SpecFlow": "3.9.58",
+          "SpecFlow": "3.9.69",
           "SpecFlow.Internal.Json": "1.0.8",
-          "SpecFlow.Tools.MsBuild.Generation": "3.9.58"
+          "SpecFlow.Tools.MsBuild.Generation": "3.9.69"
         },
         "runtime": {
           "lib/netstandard2.0/LivingDoc.Dtos.dll": {
@@ -1426,9 +1427,9 @@
           }
         }
       },
-      "SpecFlow.Tools.MsBuild.Generation/3.9.58": {
+      "SpecFlow.Tools.MsBuild.Generation/3.9.69": {
         "dependencies": {
-          "SpecFlow": "3.9.58"
+          "SpecFlow": "3.9.69"
         }
       },
       "System.AppContext/4.3.0": {
@@ -3065,12 +3066,12 @@
       "path": "sharpcompress/0.23.0",
       "hashPath": "sharpcompress.0.23.0.nupkg.sha512"
     },
-    "SpecFlow/3.9.58": {
+    "SpecFlow/3.9.69": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-dHyOfnE00yapmXsStx08TqIKJITgOOaEKnvKZl3hhs8oEeCkx+vsIAQ43zmYAYvW/cUAw4yjIyIykZHuf2vIpQ==",
-      "path": "specflow/3.9.58",
-      "hashPath": "specflow.3.9.58.nupkg.sha512"
+      "sha512": "sha512-qp9QJhy9QMA/xdgr9rVzuUF/Jhn/D3Y7KEVnRxcygxaJTFmXSkApURV8wo8hj0Iyud5uh/3vYdilMKvufAbRVg==",
+      "path": "specflow/3.9.69",
+      "hashPath": "specflow.3.9.69.nupkg.sha512"
     },
     "SpecFlow.Internal.Json/1.0.8": {
       "type": "package",
@@ -3079,12 +3080,12 @@
       "path": "specflow.internal.json/1.0.8",
       "hashPath": "specflow.internal.json.1.0.8.nupkg.sha512"
     },
-    "SpecFlow.NUnit/3.9.58": {
+    "SpecFlow.NUnit/3.9.69": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-WqJrBrhtVjVGabCS9veWVJIz9SgJJZ//neakYBFpLbweVjOA+DPdfpWeJK/3ePJrxYurHA+VVowwPt8QPrYJxg==",
-      "path": "specflow.nunit/3.9.58",
-      "hashPath": "specflow.nunit.3.9.58.nupkg.sha512"
+      "sha512": "sha512-lH4iCgJy4C6svKivCyPqmWcb9b7NJ6HB+ht/8cNOqkpaEJFcVvzO19uvvAS/LeTSd+zTQQpvOXbB/kCAXdTlhA==",
+      "path": "specflow.nunit/3.9.69",
+      "hashPath": "specflow.nunit.3.9.69.nupkg.sha512"
     },
     "SpecFlow.Plus.LivingDocPlugin/3.9.57": {
       "type": "package",
@@ -3093,12 +3094,12 @@
       "path": "specflow.plus.livingdocplugin/3.9.57",
       "hashPath": "specflow.plus.livingdocplugin.3.9.57.nupkg.sha512"
     },
-    "SpecFlow.Tools.MsBuild.Generation/3.9.58": {
+    "SpecFlow.Tools.MsBuild.Generation/3.9.69": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-U66NXbgtLz9fLI1EqkEZpd71kpsmlLKJ/ibMobh308lx+NCcapNs3ORVrQinfYtCWAmrScXhTGkPsgqS1zIJeQ==",
-      "path": "specflow.tools.msbuild.generation/3.9.58",
-      "hashPath": "specflow.tools.msbuild.generation.3.9.58.nupkg.sha512"
+      "sha512": "sha512-wdU/ppTLfccr6wm5gq2htNBaaOvnGfnvPkgmNpTWghvBnkKKRXOPxzpttxsoqQbEFt9xjcHP4BKOZcacvCY08A==",
+      "path": "specflow.tools.msbuild.generation/3.9.69",
+      "hashPath": "specflow.tools.msbuild.generation.3.9.69.nupkg.sha512"
     },
     "System.AppContext/4.3.0": {
       "type": "package",

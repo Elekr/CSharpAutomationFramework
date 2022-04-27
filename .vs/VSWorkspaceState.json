@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\CSharpAutomationFramework",
+    "\\CSharpAutomationFramework\\Pages",
+    "\\CSharpAutomationFramework\\StepDefinitions",
+    "\\CSharpAutomationFramework\\StepDefinitions\\Selenium"
+  ],
+  "SelectedNode": "\\CSharpAutomationFramework\\StepDefinitions\\Selenium\\TC03_TextInputStepDefinitions.cs",
+  "PreviewInSolutionExplorer": false
+}

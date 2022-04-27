@@ -1648,7 +1648,7 @@
           "lib/netstandard2.0/SharpCompress.dll": {}
         }
       },
-      "SpecFlow/3.9.58": {
+      "SpecFlow/3.9.69": {
         "type": "package",
         "dependencies": {
           "BoDi": "1.5.0",
@@ -1678,12 +1678,12 @@
           "lib/netstandard2.0/SpecFlow.Internal.Json.dll": {}
         }
       },
-      "SpecFlow.NUnit/3.9.58": {
+      "SpecFlow.NUnit/3.9.69": {
         "type": "package",
         "dependencies": {
           "NUnit": "3.13.1",
-          "SpecFlow": "[3.9.58]",
-          "SpecFlow.Tools.MsBuild.Generation": "[3.9.58]"
+          "SpecFlow": "[3.9.69]",
+          "SpecFlow.Tools.MsBuild.Generation": "[3.9.69]"
         },
         "compile": {
           "lib/net6.0/TechTalk.SpecFlow.NUnit.SpecFlowPlugin.dll": {}
@@ -1716,10 +1716,10 @@
           "build/SpecFlow.Plus.LivingDocPlugin.targets": {}
         }
       },
-      "SpecFlow.Tools.MsBuild.Generation/3.9.58": {
+      "SpecFlow.Tools.MsBuild.Generation/3.9.69": {
         "type": "package",
         "dependencies": {
-          "SpecFlow": "[3.9.58]"
+          "SpecFlow": "[3.9.69]"
         },
         "build": {
           "build/SpecFlow.Tools.MsBuild.Generation.props": {},
@@ -5585,10 +5585,10 @@
         "sharpcompress.nuspec"
       ]
     },
-    "SpecFlow/3.9.58": {
-      "sha512": "dHyOfnE00yapmXsStx08TqIKJITgOOaEKnvKZl3hhs8oEeCkx+vsIAQ43zmYAYvW/cUAw4yjIyIykZHuf2vIpQ==",
+    "SpecFlow/3.9.69": {
+      "sha512": "qp9QJhy9QMA/xdgr9rVzuUF/Jhn/D3Y7KEVnRxcygxaJTFmXSkApURV8wo8hj0Iyud5uh/3vYdilMKvufAbRVg==",
       "type": "package",
-      "path": "specflow/3.9.58",
+      "path": "specflow/3.9.69",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -5607,7 +5607,7 @@
         "lib/netstandard2.0/TechTalk.SpecFlow.dll",
         "lib/netstandard2.0/TechTalk.SpecFlow.pdb",
         "lib/netstandard2.0/TechTalk.SpecFlow.xml",
-        "specflow.3.9.58.nupkg.sha512",
+        "specflow.3.9.69.nupkg.sha512",
         "specflow.nuspec"
       ]
     },
@@ -5625,10 +5625,10 @@
         "specflow.internal.json.nuspec"
       ]
     },
-    "SpecFlow.NUnit/3.9.58": {
-      "sha512": "WqJrBrhtVjVGabCS9veWVJIz9SgJJZ//neakYBFpLbweVjOA+DPdfpWeJK/3ePJrxYurHA+VVowwPt8QPrYJxg==",
+    "SpecFlow.NUnit/3.9.69": {
+      "sha512": "lH4iCgJy4C6svKivCyPqmWcb9b7NJ6HB+ht/8cNOqkpaEJFcVvzO19uvvAS/LeTSd+zTQQpvOXbB/kCAXdTlhA==",
       "type": "package",
-      "path": "specflow.nunit/3.9.58",
+      "path": "specflow.nunit/3.9.69",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -5656,7 +5656,7 @@
         "lib/net6.0/TechTalk.SpecFlow.NUnit.SpecFlowPlugin.pdb",
         "lib/netstandard2.0/TechTalk.SpecFlow.NUnit.SpecFlowPlugin.dll",
         "lib/netstandard2.0/TechTalk.SpecFlow.NUnit.SpecFlowPlugin.pdb",
-        "specflow.nunit.3.9.58.nupkg.sha512",
+        "specflow.nunit.3.9.69.nupkg.sha512",
         "specflow.nunit.nuspec"
       ]
     },
@@ -5678,10 +5678,10 @@
         "specflow.plus.livingdocplugin.nuspec"
       ]
     },
-    "SpecFlow.Tools.MsBuild.Generation/3.9.58": {
-      "sha512": "U66NXbgtLz9fLI1EqkEZpd71kpsmlLKJ/ibMobh308lx+NCcapNs3ORVrQinfYtCWAmrScXhTGkPsgqS1zIJeQ==",
+    "SpecFlow.Tools.MsBuild.Generation/3.9.69": {
+      "sha512": "wdU/ppTLfccr6wm5gq2htNBaaOvnGfnvPkgmNpTWghvBnkKKRXOPxzpttxsoqQbEFt9xjcHP4BKOZcacvCY08A==",
       "type": "package",
-      "path": "specflow.tools.msbuild.generation/3.9.58",
+      "path": "specflow.tools.msbuild.generation/3.9.69",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -5698,7 +5698,7 @@
         "licenses/Gherkin-LICENSE-MIT.txt",
         "licenses/Newtonsoft.Json-LICENSE-MIT.md",
         "licenses/System.ValueTuple-LICENSE-MIT.txt",
-        "specflow.tools.msbuild.generation.3.9.58.nupkg.sha512",
+        "specflow.tools.msbuild.generation.3.9.69.nupkg.sha512",
         "specflow.tools.msbuild.generation.nuspec",
         "tasks/net461/BoDi.dll",
         "tasks/net461/Gherkin.dll",
@@ -10457,26 +10457,27 @@
       "NUnit3TestAdapter >= 4.2.1",
       "RestSharp >= 107.3.0",
       "Selenium.WebDriver >= 4.1.0",
-      "SpecFlow.NUnit >= 3.9.58",
+      "SpecFlow >= 3.9.69",
+      "SpecFlow.NUnit >= 3.9.69",
       "SpecFlow.Plus.LivingDocPlugin >= 3.9.57",
       "log4net >= 2.0.14",
       "nunit >= 3.13.3"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\thomas.crosby\\.nuget\\packages\\": {}
+    "C:\\Users\\Ulisses.Dasilva\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\thomas.crosby\\Documents\\Projects\\C#\\CSharpAutomationFramework\\CSharpAutomationFramework\\CSharpAutomationFramework.csproj",
+      "projectUniqueName": "C:\\Users\\Ulisses.Dasilva\\source\\repos\\CSharpAutomationFramework\\CSharpAutomationFramework\\CSharpAutomationFramework.csproj",
       "projectName": "CSharpAutomationFramework",
-      "projectPath": "C:\\Users\\thomas.crosby\\Documents\\Projects\\C#\\CSharpAutomationFramework\\CSharpAutomationFramework\\CSharpAutomationFramework.csproj",
-      "packagesPath": "C:\\Users\\thomas.crosby\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\thomas.crosby\\Documents\\Projects\\C#\\CSharpAutomationFramework\\CSharpAutomationFramework\\obj\\",
+      "projectPath": "C:\\Users\\Ulisses.Dasilva\\source\\repos\\CSharpAutomationFramework\\CSharpAutomationFramework\\CSharpAutomationFramework.csproj",
+      "packagesPath": "C:\\Users\\Ulisses.Dasilva\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Ulisses.Dasilva\\source\\repos\\CSharpAutomationFramework\\CSharpAutomationFramework\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\thomas.crosby\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Ulisses.Dasilva\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10526,9 +10527,13 @@
             "target": "Package",
             "version": "[4.1.0, )"
           },
+          "SpecFlow": {
+            "target": "Package",
+            "version": "[3.9.69, )"
+          },
           "SpecFlow.NUnit": {
             "target": "Package",
-            "version": "[3.9.58, )"
+            "version": "[3.9.69, )"
           },
           "SpecFlow.Plus.LivingDocPlugin": {
             "target": "Package",
@@ -10558,7 +10563,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
