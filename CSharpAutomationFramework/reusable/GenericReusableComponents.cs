@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,11 @@ using System.Threading.Tasks;
 
 namespace CSharpAutomationFramework.reusable
 {
+    
     public abstract class GenericReusableComponents
     {
+        public static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         /// <summary>
         ///     Function to generate Locator
         /// </summary>
@@ -33,7 +37,7 @@ namespace CSharpAutomationFramework.reusable
                     loc = By.LinkText(locatorValue);
                     break;
                 default:
-                    Console.WriteLine("Error, unable to identify locator");
+                    throw new InvalidSelectorException("Error, unable to identify locator '"+locatorType+"'");
                     break;
             }
             return loc;

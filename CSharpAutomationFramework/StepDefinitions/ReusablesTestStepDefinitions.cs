@@ -10,6 +10,7 @@ namespace CSharpAutomationFramework.StepDefinitions
     [Binding]
     public class ReusablesTestStepDefinitions : ReusablesTestPage
     {
+        
         public ReusablesTestStepDefinitions(DriverHelper driverHelper) : base(driverHelper.webDriver)
         {
 
@@ -19,7 +20,7 @@ namespace CSharpAutomationFramework.StepDefinitions
         public void GivenWeHaveMovedToTheTheSite()
         {
             navigateHome();
-
+            loadBtnForgotPassword();
             //Assert.AreEqual(this.homePage.websiteTitle, driver.Title); // Sanity check
         }
 
@@ -39,7 +40,7 @@ namespace CSharpAutomationFramework.StepDefinitions
         [When(@"\[Wait for element enabled]")]
         public void WaitForElementEnabled()
         {
-            waitUntilElementEnabled(btnBackToLogin, 2L);
+            //waitUntilElementEnabled(btnBackToLogin, 2L);
         }
 
         [Then(@"\[Clicking the go back button should fail]")]
@@ -51,7 +52,9 @@ namespace CSharpAutomationFramework.StepDefinitions
         [Then(@"\[Clicking the go back button should succeed]")]
         public void ThenClickingGoBackNoWaitShouldNotFail()
         {
-            driver.FindElement(btnBackToLogin).Click();
+            //driver.FindElement(btnBackToLogin).Click();
+            clickElement(btnBackToLogin);
+            log.Info("Test");
         }
     }
 }

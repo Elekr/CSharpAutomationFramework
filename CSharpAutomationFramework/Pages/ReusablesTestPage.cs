@@ -14,8 +14,13 @@ namespace CSharpAutomationFramework.Pages
         protected By btnBackToLogin = By.ClassName("go-to-login-btn");
         public ReusablesTestPage(IWebDriver driver) : base(driver, ("https://rahulshettyacademy.com/locatorspractice/", "Rahul Shetty Academy - Login page"))
         {
-            btnForgotPassword = generateLocator("LINKTEXT", "Forgot your password?"); // Testing generateLocator
         }
+
+        public void loadBtnForgotPassword()
+        {
+            btnForgotPassword = generateLocator("LINKTEXT", "Forgot your password?");
+        }
+
 
     }
 }

@@ -1,10 +1,5 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CSharpAutomationFramework.reusable
 {
@@ -89,7 +84,7 @@ namespace CSharpAutomationFramework.reusable
         {
             return isElementVisible(by) && driver.FindElement(by).Enabled;
         }
-        
+
         /// <summary>
         ///     Function to wait until the specified element is enabled
         /// </summary>
@@ -105,6 +100,22 @@ namespace CSharpAutomationFramework.reusable
         public void navigateHome()
         {
             driver.Navigate().GoToUrl(homePage.websiteURL);
+        }
+
+        /// <summary>
+        ///     Function to click element when it is visible
+        /// </summary>
+        /// <param name="by">The locator for the element we wish to click</param>
+        /// The Qualiframe version of this method uses a try-catch block and the logger reports
+        /// a status to which will determine whether the test is successful. For now, that
+        /// functionality does not exist within this framework so the try-catch has been omitted.
+        public void clickElement(By by)
+        {
+
+            waitUntilElementVisible(by, 3);
+            driver.FindElement(by).Click();
+            //Log here
+
         }
     }
 }
