@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
 namespace CSharpAutomationFramework.reusable
@@ -116,6 +117,29 @@ namespace CSharpAutomationFramework.reusable
             driver.FindElement(by).Click();
             //Log here
 
+        }
+
+        /// <summary>
+        ///     Function to enter text in element when it is visible
+        /// </summary>
+        /// <param name="by">The locator used to identify the element</param>
+        /// <param name="valueToEnter">String to input into the element</param>
+        public void enterText(By by, String valueToEnter)
+        {
+            waitUntilElementVisible(by, 3);
+            driver.FindElement(by).SendKeys(valueToEnter);
+            //Log here
+
+        }
+
+        /// <summary>
+        ///     Function to verify if element is redirected to correct URL
+        /// </summary>
+        /// <param name="expectedUrl">What we expect the url to be</param>
+        public void verifyRedirect(String expectedUrl)
+        {
+            Assert.AreEqual(expectedUrl.ToLower(), driver.Url.ToLower());
+            //Log here
         }
     }
 }
