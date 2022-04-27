@@ -29,7 +29,7 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
         [Given(@"\[I have navigated to the TC(.*)Page]")]
         public void GivenIHaveNavigatedToTheTCPage(int p0)
         {
-            throw new PendingStepException();
+
         }
 
         [Given(@"\[The webpage contains radio buttons]")]

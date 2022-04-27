@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\Ulisses.Dasilva\\source\\repos\\CSharpAutomationFramework\\CSharpAutomationFramework\\CSharpAutomationFramework.csproj": {}
   },
   "projects": {
@@ -12,9 +13,30 @@
         "projectPath": "C:\\Users\\Ulisses.Dasilva\\source\\repos\\CSharpAutomationFramework\\CSharpAutomationFramework\\CSharpAutomationFramework.csproj",
         "packagesPath": "C:\\Users\\Ulisses.Dasilva\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Ulisses.Dasilva\\source\\repos\\CSharpAutomationFramework\\CSharpAutomationFramework\\obj\\",
+=======
+    "E:\\Work\\Jobs\\Qualitest\\csharpautomationframework\\CSharpAutomationFramework\\CSharpAutomationFramework.csproj": {}
+  },
+  "projects": {
+    "E:\\Work\\Jobs\\Qualitest\\csharpautomationframework\\CSharpAutomationFramework\\CSharpAutomationFramework.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Work\\Jobs\\Qualitest\\csharpautomationframework\\CSharpAutomationFramework\\CSharpAutomationFramework.csproj",
+        "projectName": "CSharpAutomationFramework",
+        "projectPath": "E:\\Work\\Jobs\\Qualitest\\csharpautomationframework\\CSharpAutomationFramework\\CSharpAutomationFramework.csproj",
+        "packagesPath": "C:\\Users\\leigh\\.nuget\\packages\\",
+        "outputPath": "E:\\Work\\Jobs\\Qualitest\\csharpautomationframework\\CSharpAutomationFramework\\obj\\",
+>>>>>>> bc5dfe9f7af53a1f0cb3946f2d912dcdbcd33323
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
+<<<<<<< HEAD
           "C:\\Users\\Ulisses.Dasilva\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+          "C:\\Users\\leigh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+>>>>>>> bc5dfe9f7af53a1f0cb3946f2d912dcdbcd33323
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -96,7 +118,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+>>>>>>> bc5dfe9f7af53a1f0cb3946f2d912dcdbcd33323
         }
       }
     }

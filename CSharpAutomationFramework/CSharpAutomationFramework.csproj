@@ -31,6 +31,7 @@
     <Folder Include="Drivers\" />
     <Folder Include="Features\NUnit\" />
     <Folder Include="Logs\" />
+    <Folder Include="Screenshots\" />
     <Folder Include="Reports\" />
     <Folder Include="StepDefinitions\NUnit\" />
   </ItemGroup>
