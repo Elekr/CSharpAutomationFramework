@@ -14,23 +14,28 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        GooglePage googlePage;
+
+        HerokuPage heroPage;
 
         private DriverHelper _driverHelper;
 
-        (string websiteURL, string websiteTitle) homePage = ("https://www.google.com/", "Google");
-        //qt contact page 
+        (string websiteURL, string websiteTitle) homePage = ("https://the-internet.herokuapp.com/", "The Internet");
+
         public TC01_DriverNavigationStepDefinitions(DriverHelper driverHelper)
         {
             _driverHelper = driverHelper;
 
         }
 
-        [Given(@"\[I have a browser driver]")]
-        public void GivenIHaveABrowserDriver()
+        [Given(@"\[I have navigated to the ""([^""]*)""]")]
+        public void GivenIHaveNavigatedToThe(string webpage)
         {
-            googlePage = new GooglePage(_driverHelper.webDriver);
-            
+            heroPage = new HerokuPage(_driverHelper.webDriver);
+            _driverHelper.webDriver.Navigate().GoToUrl(homePage.websiteURL);
+
+            //Check that the website is correct
+            Assert.AreEqual(homePage.websiteURL, heroPage.ReturnURL(), "incorrect URL");
+
         }
 
         [When(@"\[I use the Navigate method]")]
@@ -39,13 +44,13 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
             _driverHelper.webDriver.Navigate().GoToUrl(homePage.websiteURL);
 
             //Check that the website is correct
-            Assert.AreEqual(homePage.websiteURL, googlePage.ReturnURL(), "incorrect URL");
+            Assert.AreEqual(homePage.websiteURL, heroPage.ReturnURL(), "incorrect URL");
         }
 
         [Then(@"\[The correct page will be displayed]")]
         public void ThenTheCorrectPageWillBeDisplayed()
         {
-            Assert.AreEqual(homePage.websiteTitle, googlePage.ReturnTitle(), "URLs do not match");
+            Assert.AreEqual(homePage.websiteTitle, heroPage.ReturnTitle(), "URLs do not match");
             log.Info("Test passed correctly");
         }
     }
