@@ -12,6 +12,9 @@ namespace CSharpAutomationFramework.Pages
         private readonly IWebDriver driver;
         private IWebElement googleBar => driver.FindElement(By.XPath("/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input"));
         private IWebElement cookiesButton => driver.FindElement(By.Id("L2AGLb"));
+
+
+       
         public GooglePage(IWebDriver driver)
         {
             this.driver = driver;
@@ -20,6 +23,7 @@ namespace CSharpAutomationFramework.Pages
         public void EnterSearchTerm(string searchTerm)
         {
             googleBar.SendKeys(searchTerm);
+           // driver.FindElement(buttoncookies);
         }
 
         public void AcceptCookies()

@@ -12,11 +12,10 @@ namespace CSharpAutomationFramework.Pages
         private readonly IWebDriver driver;
         private IWebElement textField => driver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/form/div[3]/input"));
 
-        //pageObject
-        private By name1 = By.Id("idname");
-        private By name2 = By.Id("idname");
-        private By name3 = By.Id("idname");
-        private By name4 = By.Id("idname");
+        private By buttonsample1 = By.Id("/");
+        private By buttonsample2 = By.CssSelector("/");
+        private By buttonsample3 = By.Name("/");
+        private By buttonsample4 = By.LinkText("/");
 
         public PracticePage(IWebDriver driver)
         {
@@ -35,6 +34,8 @@ namespace CSharpAutomationFramework.Pages
 
         public int ReturnFieldSize()
         {
+
+          
             return textField.GetAttribute("value").Length;
         }
 

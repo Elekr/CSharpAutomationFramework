@@ -14,11 +14,11 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        GooglePage hubPage;
+        HerokuPage heroPage;
 
         private DriverHelper _driverHelper;
 
-        (string websiteURL, string websiteTitle) homePage = ("https://www.google.com/", "Google");
+        (string websiteURL, string websiteTitle) homePage = ("https://the-internet.herokuapp.com/", "The Internet");
 
         public TC17_HandlingTabsStepDefinitions(DriverHelper driverHelper)
         {
@@ -29,7 +29,11 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
         [Given(@"\[I have navigated to a form]")]
         public void GivenIHaveNavigatedToAForm()
         {
-            throw new PendingStepException();
+            heroPage = new HerokuPage(_driverHelper.webDriver);
+            _driverHelper.webDriver.Navigate().GoToUrl(homePage.websiteURL);
+
+            //Check that the website is correct
+            Assert.AreEqual(homePage.websiteURL, heroPage.ReturnURL(), "incorrect URL");
         }
 
         [Given(@"\[I have opened two extra tabs]")]

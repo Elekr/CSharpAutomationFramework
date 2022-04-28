@@ -14,12 +14,12 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        GooglePage hubPage;
+        HerokuPage heroPage;
 
         private DriverHelper _driverHelper;
 
-        (string websiteURL, string websiteTitle) homePage = ("https://www.google.com/", "Google");
 
+        (string websiteURL, string websiteTitle) homePage = ("https://the-internet.herokuapp.com/", "The Internet");
         public TC04_RadioButtonsStepDefinitions(DriverHelper driverHelper)
         {
             _driverHelper = driverHelper;
@@ -29,7 +29,13 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
         [Given(@"\[I have navigated to the TC(.*)Page]")]
         public void GivenIHaveNavigatedToTheTCPage(int p0)
         {
+            heroPage = new HerokuPage(_driverHelper.webDriver);
+            _driverHelper.webDriver.Navigate().GoToUrl(homePage.websiteURL);
 
+            //Check that the website is correct
+            Assert.AreEqual(homePage.websiteURL, heroPage.ReturnURL(), "incorrect URL");
+
+            _driverHelper.webDriver.Navigate().GoToUrl(homePage.websiteURL);
         }
 
         [Given(@"\[The webpage contains radio buttons]")]
