@@ -97,10 +97,13 @@ namespace CSharpAutomationFramework.reusable
             (new WebDriverWait(driver, timeOut)).Until(_ => isElementEnabled(by));
         }
 
-
+        /// <summary>
+        ///     Navigate to homePage.websiteURL
+        /// </summary>
         public void navigateHome()
         {
             driver.Navigate().GoToUrl(homePage.websiteURL);
+            Hook.Log(AventStack.ExtentReports.Status.Debug, "Navigated Home");
         }
 
         /// <summary>
@@ -115,7 +118,7 @@ namespace CSharpAutomationFramework.reusable
 
             waitUntilElementVisible(by, 3);
             driver.FindElement(by).Click();
-            //Log here
+            Hook.Log(AventStack.ExtentReports.Status.Pass, "Element clicked successfully");
 
         }
 
@@ -128,7 +131,7 @@ namespace CSharpAutomationFramework.reusable
         {
             waitUntilElementVisible(by, 3);
             driver.FindElement(by).SendKeys(valueToEnter);
-            //Log here
+            Hook.Log(AventStack.ExtentReports.Status.Pass, valueToEnter + " is entered successfully");
 
         }
 
@@ -138,8 +141,18 @@ namespace CSharpAutomationFramework.reusable
         /// <param name="expectedUrl">What we expect the url to be</param>
         public void verifyRedirect(String expectedUrl)
         {
-            Assert.AreEqual(expectedUrl.ToLower(), driver.Url.ToLower());
-            //Log here
+            expectedUrl = expectedUrl.ToLower();
+            string currentUrl = driver.Url.ToLower();
+
+            if (expectedUrl.Equals(currentUrl))
+            {
+                Hook.Log(AventStack.ExtentReports.Status.Pass, "Current URL is same as expected URL "+expectedUrl);
+            }
+            else
+            {
+                Hook.Log(AventStack.ExtentReports.Status.Fail, "Current URL '" + currentUrl + "' does not match expected URL '" + expectedUrl + "'");
+            }
+
         }
     }
 }
