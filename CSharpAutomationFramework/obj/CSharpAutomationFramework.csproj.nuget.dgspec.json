@@ -48,6 +48,10 @@
               "target": "Package",
               "version": "[6.6.0, )"
             },
+            "Gherkin": {
+              "target": "Package",
+              "version": "[23.0.1, )"
+            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[17.1.0, )"
@@ -72,6 +76,10 @@
               "target": "Package",
               "version": "[3.9.69, )"
             },
+            "SpecFlow.Allure": {
+              "target": "Package",
+              "version": "[3.5.0.73, )"
+            },
             "SpecFlow.NUnit": {
               "target": "Package",
               "version": "[3.9.69, )"
@@ -79,6 +87,10 @@
             "SpecFlow.Plus.LivingDocPlugin": {
               "target": "Package",
               "version": "[3.9.57, )"
+            },
+            "WebDriverManager": {
+              "target": "Package",
+              "version": "[2.12.4, )"
             },
             "log4net": {
               "target": "Package",
