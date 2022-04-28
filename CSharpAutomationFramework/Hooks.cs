@@ -13,7 +13,10 @@ namespace CSharpAutomationFramework
 
         private static ExtentTest? featureName;
         private static ExtentTest? scenario;
+        
         private static ExtentReports? extent;
+
+        private static List<(Status status, string text)> logs = new List<(Status status, string text)>();
 
         private DriverHelper _driverHelper;
 
@@ -21,6 +24,12 @@ namespace CSharpAutomationFramework
         {
             _driverHelper = driverHelper;
         }
+
+        public static void Log(Status status, string text)
+        {
+            logs.Add((status, text));
+        }
+
 
         [BeforeTestRun]
         public static void InitializeReport()
@@ -39,6 +48,12 @@ namespace CSharpAutomationFramework
             extent.Flush();
         }
 
+        [BeforeStep]
+        public void BeforeStep()
+        {
+            logs.Clear();
+        }
+
         [AfterStep]
         public void InsertReportingSteps(ScenarioContext sc)
         {
@@ -46,42 +61,49 @@ namespace CSharpAutomationFramework
             PropertyInfo pInfo = typeof(ScenarioContext).GetProperty("ScenarioExecutionStatus", BindingFlags.Instance | BindingFlags.Public);
             MethodInfo getter = pInfo.GetGetMethod(nonPublic: true);
             object TestResult = getter.Invoke(sc, null);
+            ExtentTest? step = null;
             if (sc.TestError == null)
             {
                 if (stepType == "Given")
-                    scenario.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text);
+                    step = scenario.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text);
                 else if (stepType == "When")
-                    scenario.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text);
+                    step = scenario.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text);
                 else if (stepType == "Then")
-                    scenario.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text);
+                    step = scenario.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text);
                 else if (stepType == "And")
-                    scenario.CreateNode<And>(ScenarioStepContext.Current.StepInfo.Text);
+                    step = scenario.CreateNode<And>(ScenarioStepContext.Current.StepInfo.Text);
             }
             if (sc.TestError != null)
             {
                 // https://www.extentreports.com/docs/versions/4/net/index.html
                 // MediaEntityBuilder.CreateScreenCaptureFromPath("screenshot.png").Build()); used to take the screenshots when the tests fail
                 if (stepType == "Given")
-                    scenario.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text).Fail(sc.TestError.Message, MediaEntityBuilder.CreateScreenCaptureFromPath("C:\\Users\\thomas.crosby\\Documents\\Projects\\C#\\CSharpAutomationFramework\\CSharpAutomationFramework\\Screenshots\\", "screenshot.png").Build());
+                    step = scenario.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text).Fail(sc.TestError.Message, MediaEntityBuilder.CreateScreenCaptureFromPath("C:\\Users\\thomas.crosby\\Documents\\Projects\\C#\\CSharpAutomationFramework\\CSharpAutomationFramework\\Screenshots\\", "screenshot.png").Build());
                 if (stepType == "When")
-                    scenario.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text).Fail(sc.TestError.Message, MediaEntityBuilder.CreateScreenCaptureFromPath("screenshot.png").Build());
+                    step = scenario.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text).Fail(sc.TestError.Message, MediaEntityBuilder.CreateScreenCaptureFromPath("screenshot.png").Build());
                 if (stepType == "Then")
-                    scenario.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text).Fail(sc.TestError.Message, MediaEntityBuilder.CreateScreenCaptureFromPath("screenshot.png").Build());
+                    step = scenario.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text).Fail(sc.TestError.Message, MediaEntityBuilder.CreateScreenCaptureFromPath("screenshot.png").Build());
                 if (stepType == "And")
-                    scenario.CreateNode<And>(ScenarioStepContext.Current.StepInfo.Text).Fail(sc.TestError.Message, MediaEntityBuilder.CreateScreenCaptureFromPath("screenshot.png").Build());
+                    step = scenario.CreateNode<And>(ScenarioStepContext.Current.StepInfo.Text).Fail(sc.TestError.Message, MediaEntityBuilder.CreateScreenCaptureFromPath("screenshot.png").Build());
             }
 
             //Pending Status
             if (TestResult.ToString() == "StepDefinitionPending")
             {
                 if (stepType == "Given")
-                    scenario.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text).Skip("Step Definition Pending", MediaEntityBuilder.CreateScreenCaptureFromPath("C:\\Users\\thomas.crosby\\Documents\\Projects\\C#\\CSharpAutomationFramework\\CSharpAutomationFramework\\Screenshots\\", "screenshot.png").Build());
+                    step = scenario.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text).Skip("Step Definition Pending", MediaEntityBuilder.CreateScreenCaptureFromPath("C:\\Users\\thomas.crosby\\Documents\\Projects\\C#\\CSharpAutomationFramework\\CSharpAutomationFramework\\Screenshots\\", "screenshot.png").Build());
                 else if (stepType == "When")
-                    scenario.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text).Skip("Step Definition Pending");
+                    step = scenario.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text).Skip("Step Definition Pending");
                 else if (stepType == "Then")
-                    scenario.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text).Skip("Step Definition Pending");
+                    step = scenario.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text).Skip("Step Definition Pending");
 
             }
+
+            foreach (var log in logs)
+            {
+                step.Log(log.status, log.text);
+            }
+
         }
         [BeforeFeature]
         public static void BeforeFeature(FeatureContext featurecontext)
