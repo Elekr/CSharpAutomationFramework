@@ -170,7 +170,7 @@ namespace CSharpAutomationFramework.reusable
         {
             waitUntilElementLocated(by, 3);
             string text = driver.FindElement(by).Text;
-            Hook.Log(AventStack.ExtentReports.Status.Pass, "The text retrieved successfully for " + by + ". The text is - " + text);
+            Hook.Log(AventStack.ExtentReports.Status.Pass, "Text retrieved successfully for " + by + ". The text is - " + text);
             return text;
         }
 
