@@ -118,7 +118,7 @@ namespace CSharpAutomationFramework.StepDefinitions
         [Then(@"\[Username element should contain the test string]")]
         public void ThenUsernameElementShouldContainTestString()
         {
-            Assert.AreEqual("test string", driver.FindElement(txtUsername).GetAttribute("value"));
+            Assert.AreEqual("test string", getAttribute(txtUsername, "value"));
         }
 
     }

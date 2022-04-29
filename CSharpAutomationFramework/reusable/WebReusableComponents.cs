@@ -215,5 +215,18 @@ namespace CSharpAutomationFramework.reusable
             }
         }
 
+
+        /// <summary>
+        ///     Method to get the value of an attribute from an element
+        /// </summary>
+        /// <param name="by">The locator that identifies the element</param>
+        /// <param name="attributeName">Name of the attribute we wish to get the value of</param>
+        public string getAttribute(By by, string attributeName)
+        {
+            string value = driver.FindElement(by).GetAttribute(attributeName);
+            Hook.Log(AventStack.ExtentReports.Status.Pass, "Got value '" + value + "' from attribute '" + attributeName + "' of element '" + by + "'");
+            return value;
+        }
+
     }
 }
