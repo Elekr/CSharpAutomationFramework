@@ -266,5 +266,25 @@ namespace CSharpAutomationFramework.reusable
             Hook.Log(AventStack.ExtentReports.Status.Pass, "New tab opened successfully");
         }
 
+        /// <summary>
+        ///     Can an element not be found or is not visible
+        /// </summary>
+        /// <param name="by">The locator for the element</param>
+        public bool isElementInvisible(By by)
+        {
+            return !isElementVisible(by);
+        }
+
+
+        /// <summary>
+        ///     Function to wait untilan element either become invisible or cannot be located
+        /// </summary>
+        /// <param name="by">The locator used to identify the element</param>
+        /// <param name="timeOutInSeconds">The wait timeout in seconds</param>
+        public void waitUntilInvisibilityOfElementLocated(By by, long timeOutInSeconds)
+        {
+            TimeSpan timeOut = TimeSpan.FromSeconds(timeOutInSeconds);
+            (new WebDriverWait(driver, timeOut)).Until(_ => isElementInvisible(by));
+        }
     }
 }
