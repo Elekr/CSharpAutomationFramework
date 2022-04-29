@@ -139,7 +139,7 @@ namespace CSharpAutomationFramework.reusable
         public void verifyRedirect(String expectedUrl)
         {
             expectedUrl = expectedUrl.ToLower();
-            string currentURL = driver.Url.ToLower();
+            string currentURL = getCurrentUrl();
             if (expectedUrl.Equals(currentURL))
             {
                 Hook.Log(AventStack.ExtentReports.Status.Pass, "Redirect successful, current URL matches expected URL '" + expectedUrl + "'");
@@ -174,6 +174,16 @@ namespace CSharpAutomationFramework.reusable
             return text;
         }
 
+        /// <summary>
+        ///     Method to get the current url
+        /// </summary>
+        /// <returns>Current url</returns>
+        public string getCurrentUrl()
+        {
+            string currentURL = driver.Url.ToLower();
+            Hook.Log(AventStack.ExtentReports.Status.Pass, "Successfully retrieved current url '" + currentURL + "'");
+            return currentURL;
+        }
 
     }
 }
