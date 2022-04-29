@@ -71,6 +71,32 @@ namespace CSharpAutomationFramework.StepDefinitions
             switchToLatestWindow();
         }
 
+        [When(@"\[We open a new tab]")]
+        public void WhenWeOpenANewTab()
+        {
+            openNewTab();
+        }
+
+        [When(@"\[Navigate to the new tab]")]
+        public void WhenNavigateToNewTab()
+        {
+            switchToLatestWindow();
+        }
+
+
+
+
+
+
+
+        [Then(@"\[We should be able to navigate back to the parent tab]")]
+        public void ThenAbleToNavigateBack()
+        {
+            switchToParentWindow();
+            wait(3);
+            verifyRedirect(homePage.websiteURL);
+        }
+
         [Then(@"\[We should successfully verify the redirect to (.*)]")]
         public void ThenWeShouldSucceedVerifyRedirect(string expectedURL)
         {
