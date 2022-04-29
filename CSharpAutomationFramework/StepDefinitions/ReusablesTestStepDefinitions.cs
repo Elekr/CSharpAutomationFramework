@@ -53,6 +53,37 @@ namespace CSharpAutomationFramework.StepDefinitions
             waitUntilElementEnabled(btnBackToLogin, 2L);
         }
 
+        [When(@"\[We click visit us]")]
+        public void WhenWeClickVisitUs()
+        {
+            clickElement(btnVisitUs);
+        }
+
+        [When(@"\[We wait (.*) second\(s\)]")]
+        public void WhenWeWaitXSeconds(int x)
+        {
+            wait(x);
+        }
+
+        [When(@"\[We switch to the new tab]")]
+        public void WhenWeSwitchToNewTab()
+        {
+            driver.SwitchTo().Window(driver.WindowHandles[1]);
+        }
+
+        [Then(@"\[We should successfully verify the redirect to (.*)]")]
+        public void ThenWeShouldSucceedVerifyRedirect(string expectedURL)
+        {
+            verifyRedirect(expectedURL);
+        }
+
+        [Then(@"\[We should fail to verify redirect to (.*)")]
+        public void ThenFailToVerifyRedirect(string url)
+        {
+            Assert.Throws<Exception>(delegate { verifyRedirect(url); });
+        }
+
+
         [Then(@"\[Clicking the go back button should fail]")]
         public void ThenClickingGoBackNoWaitShouldFail()
         {

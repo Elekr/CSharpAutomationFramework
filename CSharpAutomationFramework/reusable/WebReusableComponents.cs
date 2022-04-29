@@ -140,8 +140,13 @@ namespace CSharpAutomationFramework.reusable
         {
             expectedUrl = expectedUrl.ToLower();
             string currentURL = driver.Url.ToLower();
-            Assert.AreEqual(expectedUrl, currentURL, "Redirect failed, current URL '" + currentURL + "' does not match expected URL '" + expectedUrl + "'");
-            Hook.Log(AventStack.ExtentReports.Status.Pass, "Redirect successful, current URL matches expected URL '" + expectedUrl + "'");
+            if (expectedUrl.Equals(currentURL))
+            {
+                Hook.Log(AventStack.ExtentReports.Status.Pass, "Redirect successful, current URL matches expected URL '" + expectedUrl + "'");
+                return;
+            }
+            throw new Exception("Redirect failed, current URL '" + currentURL + "' does not match expected URL '" + expectedUrl + "'");
+
         }
     }
 }

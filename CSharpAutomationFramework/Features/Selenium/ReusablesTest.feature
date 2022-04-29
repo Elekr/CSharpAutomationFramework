@@ -39,3 +39,20 @@ Scenario: [Successfully enterText when navigating back to login]
 	And [Don't wait]
 	Then [Trying to immediately enterText should succeed]
 	And [Username element should contain the test string]
+
+@Selenium
+Scenario: [Successfully verify visit us redirect]
+	Given [We have moved to the the site]
+	When [We click visit us]
+	And [We wait 1 second(s)]
+	And [We switch to the new tab]
+	Then [We should successfully verify the redirect to https://rahulshettyacademy.com/]
+
+
+@Selenium
+Scenario: [Fail to verify visit us redirect]
+	Given [We have moved to the the site]
+	When [We click visit us]
+	And [We wait 1 second(s)]
+	And [We switch to the new tab]
+	Then [We should fail to verify redirect to https://rahulshettyacademy.com/locatorspractice/#]
