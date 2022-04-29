@@ -195,5 +195,25 @@ namespace CSharpAutomationFramework.reusable
             Hook.Log(AventStack.ExtentReports.Status.Pass, "Window switched successfully. Window - " + handle);
         }
 
+        /// <summary>
+        ///     Method to switch to default window
+        /// </summary>
+        public void switchToParentWindow()
+        {
+            driver.SwitchTo().DefaultContent();
+            Hook.Log(AventStack.ExtentReports.Status.Pass, "Window switched to parent successfully");
+        }
+
+        /// <summary>
+        ///     Method to wait until the new tab loads -- assumes you only had one tab open before opening the new one
+        /// </summary>
+        public void waitUntilNewTabLoads()
+        {
+            while(!(driver.WindowHandles.Count > 1))
+            {
+
+            }
+        }
+
     }
 }
