@@ -15,11 +15,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <SpecFlowFeatureFiles Remove="cucumber.steps\Features\Selenium\TC18_QTContactPage.feature" />
+    <SpecFlowFeatureFiles Remove="Selenium\TC18_QTContactPage.feature" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="cucumber.steps\Features\Selenium\TC18_QTContactPage.feature" />
+    <Compile Include="Selenium\TC18_QTContactPage.feature" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,21 +41,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="cucumber.steps\Features\NUnit\" />
-    <Folder Include="framework\componets\" />
-    <Folder Include="framework\data\" />
-    <Folder Include="framework\webcrawler\" />
-    <Folder Include="framework\selenium\" />
+    <Folder Include="Features\NUnit\" />
     <Folder Include="Logs\" />
-    <Folder Include="keyword.steps\" />
-    <Folder Include="module.steps\" />
     <Folder Include="Screenshots\" />
-    <Folder Include="framework\report\Reports\" />
-    <Folder Include="cucumber.steps\StepDefinitions\NUnit\" />
+    <Folder Include="StepDefinitions\NUnit\" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="runners\log4net.config">
+    <None Update="log4net.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
