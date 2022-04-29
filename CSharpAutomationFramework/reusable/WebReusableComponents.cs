@@ -1,5 +1,4 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
 namespace CSharpAutomationFramework.reusable
@@ -128,7 +127,7 @@ namespace CSharpAutomationFramework.reusable
         {
             waitUntilElementVisible(by, 3);
             driver.FindElement(by).SendKeys(valueToEnter);
-            Hook.Log(AventStack.ExtentReports.Status.Pass, "Text '" +valueToEnter+"' entered successfully");
+            Hook.Log(AventStack.ExtentReports.Status.Pass, "Text '" + valueToEnter + "' entered successfully");
 
         }
 
@@ -209,7 +208,7 @@ namespace CSharpAutomationFramework.reusable
         /// </summary>
         public void waitUntilNewTabLoads()
         {
-            while(!(driver.WindowHandles.Count > 1))
+            while (!(driver.WindowHandles.Count > 1))
             {
 
             }
@@ -248,6 +247,23 @@ namespace CSharpAutomationFramework.reusable
             string value = driver.FindElement(by).GetAttribute(attributeName);
             Hook.Log(AventStack.ExtentReports.Status.Pass, "Got value '" + value + "' from attribute '" + attributeName + "' of element '" + by + "'");
             return value;
+        }
+
+        /// <summary>
+        ///     Method to open a new tab
+        /// </summary>
+        /// <exception cref="Exception">Failed to create window</exception>
+        public void openNewTab()
+        {
+            int startingWindowCount = driver.WindowHandles.Count;
+            IJavaScriptExecutor jse = (IJavaScriptExecutor)driver;
+
+            jse.ExecuteScript("window.open()");
+            if (driver.WindowHandles.Count != startingWindowCount + 1)
+            {
+                throw new Exception("Failed to create new window -- unknown error");
+            }
+            Hook.Log(AventStack.ExtentReports.Status.Pass, "New tab opened successfully");
         }
 
     }
