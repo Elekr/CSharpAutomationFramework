@@ -148,5 +148,18 @@ namespace CSharpAutomationFramework.reusable
             throw new Exception("Redirect failed, current URL '" + currentURL + "' does not match expected URL '" + expectedUrl + "'");
 
         }
+
+        /// <summary>
+        ///     Function to get list of WebElements that match the locator
+        /// </summary>
+        /// <param name="by">The locator used to identify elements</param>
+        /// <returns></returns>
+        public List<IWebElement> getWebElementList(By by)
+        {
+            waitUntilElementLocated(by, 3);
+            var elements = driver.FindElements(by).ToList();
+            return elements;
+        }
+
     }
 }
