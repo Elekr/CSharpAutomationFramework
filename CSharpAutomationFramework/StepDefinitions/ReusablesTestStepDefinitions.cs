@@ -23,6 +23,18 @@ namespace CSharpAutomationFramework.StepDefinitions
             loadBtnForgotPassword();
         }
 
+        [Given(@"\[We are on the forgot password page]")]
+        public void GivenWeAreOnTheForgottenPasswordPage()
+        {
+            clickElement(btnForgotPassword);
+        }
+
+        [When(@"\[We click back to login]")]
+        public void WhenWeClickBackToLogin()
+        {
+            clickElement(btnBackToLogin);
+        }
+
         [When(@"\[We click the forgot password buttton]")]
         public void WhenWeClickTheForgotPasswordButton()
         {
@@ -59,5 +71,24 @@ namespace CSharpAutomationFramework.StepDefinitions
         {
             clickElement(btnBackToLogin);
         }
+
+        [Then(@"\[Trying to immediately send keys to the username box should fail]")]
+        public void ThenSuccessfullySendText()
+        {
+            driver.FindElement(txtUsername).SendKeys("test string");
+        }
+
+        [Then(@"\[Trying to immediately enterText should succeed]")]
+        public void ThenTryingToImmediatelyEnterTextShouldNotFail()
+        {
+            enterText(txtUsername, "test string");
+        }
+
+        [Then(@"\[Username element should contain the test string]")]
+        public void ThenUsernameElementShouldContainTestString()
+        {
+            Assert.AreEqual("test string", driver.FindElement(txtUsername).GetAttribute("value"));
+        }
+
     }
 }
