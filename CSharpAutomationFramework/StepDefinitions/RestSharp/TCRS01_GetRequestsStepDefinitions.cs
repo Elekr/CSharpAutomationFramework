@@ -19,6 +19,13 @@ namespace CSharpAutomationFramework.StepDefinitions.RestSharp
         RestResponse? content;
         dynamic jsonResponse;
 
+        private readonly ScenarioContext _scenarioContext;
+
+        public TCRS01_GetRequestsStepDefinitions(ScenarioContext scenarioContext)
+        {
+            _scenarioContext = scenarioContext;
+        }
+
         [Given(@"\[I send a request for a single object]")]
         public void GivenISendARequestForASingleObject()
         {

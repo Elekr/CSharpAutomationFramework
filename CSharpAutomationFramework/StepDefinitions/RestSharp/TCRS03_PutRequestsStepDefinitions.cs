@@ -1,4 +1,8 @@
-﻿using System;
+﻿using CSharpAutomationFramework.StepDefinitions.RestSharp.API;
+using Newtonsoft.Json;
+using NUnit.Framework;
+using RestSharp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,22 +13,45 @@ namespace CSharpAutomationFramework.StepDefinitions.RestSharp
     [Binding]
     public class TCRS03_PutRequestsStepDefinitions
     {
-        [Given(@"\[I send a put request]")]
-        public void GivenISendAPutRequest()
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        RestResponse? response;
+
+        private readonly ScenarioContext _scenarioContext;
+
+        public TCRS03_PutRequestsStepDefinitions(ScenarioContext scenarioContext)
         {
-            throw new PendingStepException();
+            _scenarioContext = scenarioContext;
+        }
+
+        [Given(@"\[I send a put request for employee with name ""([^""]*)"" to update the designation as ""([^""]*)""]")]
+        public void GivenISendAPutRequestForEmployeeWithNameToUpdateTheDesignationAs(string employee_name, string designation)
+        {
+            var client = new RestClient("https://reqres.in/api/users/2");
+            var request = new RestRequest("", Method.Put);
+            var employee = new EmployeeRequest();
+            employee.name = employee_name;
+            employee.designation = designation;
+            request.AddJsonBody<EmployeeRequest>(employee);
+            response = client.ExecuteAsync(request).Result;
         }
 
         [When(@"\[The put request is successful]")]
         public void WhenThePutRequestIsSuccessful()
         {
-            throw new PendingStepException();
+            Assert.AreEqual("OK", response.StatusCode.ToString());
         }
 
         [Then(@"\[I am able to validate the entry has been updated]")]
         public void ThenIAmAbleToValidateTheEntryHasBeenUpdated()
         {
-            throw new PendingStepException();
+            EmployeeResponse employee = JsonConvert.DeserializeObject<EmployeeResponse>(response.Content);
+
+            (string name, string designation) testEmployee = ("Employee1",
+                                          "Team Lead");
+
+            Assert.AreEqual(employee.name, employee.name, "name doesn't match");
+            Assert.AreEqual(testEmployee.designation, employee.designation, "desigation doesn't match");
         }
 
 
