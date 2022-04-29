@@ -285,6 +285,30 @@ namespace CSharpAutomationFramework.reusable
         {
             TimeSpan timeOut = TimeSpan.FromSeconds(timeOutInSeconds);
             (new WebDriverWait(driver, timeOut)).Until(_ => isElementInvisible(by));
+            Hook.Log(AventStack.ExtentReports.Status.Pass, "Element is now invisible");
         }
+
+        /// <summary>
+        ///     Function to switch to a window by using its title name
+        /// </summary>
+        /// <param name="titleName">Title of the window</param>
+        public void switchToWindow(string titleName)
+        {
+            string currentHandle = driver.CurrentWindowHandle;
+            foreach(string windowHandle in driver.WindowHandles)
+            {
+                if (driver.SwitchTo().Window(windowHandle).Title.Contains(titleName))
+                {
+                    break;
+                }
+            }
+            if(!driver.CurrentWindowHandle.Contains(titleName))
+            {
+                driver.SwitchTo().Window(currentHandle);
+                throw new NoSuchWindowException("No window with a matching title was found");
+            }
+            Hook.Log(AventStack.ExtentReports.Status.Pass, "Switched to window '" + driver.CurrentWindowHandle + "' with title '" + driver.Title + "'");
+        }
+
     }
 }
