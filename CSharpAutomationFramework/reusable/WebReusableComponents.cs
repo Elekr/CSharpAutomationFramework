@@ -115,7 +115,7 @@ namespace CSharpAutomationFramework.reusable
 
             waitUntilElementVisible(by, 3);
             driver.FindElement(by).Click();
-            //Log here
+            Hook.Log(AventStack.ExtentReports.Status.Pass, "Element clicked successfully");
 
         }
 
@@ -128,7 +128,7 @@ namespace CSharpAutomationFramework.reusable
         {
             waitUntilElementVisible(by, 3);
             driver.FindElement(by).SendKeys(valueToEnter);
-            //Log here
+            Hook.Log(AventStack.ExtentReports.Status.Pass, "Text '" +valueToEnter+"' entered successfully");
 
         }
 
@@ -138,8 +138,10 @@ namespace CSharpAutomationFramework.reusable
         /// <param name="expectedUrl">What we expect the url to be</param>
         public void verifyRedirect(String expectedUrl)
         {
-            Assert.AreEqual(expectedUrl.ToLower(), driver.Url.ToLower());
-            //Log here
+            expectedUrl = expectedUrl.ToLower();
+            string currentURL = driver.Url.ToLower();
+            Assert.AreEqual(expectedUrl, currentURL, "Redirect failed, current URL '" + currentURL + "' does not match expected URL '" + expectedUrl + "'");
+            Hook.Log(AventStack.ExtentReports.Status.Pass, "Redirect successful, current URL matches expected URL '" + expectedUrl + "'");
         }
     }
 }
