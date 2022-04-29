@@ -217,6 +217,28 @@ namespace CSharpAutomationFramework.reusable
 
 
         /// <summary>
+        ///     Is the page loaded to the expected url?
+        /// </summary>
+        /// <param name="url">url we expect</param>
+        /// <returns>Is the page loaded</returns>
+        public bool isPageLoaded(string url)
+        {
+            IJavaScriptExecutor jse = (IJavaScriptExecutor)driver;
+            return jse.ExecuteScript("return document.URL").Equals(url);
+
+        }
+
+        /// <summary>
+        ///     Method to wait until the page loads
+        /// </summary>
+        /// <param name="url">Url to wait for</param>
+        public void waitUntilPageLoads(string url)
+        {
+            TimeSpan timeout = TimeSpan.FromSeconds(10);
+            new WebDriverWait(driver, timeout).Until(_ => isPageLoaded(url));
+        }
+
+        /// <summary>
         ///     Method to get the value of an attribute from an element
         /// </summary>
         /// <param name="by">The locator that identifies the element</param>
