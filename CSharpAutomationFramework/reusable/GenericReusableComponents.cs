@@ -37,7 +37,6 @@ namespace CSharpAutomationFramework.reusable
                     break;
                 default:
                     throw new InvalidSelectorException("Error, unable to identify locator '"+locatorType+"'");
-                    break;
             }
             return loc;
         }
