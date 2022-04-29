@@ -94,10 +94,17 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 7
+<<<<<<< HEAD:CSharpAutomationFramework/Selenium/TC14_ExplicitWait.feature.cs
     testRunner.Given("[I have created an explicit wait]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
     testRunner.When("[I navigate to the webpage which is still loading]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+=======
+    testRunner.Given("[I create a request to delete an entry]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 8
+    testRunner.When("[The delete request is sent]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+>>>>>>> d165a4a9d70e890ba9e62d3c2390f0f37ee961fc:CSharpAutomationFramework/cucumber.steps/Features/RestSharp/TCRS04_DeleteRequests.feature.cs
 #line hidden
 #line 9
     testRunner.Then("[The explicit wait will stop execution until the condition is met]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");

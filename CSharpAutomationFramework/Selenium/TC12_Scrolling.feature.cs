@@ -93,7 +93,12 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 7
+<<<<<<< HEAD:CSharpAutomationFramework/Selenium/TC12_Scrolling.feature.cs
     testRunner.Given("[I have navigated to the \"TC12Page\"]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+=======
+    testRunner.Given("[I send a put request for employee with name \"Employee1\" to update the designatio" +
+                        "n as \"Team Lead\"]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+>>>>>>> d165a4a9d70e890ba9e62d3c2390f0f37ee961fc:CSharpAutomationFramework/cucumber.steps/Features/RestSharp/TCRS03_PutRequests.feature.cs
 #line hidden
 #line 8
     testRunner.When("[I scroll the page down a specific amount]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
