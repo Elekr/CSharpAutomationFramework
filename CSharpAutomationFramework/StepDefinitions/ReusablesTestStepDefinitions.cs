@@ -53,5 +53,11 @@ namespace CSharpAutomationFramework.StepDefinitions
             driver.FindElement(btnBackToLogin).Click();
 
         }
+
+        [Then(@"\[Clicking with clickElement should succeed]")]
+        public void ThenClickingWithClickElementShouldSucceed()
+        {
+            clickElement(btnBackToLogin);
+        }
     }
 }
