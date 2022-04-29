@@ -56,11 +56,10 @@ Scenario: [Fail to verify visit us redirect]
 	And [We wait 1 second(s)]
 	And [We switch to the new tab]
 	Then [We should fail to verify redirect to https://rahulshettyacademy.com/locatorspractice/#]
+	And [We should be able to navigate back to the parent tab]
 
 @Selenium
 Scenario: [Successfully open a new tab, navigate to it and navigate back]
 	Given [We have moved to the the site]
 	When [We open a new tab]
 	And [Navigate to the new tab]
-	And [We wait 3 second(s)]
-	Then [We should be able to navigate back to the parent tab]

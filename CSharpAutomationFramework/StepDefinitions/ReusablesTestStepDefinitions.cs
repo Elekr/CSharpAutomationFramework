@@ -93,7 +93,6 @@ namespace CSharpAutomationFramework.StepDefinitions
         public void ThenAbleToNavigateBack()
         {
             switchToParentWindow();
-            wait(3);
             verifyRedirect(homePage.websiteURL);
         }
 
