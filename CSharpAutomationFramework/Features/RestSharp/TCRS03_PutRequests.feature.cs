@@ -93,7 +93,8 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 7
-    testRunner.Given("[I send a put request]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("[I send a put request for employee with name \"Employee1\" to update the designatio" +
+                        "n as \"Team Lead\"]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
     testRunner.When("[The put request is successful]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

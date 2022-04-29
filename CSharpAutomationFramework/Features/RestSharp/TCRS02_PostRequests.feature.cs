@@ -76,11 +76,19 @@ namespace CSharpAutomationFramework.Features.RestSharp
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("[A user creates an entry using a post request]")]
         [NUnit.Framework.CategoryAttribute("RestSharp")]
-        public void AUserCreatesAnEntryUsingAPostRequest()
+        [NUnit.Framework.TestCaseAttribute("Employee1", "SoftwareEngineer", null)]
+        public void AUserCreatesAnEntryUsingAPostRequest(string employee_Name, string designation, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
+            string[] @__tags = new string[] {
                     "RestSharp"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Employee_name", employee_Name);
+            argumentsOfScenario.Add("Designation", designation);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[A user creates an entry using a post request]", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 6
 this.ScenarioInitialize(scenarioInfo);
@@ -93,7 +101,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 7
-    testRunner.Given("[I create a post request]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given(string.Format("[I create a post request with {0} and {1}]", employee_Name, designation), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
     testRunner.When("[The post request is successful]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
