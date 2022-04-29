@@ -161,5 +161,19 @@ namespace CSharpAutomationFramework.reusable
             return elements;
         }
 
+        /// <summary>
+        ///     Function to get text from an element
+        /// </summary>
+        /// <param name="by">The locator used to identify the element</param>
+        /// <returns>Text within the element</returns>
+        public string getTextFromElement(By by)
+        {
+            waitUntilElementLocated(by, 3);
+            string text = driver.FindElement(by).Text;
+            Hook.Log(AventStack.ExtentReports.Status.Pass, "The text retrieved successfully for " + by + ". The text is - " + text);
+            return text;
+        }
+
+
     }
 }
