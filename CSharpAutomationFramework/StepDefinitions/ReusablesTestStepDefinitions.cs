@@ -68,7 +68,7 @@ namespace CSharpAutomationFramework.StepDefinitions
         [When(@"\[We switch to the new tab]")]
         public void WhenWeSwitchToNewTab()
         {
-            driver.SwitchTo().Window(driver.WindowHandles[1]);
+            switchToLatestWindow();
         }
 
         [Then(@"\[We should successfully verify the redirect to (.*)]")]

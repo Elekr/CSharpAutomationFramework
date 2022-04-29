@@ -185,5 +185,15 @@ namespace CSharpAutomationFramework.reusable
             return currentURL;
         }
 
+        /// <summary>
+        ///     Method to switch to latest window
+        /// </summary>
+        public void switchToLatestWindow()
+        {
+            string handle = driver.WindowHandles.Last();
+            driver.SwitchTo().Window(handle);
+            Hook.Log(AventStack.ExtentReports.Status.Pass, "Window switched successfully. Window - " + handle);
+        }
+
     }
 }
