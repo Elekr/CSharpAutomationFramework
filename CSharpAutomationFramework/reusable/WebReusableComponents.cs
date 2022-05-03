@@ -100,7 +100,7 @@ namespace CSharpAutomationFramework.reusable
 
         public void navigateHome()
         {
-            driver.Navigate().GoToUrl(homePage.websiteURL);
+            launchUrl(homePage.websiteURL);
         }
 
         /// <summary>
