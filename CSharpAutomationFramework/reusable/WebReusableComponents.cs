@@ -294,15 +294,16 @@ namespace CSharpAutomationFramework.reusable
         /// <param name="titleName">Title of the window</param>
         public void switchToWindow(string titleName)
         {
+            titleName = titleName.ToLower();
             string currentHandle = driver.CurrentWindowHandle;
             foreach(string windowHandle in driver.WindowHandles)
             {
-                if (driver.SwitchTo().Window(windowHandle).Title.Contains(titleName))
+                if (driver.SwitchTo().Window(windowHandle).Title.ToLower().Contains(titleName))
                 {
                     break;
                 }
             }
-            if(!driver.CurrentWindowHandle.Contains(titleName))
+            if(!driver.Title.ToLower().Contains(titleName))
             {
                 driver.SwitchTo().Window(currentHandle);
                 throw new NoSuchWindowException("No window with a matching title was found");
