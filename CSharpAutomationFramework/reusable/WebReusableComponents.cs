@@ -358,5 +358,14 @@ namespace CSharpAutomationFramework.reusable
             Hook.Log(AventStack.ExtentReports.Status.Pass, "Switched to window index "+index);
         }
 
+        /// <summary>
+        ///     Method to set implicit wait
+        /// </summary>
+        /// <param name="timeInSeconds">Implicit wait time in seconds</param>
+        public void setImplicitWait(long timeInSeconds)
+        {
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(timeInSeconds);
+            Hook.Log(AventStack.ExtentReports.Status.Pass, "Implicit wait set successfully");
+        }
     }
 }
