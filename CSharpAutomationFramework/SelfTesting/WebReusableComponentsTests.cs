@@ -6,13 +6,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CSharpAutomationFramework.reusable;
 
 namespace CSharpAutomationFramework.SelfTesting.reusable
 {
     public class WebReusableComponentsTests
     {
         public IWebDriver driver = new ChromeDriver(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Drivers\\");
-        class WRC_Tester : CSharpAutomationFramework.reusable.WebReusableComponents
+        class WRC_Tester : WebReusableComponents
         {
             public WRC_Tester(IWebDriver driver) : base(driver, ("https://google.co.uk",""))
             {
@@ -26,10 +27,15 @@ namespace CSharpAutomationFramework.SelfTesting.reusable
         }
 
         [Test]
-        public void testTest()
+        [TestCase("XPATH", "//input[@type='radio']", 3)]
+        [TestCase("LINKTEXT", "REST API", 1)]
+        public void CorrectLengths_GetWebElementList(string type, string value, int expectedLength)
         {
             BeforeEach();
-            tester.navigateHome();
+            driver.Navigate().GoToUrl("https://rahulshettyacademy.com/AutomationPractice/");
+            By locator = WebReusableComponents.generateLocator(type, value);
+            var list = tester.getWebElementList(locator);
+            Assert.AreEqual(expectedLength, list.Count);
         }
 
     }
