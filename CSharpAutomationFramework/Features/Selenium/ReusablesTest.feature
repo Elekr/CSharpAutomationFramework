@@ -64,3 +64,11 @@ Scenario: [Successfully open a new tab, navigate to it and navigate back by part
 	When [We open a new tab]
 	And [Navigate to the new tab]
 	Then [Switch to window Rahul]
+
+
+@Selenium
+Scenario: [Successfully open a new tab, navigate to it and navigate back by full title]
+	Given [We have moved to the the site]
+	When [We open a new tab]
+	And [Navigate to the new tab]
+	Then [Switch to window Rahul Shetty Academy - Login page]
