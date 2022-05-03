@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 
 namespace CSharpAutomationFramework.reusable
@@ -311,5 +312,14 @@ namespace CSharpAutomationFramework.reusable
             Hook.Log(AventStack.ExtentReports.Status.Pass, "Switched to window '" + driver.CurrentWindowHandle + "' with title '" + driver.Title + "'");
         }
 
+
+        public void  clickOnElementaction(By by)
+        {
+            waitUntilElementLocated(by, 3);
+            IWebElement element = driver.FindElement(by);
+            Actions action = new Actions(driver);
+            action.MoveToElement(element).Click().Perform();
+            Hook.Log(AventStack.ExtentReports.Status.Pass, "The element - " + by + " is clicked successfully");
+        }
     }
 }
