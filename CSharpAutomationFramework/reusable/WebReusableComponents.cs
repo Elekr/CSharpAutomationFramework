@@ -313,6 +313,10 @@ namespace CSharpAutomationFramework.reusable
         }
 
 
+        /// <summary>
+        ///     Function to click on an element using the action builder class
+        /// </summary>
+        /// <param name="by">The locator for the element</param>
         public void  clickOnElementaction(By by)
         {
             waitUntilElementLocated(by, 3);
