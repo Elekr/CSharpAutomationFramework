@@ -146,5 +146,11 @@ namespace CSharpAutomationFramework.StepDefinitions
             Assert.AreEqual("test string", getAttribute(txtUsername, "value"));
         }
 
+
+        [Then(@"\[Switch to window (.*)]")]
+        public void ThenSwitchToWindow(string title)
+        {
+            switchToWindow(title);
+        }
     }
 }

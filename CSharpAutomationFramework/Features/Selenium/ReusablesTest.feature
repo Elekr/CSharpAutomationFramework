@@ -59,7 +59,8 @@ Scenario: [Fail to verify visit us redirect]
 	And [We should be able to navigate back to the parent tab]
 
 @Selenium
-Scenario: [Successfully open a new tab, navigate to it and navigate back]
+Scenario: [Successfully open a new tab, navigate to it and navigate back by partial title]
 	Given [We have moved to the the site]
 	When [We open a new tab]
 	And [Navigate to the new tab]
+	Then [Switch to window Rahul]

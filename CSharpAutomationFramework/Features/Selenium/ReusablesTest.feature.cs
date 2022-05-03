@@ -338,14 +338,14 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("[Successfully open a new tab, navigate to it and navigate back]")]
+        [NUnit.Framework.DescriptionAttribute("[Successfully open a new tab, navigate to it and navigate back by partial title]")]
         [NUnit.Framework.CategoryAttribute("Selenium")]
-        public void SuccessfullyOpenANewTabNavigateToItAndNavigateBack()
+        public void SuccessfullyOpenANewTabNavigateToItAndNavigateBackByPartialTitle()
         {
             string[] tagsOfScenario = new string[] {
                     "Selenium"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[Successfully open a new tab, navigate to it and navigate back]", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[Successfully open a new tab, navigate to it and navigate back by partial title]", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 62
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -364,6 +364,9 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
 #line 65
  testRunner.And("[Navigate to the new tab]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 66
+ testRunner.Then("[Switch to window Rahul]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
