@@ -347,5 +347,16 @@ namespace CSharpAutomationFramework.reusable
             Hook.Log(AventStack.ExtentReports.Status.Pass, "Window Maximized Successfully");
         }
 
+        /// <summary>
+        ///     Method to switch window by providing its index
+        /// </summary>
+        /// <param name="index">Window index</param>
+        public void switchToWindowIndex(int index)
+        {
+            string handle = driver.WindowHandles[index];
+            driver.SwitchTo().Window(handle);
+            Hook.Log(AventStack.ExtentReports.Status.Pass, "Switched to window index "+index);
+        }
+
     }
 }
