@@ -20,7 +20,7 @@ namespace CSharpAutomationFramework.reusable
         /// TODO: IMPLEMENT LOGGING FOR DEFAULT CASE
         public static By generateLocator(string locatorType, string locatorValue)
         {
-            By loc = null;
+            By loc;
             switch(locatorType)
             {
                 case "XPATH":
@@ -45,7 +45,7 @@ namespace CSharpAutomationFramework.reusable
         ///     Function to pause the execution for the specified time period
         /// </summary>
         /// <param name="timeInSeconds">The wait time in seconds</param>
-        public void wait(long timeInSeconds)
+        public static void wait(long timeInSeconds)
         {
             long endTime = DateTimeOffset.Now.ToUnixTimeMilliseconds() + (timeInSeconds * 1000);
             while(DateTimeOffset.Now.ToUnixTimeMilliseconds() < endTime)

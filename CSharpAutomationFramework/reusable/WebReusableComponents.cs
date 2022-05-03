@@ -21,7 +21,7 @@ namespace CSharpAutomationFramework.reusable
         /// <param name="timeOutInSeconds">The wait timeout in seconds</param>
         public void waitUntilPageReadyStateComplete(long timeOutInSeconds)
         {
-            bool isPageReady(IWebDriver drv)
+            static bool isPageReady(IWebDriver drv)
             {
                 return ((IJavaScriptExecutor)drv).ExecuteScript("return document.readyState").Equals("complete");
             }
@@ -40,7 +40,7 @@ namespace CSharpAutomationFramework.reusable
                 driver.FindElement(by);
                 return true;
             }
-            catch (NoSuchElementException e)
+            catch (NoSuchElementException)
             {
                 return false;
             }
