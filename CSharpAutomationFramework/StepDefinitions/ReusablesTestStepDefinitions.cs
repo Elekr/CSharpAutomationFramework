@@ -21,6 +21,7 @@ namespace CSharpAutomationFramework.StepDefinitions
         {
             navigateHome();
             loadBtnForgotPassword();
+            maximizeWindow();
         }
 
         [Given(@"\[We are on the forgot password page]")]
