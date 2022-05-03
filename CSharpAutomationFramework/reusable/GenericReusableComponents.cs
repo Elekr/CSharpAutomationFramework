@@ -18,7 +18,7 @@ namespace CSharpAutomationFramework.reusable
         /// <param name="locatorValue">Type of locator ("XPATH", "ID", "NAME" or "LINKTEXT)</param> 
         /// <param name="locatorType">Value of the locator</param>
         /// TODO: IMPLEMENT LOGGING FOR DEFAULT CASE
-        public By generateLocator(string locatorType, string locatorValue)
+        public static By generateLocator(string locatorType, string locatorValue)
         {
             By loc = null;
             switch(locatorType)
