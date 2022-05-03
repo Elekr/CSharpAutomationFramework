@@ -88,7 +88,12 @@ namespace CSharpAutomationFramework.StepDefinitions
 
 
 
-
+        [Then(@"\[Go to window index (.*)]")]
+        public void ThenGoToWindowIndex(int index)
+        {
+            switchToWindowIndex(index);
+            verifyRedirect(homePage.websiteURL);
+        }
 
         [Then(@"\[We should be able to navigate back to the parent tab]")]
         public void ThenAbleToNavigateBack()

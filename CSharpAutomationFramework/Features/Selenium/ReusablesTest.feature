@@ -47,6 +47,7 @@ Scenario: [Successfully verify visit us redirect]
 	And [We wait 1 second(s)]
 	And [We switch to the new tab]
 	Then [We should successfully verify the redirect to https://rahulshettyacademy.com/]
+	And [Go to window index 0]
 
 
 @Selenium
