@@ -382,5 +382,8 @@ namespace CSharpAutomationFramework.reusable
             select.SelectByText(value);
             Hook.Log(AventStack.ExtentReports.Status.Pass, "The value " + value + " is selected");
         }
+
+        // findJsonFilesInFolder and runAutomationTests will need major changes to layout and functionality of the framework before
+        // they will work so that is why they have not yet been implemented
     }
 }
