@@ -325,5 +325,16 @@ namespace CSharpAutomationFramework.reusable
             action.MoveToElement(element).Click().Perform();
             Hook.Log(AventStack.ExtentReports.Status.Pass, "The element - " + by + " is clicked successfully");
         }
+
+        /// <summary>
+        ///     Method to launch url
+        /// </summary>
+        /// <param name="url">Web address that we wish to navigate to</param>
+        public void launchUrl(string url)
+        {
+            driver.Navigate().GoToUrl(url);
+            Hook.Log(AventStack.ExtentReports.Status.Pass, "Navigated to " + url);
+
+        }
     }
 }
