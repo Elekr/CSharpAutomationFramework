@@ -336,5 +336,16 @@ namespace CSharpAutomationFramework.reusable
             Hook.Log(AventStack.ExtentReports.Status.Pass, "Navigated to " + url);
 
         }
+
+        /// <summary>
+        ///     Method to maxmize the window
+        /// </summary>
+        public void maximizeWindow()
+        {
+            // May need to update if/when Appium integration is added
+            driver.Manage().Window.Maximize();
+            Hook.Log(AventStack.ExtentReports.Status.Pass, "Window Maximized Successfully");
+        }
+
     }
 }
