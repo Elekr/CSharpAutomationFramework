@@ -93,6 +93,7 @@ namespace CSharpAutomationFramework.StepDefinitions
         public void ThenAbleToNavigateBack()
         {
             switchToParentWindow();
+            wait(3);
             verifyRedirect(homePage.websiteURL);
         }
 
@@ -105,7 +106,7 @@ namespace CSharpAutomationFramework.StepDefinitions
         [Then(@"\[We should fail to verify redirect to (.*)")]
         public void ThenFailToVerifyRedirect(string url)
         {
-            Assert.Throws<Exception>(delegate { verifyRedirect(url); });
+            Assert.Throws<System.Exception>(delegate { verifyRedirect(url); });
         }
 
 
