@@ -367,5 +367,20 @@ namespace CSharpAutomationFramework.reusable
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(timeInSeconds);
             Hook.Log(AventStack.ExtentReports.Status.Pass, "Implicit wait set successfully");
         }
+
+
+        /// <summary>
+        ///     Function to select the specified value from a listbox
+        /// </summary>
+        /// <param name="by">The locator used to identify the listbox</param>
+        /// <param name="value">The value we wish to select</param>
+        public void selectByValue(By by, string value)
+        {
+            waitUntilElementLocated(by, 3);
+            IWebElement listbox = driver.FindElement(by);
+            SelectElement select = new SelectElement(listbox);
+            select.SelectByText(value);
+            Hook.Log(AventStack.ExtentReports.Status.Pass, "The value " + value + " is selected");
+        }
     }
 }
