@@ -93,13 +93,13 @@ namespace CSharpAutomationFramework.Features.Selenium
             {
                 this.ScenarioStart();
 #line 7
-    testRunner.Given("[I have navigated to the \"TC02Page\"]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("[I have navigated to the HerokuPage]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
-    testRunner.When("[I click on a link]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("[I click link]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
-    testRunner.Then("[I am navigated to another \"TC02Page\"]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("[The driver Url should have changed]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

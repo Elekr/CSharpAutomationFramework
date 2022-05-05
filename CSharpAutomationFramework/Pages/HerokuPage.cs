@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using CSharpAutomationFramework.reusable;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,30 +8,15 @@ using System.Threading.Tasks;
 
 namespace CSharpAutomationFramework.Pages
 {
-    internal class HerokuPage
+    public class HerokuPage : WebReusableComponents
     {
-        private readonly IWebDriver driver;
 
-        private IWebElement button => driver.FindElement(By.XPath("//a[text()='Add/Remove Elements']"));
-        public HerokuPage(IWebDriver driver)
+        public By link = By.LinkText("Add/Remove Elements");
+        
+        public HerokuPage(IWebDriver driver) : base(driver, ("https://the-internet.herokuapp.com/", "The Internet"))
         {
-            this.driver = driver;
 
         }
-
-        public void ClickButton()
-        {
-            button.Click();
-        }
-
-        public string ReturnURL()
-        {
-            return driver.Url;
-        }
-
-        public string ReturnTitle()
-        {
-            return driver.Title;
-        }
+        
     }
 }
