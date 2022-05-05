@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using CSharpAutomationFramework.reusable;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,50 +8,15 @@ using System.Threading.Tasks;
 
 namespace CSharpAutomationFramework.Pages
 {
-    internal class PracticePage
+    public class PracticePage : WebReusableComponents
     {
-        private readonly IWebDriver driver;
-        private IWebElement textField => driver.FindElement(By.XPath("/html/body/div[1]/div/div/div/div/form/div[3]/input"));
+        protected By textInput = By.XPath("//input[@type=\"text\"]");
 
-        //pageObject
-        private By name1 = By.Id("idname");
-        private By name2 = By.Id("idname");
-        private By name3 = By.Id("idname");
-        private By name4 = By.Id("idname");
-
-        public PracticePage(IWebDriver driver)
+        public PracticePage(IWebDriver driver) : base(driver, ("https://rahulshettyacademy.com/loginpagePractise/", "LoginPage Practise | Rahul Shetty Academy"))
         {
-            this.driver = driver;
+
         }
 
-        public string ReturnURL()
-        {
-            return driver.Url;
-        }
 
-        public string ReturnTitle()
-        {
-            return driver.Title;
-        }
-
-        public int ReturnFieldSize()
-        {
-            return textField.GetAttribute("value").Length;
-        }
-
-        public string ReturnText()
-        {
-            return textField.GetAttribute("value");
-        }
-
-        public void SendKeys(string keysToSend)
-        {
-            textField.SendKeys(keysToSend);
-        }
-
-        public void ClearField()
-        {
-            textField.Clear();
-        }
     }
 }
