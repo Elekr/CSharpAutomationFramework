@@ -18,9 +18,9 @@ namespace CSharpAutomationFramework.Pages
         {
         }
 
-        public void loadBtnForgotPassword()
+        public void LoadBtnForgotPassword()
         {
-            btnForgotPassword = generateLocator("LINKTEXT", "Forgot your password?");
+            btnForgotPassword = GenerateLocator("LINKTEXT", "Forgot your password?");
         }
 
 

@@ -19,7 +19,7 @@ namespace CSharpAutomationFramework.reusable
         ///     Function to wait until the page loads completely
         /// </summary>
         /// <param name="timeOutInSeconds">The wait timeout in seconds</param>
-        public void waitUntilPageReadyStateComplete(long timeOutInSeconds)
+        public void WaitUntilPageReadyStateComplete(long timeOutInSeconds)
         {
             static bool isPageReady(IWebDriver drv)
             {
@@ -33,7 +33,7 @@ namespace CSharpAutomationFramework.reusable
         /// </summary>
         /// <param name="by">The locator used to identify the element</param>
         /// <returns></returns>
-        public bool canLocateElement(By by)
+        public bool CanLocateElement(By by)
         {
             try
             {
@@ -51,19 +51,19 @@ namespace CSharpAutomationFramework.reusable
         /// </summary>
         /// <param name="by">The locator used to identify the element</param>
         /// <param name="timeOutInSeconds">The wait timeout in seconds</param>
-        public void waitUntilElementLocated(By by, long timeOutInSeconds)
+        public void WaitUntilElementLocated(By by, long timeOutInSeconds)
         {
             TimeSpan timeOut = TimeSpan.FromSeconds(timeOutInSeconds);
-            (new WebDriverWait(driver, timeOut)).Until(_ => canLocateElement(by));
+            (new WebDriverWait(driver, timeOut)).Until(_ => CanLocateElement(by));
         }
 
         /// <summary>
         ///     Is the specified element currently visible?
         /// </summary>
         /// <param name="by">The locator used to identify the element</param>
-        public bool isElementVisible(By by)
+        public bool IsElementVisible(By by)
         {
-            return canLocateElement(by) && driver.FindElement(by).Displayed;
+            return CanLocateElement(by) && driver.FindElement(by).Displayed;
         }
 
         /// <summary>
@@ -71,19 +71,19 @@ namespace CSharpAutomationFramework.reusable
         /// </summary>
         /// <param name="by">The locator used to identify the element</param>
         /// <param name="timeOutInSeconds">The wait timeout in seconds</param>
-        public void waitUntilElementVisible(By by, long timeOutInSeconds)
+        public void WaitUntilElementVisible(By by, long timeOutInSeconds)
         {
             TimeSpan timeOut = TimeSpan.FromSeconds(timeOutInSeconds);
-            (new WebDriverWait(driver, timeOut)).Until(_ => isElementVisible(by));
+            (new WebDriverWait(driver, timeOut)).Until(_ => IsElementVisible(by));
         }
 
         /// <summary>
         ///     Is the specified element currently enabled?
         /// </summary>
         /// <param name="by">The locator used to identify the element</param>
-        public bool isElementEnabled(By by)
+        public bool IsElementEnabled(By by)
         {
-            return isElementVisible(by) && driver.FindElement(by).Enabled;
+            return IsElementVisible(by) && driver.FindElement(by).Enabled;
         }
 
         /// <summary>
@@ -91,16 +91,16 @@ namespace CSharpAutomationFramework.reusable
         /// </summary>
         /// <param name="by">the locator used to identify the element</param>
         /// <param name="timeOutInSeconds">The wait timeout in seconds</param>
-        public void waitUntilElementEnabled(By by, long timeOutInSeconds)
+        public void WaitUntilElementEnabled(By by, long timeOutInSeconds)
         {
             TimeSpan timeOut = TimeSpan.FromSeconds(timeOutInSeconds);
-            (new WebDriverWait(driver, timeOut)).Until(_ => isElementEnabled(by));
+            (new WebDriverWait(driver, timeOut)).Until(_ => IsElementEnabled(by));
         }
 
 
-        public void navigateHome()
+        public void NavigateHome()
         {
-            launchUrl(homePage.websiteURL);
+            LaunchUrl(homePage.websiteURL);
         }
 
         /// <summary>
@@ -110,10 +110,10 @@ namespace CSharpAutomationFramework.reusable
         /// The Qualiframe version of this method uses a try-catch block and the logger reports
         /// a status to which will determine whether the test is successful. For now, that
         /// functionality does not exist within this framework so the try-catch has been omitted.
-        public void clickElement(By by)
+        public void ClickElement(By by)
         {
 
-            waitUntilElementVisible(by, 3);
+            WaitUntilElementVisible(by, 3);
             driver.FindElement(by).Click();
             Hook.Log(AventStack.ExtentReports.Status.Pass, "Element clicked successfully");
 
@@ -124,9 +124,9 @@ namespace CSharpAutomationFramework.reusable
         /// </summary>
         /// <param name="by">The locator used to identify the element</param>
         /// <param name="valueToEnter">String to input into the element</param>
-        public void enterText(By by, String valueToEnter)
+        public void EnterText(By by, String valueToEnter)
         {
-            waitUntilElementVisible(by, 3);
+            WaitUntilElementVisible(by, 3);
             driver.FindElement(by).SendKeys(valueToEnter);
             Hook.Log(AventStack.ExtentReports.Status.Pass, "Text '" + valueToEnter + "' entered successfully");
 
@@ -136,10 +136,10 @@ namespace CSharpAutomationFramework.reusable
         ///     Function to verify if element is redirected to correct URL
         /// </summary>
         /// <param name="expectedUrl">What we expect the url to be</param>
-        public void verifyRedirect(String expectedUrl)
+        public void VerifyRedirect(String expectedUrl)
         {
             expectedUrl = expectedUrl.ToLower();
-            string currentURL = getCurrentUrl();
+            string currentURL = GetCurrentUrl();
             if (expectedUrl.Equals(currentURL))
             {
                 Hook.Log(AventStack.ExtentReports.Status.Pass, "Redirect successful, current URL matches expected URL '" + expectedUrl + "'");
@@ -154,9 +154,9 @@ namespace CSharpAutomationFramework.reusable
         /// </summary>
         /// <param name="by">The locator used to identify elements</param>
         /// <returns></returns>
-        public List<IWebElement> getWebElementList(By by)
+        public List<IWebElement> GetWebElementList(By by)
         {
-            waitUntilElementLocated(by, 3);
+            WaitUntilElementLocated(by, 3);
             var elements = driver.FindElements(by).ToList();
             return elements;
         }
@@ -166,9 +166,9 @@ namespace CSharpAutomationFramework.reusable
         /// </summary>
         /// <param name="by">The locator used to identify the element</param>
         /// <returns>Text within the element</returns>
-        public string getTextFromElement(By by)
+        public string GetTextFromElement(By by)
         {
-            waitUntilElementLocated(by, 3);
+            WaitUntilElementLocated(by, 3);
             string text = driver.FindElement(by).Text;
             Hook.Log(AventStack.ExtentReports.Status.Pass, "Text retrieved successfully for " + by + ". The text is - " + text);
             return text;
@@ -178,7 +178,7 @@ namespace CSharpAutomationFramework.reusable
         ///     Method to get the current url
         /// </summary>
         /// <returns>Current url</returns>
-        public string getCurrentUrl()
+        public string GetCurrentUrl()
         {
             string currentURL = driver.Url.ToLower();
             Hook.Log(AventStack.ExtentReports.Status.Pass, "Successfully retrieved current url '" + currentURL + "'");
@@ -188,7 +188,7 @@ namespace CSharpAutomationFramework.reusable
         /// <summary>
         ///     Method to switch to latest window
         /// </summary>
-        public void switchToLatestWindow()
+        public void SwitchToLatestWindow()
         {
             string handle = driver.WindowHandles.Last();
             driver.SwitchTo().Window(handle);
@@ -198,7 +198,7 @@ namespace CSharpAutomationFramework.reusable
         /// <summary>
         ///     Method to switch to default window
         /// </summary>
-        public void switchToParentWindow()
+        public void SwitchToParentWindow()
         {
             driver.SwitchTo().DefaultContent();
             Hook.Log(AventStack.ExtentReports.Status.Pass, "Window switched to parent successfully");
@@ -207,7 +207,7 @@ namespace CSharpAutomationFramework.reusable
         /// <summary>
         ///     Method to wait until the new tab loads -- assumes you only had one tab open before opening the new one
         /// </summary>
-        public void waitUntilNewTabLoads()
+        public void WaitUntilNewTabLoads()
         {
             while (!(driver.WindowHandles.Count > 1))
             {
@@ -221,7 +221,7 @@ namespace CSharpAutomationFramework.reusable
         /// </summary>
         /// <param name="url">url we expect</param>
         /// <returns>Is the page loaded</returns>
-        public bool isPageLoaded(string url)
+        public bool IsPageLoaded(string url)
         {
             IJavaScriptExecutor jse = (IJavaScriptExecutor)driver;
             return jse.ExecuteScript("return document.URL").Equals(url);
@@ -232,10 +232,10 @@ namespace CSharpAutomationFramework.reusable
         ///     Method to wait until the page loads
         /// </summary>
         /// <param name="url">Url to wait for</param>
-        public void waitUntilPageLoads(string url)
+        public void WaitUntilPageLoads(string url)
         {
             TimeSpan timeout = TimeSpan.FromSeconds(10);
-            new WebDriverWait(driver, timeout).Until(_ => isPageLoaded(url));
+            new WebDriverWait(driver, timeout).Until(_ => IsPageLoaded(url));
         }
 
         /// <summary>
@@ -243,7 +243,7 @@ namespace CSharpAutomationFramework.reusable
         /// </summary>
         /// <param name="by">The locator that identifies the element</param>
         /// <param name="attributeName">Name of the attribute we wish to get the value of</param>
-        public string getAttribute(By by, string attributeName)
+        public string GetAttribute(By by, string attributeName)
         {
             string value = driver.FindElement(by).GetAttribute(attributeName);
             Hook.Log(AventStack.ExtentReports.Status.Pass, "Got value '" + value + "' from attribute '" + attributeName + "' of element '" + by + "'");
@@ -254,7 +254,7 @@ namespace CSharpAutomationFramework.reusable
         ///     Method to open a new tab
         /// </summary>
         /// <exception cref="Exception">Failed to create window</exception>
-        public void openNewTab()
+        public void OpenNewTab()
         {
             int startingWindowCount = driver.WindowHandles.Count;
             IJavaScriptExecutor jse = (IJavaScriptExecutor)driver;
@@ -271,9 +271,9 @@ namespace CSharpAutomationFramework.reusable
         ///     Can an element not be found or is not visible
         /// </summary>
         /// <param name="by">The locator for the element</param>
-        public bool isElementInvisible(By by)
+        public bool IsElementInvisible(By by)
         {
-            return !isElementVisible(by);
+            return !IsElementVisible(by);
         }
 
 
@@ -282,10 +282,10 @@ namespace CSharpAutomationFramework.reusable
         /// </summary>
         /// <param name="by">The locator used to identify the element</param>
         /// <param name="timeOutInSeconds">The wait timeout in seconds</param>
-        public void waitUntilInvisibilityOfElementLocated(By by, long timeOutInSeconds)
+        public void WaitUntilInvisibilityOfElementLocated(By by, long timeOutInSeconds)
         {
             TimeSpan timeOut = TimeSpan.FromSeconds(timeOutInSeconds);
-            (new WebDriverWait(driver, timeOut)).Until(_ => isElementInvisible(by));
+            (new WebDriverWait(driver, timeOut)).Until(_ => IsElementInvisible(by));
             Hook.Log(AventStack.ExtentReports.Status.Pass, "Element is now invisible");
         }
 
@@ -293,7 +293,7 @@ namespace CSharpAutomationFramework.reusable
         ///     Function to switch to a window by using its title name
         /// </summary>
         /// <param name="titleName">Title of the window</param>
-        public void switchToWindow(string titleName)
+        public void SwitchToWindow(string titleName)
         {
             titleName = titleName.ToLower();
             string currentHandle = driver.CurrentWindowHandle;
@@ -317,9 +317,9 @@ namespace CSharpAutomationFramework.reusable
         ///     Function to click on an element using the action builder class
         /// </summary>
         /// <param name="by">The locator for the element</param>
-        public void  clickOnElementaction(By by)
+        public void  ClickOnElementaction(By by)
         {
-            waitUntilElementLocated(by, 3);
+            WaitUntilElementLocated(by, 3);
             IWebElement element = driver.FindElement(by);
             Actions action = new Actions(driver);
             action.MoveToElement(element).Click().Perform();
@@ -330,7 +330,7 @@ namespace CSharpAutomationFramework.reusable
         ///     Method to launch url
         /// </summary>
         /// <param name="url">Web address that we wish to navigate to</param>
-        public void launchUrl(string url)
+        public void LaunchUrl(string url)
         {
             driver.Navigate().GoToUrl(url);
             Hook.Log(AventStack.ExtentReports.Status.Pass, "Navigated to " + url);
@@ -340,7 +340,7 @@ namespace CSharpAutomationFramework.reusable
         /// <summary>
         ///     Method to maxmize the window
         /// </summary>
-        public void maximizeWindow()
+        public void MaximizeWindow()
         {
             // May need to update if/when Appium integration is added
             driver.Manage().Window.Maximize();
@@ -351,7 +351,7 @@ namespace CSharpAutomationFramework.reusable
         ///     Method to switch window by providing its index
         /// </summary>
         /// <param name="index">Window index</param>
-        public void switchToWindowIndex(int index)
+        public void SwitchToWindowIndex(int index)
         {
             string handle = driver.WindowHandles[index];
             driver.SwitchTo().Window(handle);
@@ -362,7 +362,7 @@ namespace CSharpAutomationFramework.reusable
         ///     Method to set implicit wait
         /// </summary>
         /// <param name="timeInSeconds">Implicit wait time in seconds</param>
-        public void setImplicitWait(long timeInSeconds)
+        public void SetImplicitWait(long timeInSeconds)
         {
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(timeInSeconds);
             Hook.Log(AventStack.ExtentReports.Status.Pass, "Implicit wait set successfully");
@@ -374,9 +374,9 @@ namespace CSharpAutomationFramework.reusable
         /// </summary>
         /// <param name="by">The locator used to identify the listbox</param>
         /// <param name="value">The value we wish to select</param>
-        public void selectByValue(By by, string value)
+        public void SelectByValue(By by, string value)
         {
-            waitUntilElementLocated(by, 3);
+            WaitUntilElementLocated(by, 3);
             IWebElement listbox = driver.FindElement(by);
             SelectElement select = new SelectElement(listbox);
             select.SelectByText(value);

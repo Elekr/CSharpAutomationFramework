@@ -19,21 +19,21 @@ namespace CSharpAutomationFramework.StepDefinitions
         [Given(@"\[We have moved to the the site]")]
         public void GivenWeHaveMovedToTheTheSite()
         {
-            navigateHome();
-            loadBtnForgotPassword();
-            maximizeWindow();
+            NavigateHome();
+            LoadBtnForgotPassword();
+            MaximizeWindow();
         }
 
         [Given(@"\[We are on the forgot password page]")]
         public void GivenWeAreOnTheForgottenPasswordPage()
         {
-            clickElement(btnForgotPassword);
+            ClickElement(btnForgotPassword);
         }
 
         [When(@"\[We click back to login]")]
         public void WhenWeClickBackToLogin()
         {
-            clickElement(btnBackToLogin);
+            ClickElement(btnBackToLogin);
         }
 
         [When(@"\[We click the forgot password buttton]")]
@@ -51,37 +51,37 @@ namespace CSharpAutomationFramework.StepDefinitions
         [When(@"\[Wait for element enabled]")]
         public void WaitForElementEnabled()
         {
-            waitUntilElementEnabled(btnBackToLogin, 2L);
+            WaitUntilElementEnabled(btnBackToLogin, 2L);
         }
 
         [When(@"\[We click visit us]")]
         public void WhenWeClickVisitUs()
         {
-            clickElement(btnVisitUs);
+            ClickElement(btnVisitUs);
         }
 
         [When(@"\[We wait (.*) second\(s\)]")]
         public void WhenWeWaitXSeconds(int x)
         {
-            wait(x);
+            Wait(x);
         }
 
         [When(@"\[We switch to the new tab]")]
         public void WhenWeSwitchToNewTab()
         {
-            switchToLatestWindow();
+            SwitchToLatestWindow();
         }
 
         [When(@"\[We open a new tab]")]
         public void WhenWeOpenANewTab()
         {
-            openNewTab();
+            OpenNewTab();
         }
 
         [When(@"\[Navigate to the new tab]")]
         public void WhenNavigateToNewTab()
         {
-            switchToLatestWindow();
+            SwitchToLatestWindow();
         }
 
 
@@ -91,28 +91,28 @@ namespace CSharpAutomationFramework.StepDefinitions
         [Then(@"\[Go to window index (.*)]")]
         public void ThenGoToWindowIndex(int index)
         {
-            switchToWindowIndex(index);
-            verifyRedirect(homePage.websiteURL);
+            SwitchToWindowIndex(index);
+            VerifyRedirect(homePage.websiteURL);
         }
 
         [Then(@"\[We should be able to navigate back to the parent tab]")]
         public void ThenAbleToNavigateBack()
         {
-            switchToParentWindow();
-            wait(3);
-            verifyRedirect(homePage.websiteURL);
+            SwitchToParentWindow();
+            Wait(3);
+            VerifyRedirect(homePage.websiteURL);
         }
 
         [Then(@"\[We should successfully verify the redirect to (.*)]")]
         public void ThenWeShouldSucceedVerifyRedirect(string expectedURL)
         {
-            verifyRedirect(expectedURL);
+            VerifyRedirect(expectedURL);
         }
 
         [Then(@"\[We should fail to verify redirect to (.*)")]
         public void ThenFailToVerifyRedirect(string url)
         {
-            Assert.Throws<System.Exception>(delegate { verifyRedirect(url); });
+            Assert.Throws<System.Exception>(delegate { VerifyRedirect(url); });
         }
 
 
@@ -132,7 +132,7 @@ namespace CSharpAutomationFramework.StepDefinitions
         [Then(@"\[Clicking with clickElement should succeed]")]
         public void ThenClickingWithClickElementShouldSucceed()
         {
-            clickElement(btnBackToLogin);
+            ClickElement(btnBackToLogin);
         }
 
         [Then(@"\[Trying to immediately send keys to the username box should fail]")]
@@ -144,20 +144,20 @@ namespace CSharpAutomationFramework.StepDefinitions
         [Then(@"\[Trying to immediately enterText should succeed]")]
         public void ThenTryingToImmediatelyEnterTextShouldNotFail()
         {
-            enterText(txtUsername, "test string");
+            EnterText(txtUsername, "test string");
         }
 
         [Then(@"\[Username element should contain the test string]")]
         public void ThenUsernameElementShouldContainTestString()
         {
-            Assert.AreEqual("test string", getAttribute(txtUsername, "value"));
+            Assert.AreEqual("test string", GetAttribute(txtUsername, "value"));
         }
 
 
         [Then(@"\[Switch to window (.*)]")]
         public void ThenSwitchToWindow(string title)
         {
-            switchToWindow(title);
+            SwitchToWindow(title);
         }
     }
 }

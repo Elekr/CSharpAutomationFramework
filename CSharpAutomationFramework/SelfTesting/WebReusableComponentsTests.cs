@@ -33,8 +33,8 @@ namespace CSharpAutomationFramework.SelfTesting.reusable
         {
             BeforeEach();
             driver.Navigate().GoToUrl("https://rahulshettyacademy.com/AutomationPractice/");
-            By locator = WebReusableComponents.generateLocator(type, value);
-            var list = tester.getWebElementList(locator);
+            By locator = WebReusableComponents.GenerateLocator(type, value);
+            var list = tester.GetWebElementList(locator);
             Assert.AreEqual(expectedLength, list.Count);
         }
 

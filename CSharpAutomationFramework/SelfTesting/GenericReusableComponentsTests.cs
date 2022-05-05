@@ -18,7 +18,7 @@ namespace CSharpAutomationFramework.reusable
         [TestCase("LINKTEXT", "some link")]
         public void GenerateLocator_generateLocator(string type, string value)
         {
-            By locator = GenericReusableComponents.generateLocator(type, value);
+            By locator = GenericReusableComponents.GenerateLocator(type, value);
             Assert.IsNotNull(locator);
         }
 
@@ -29,7 +29,7 @@ namespace CSharpAutomationFramework.reusable
         [TestCase("LNKTEXT", "some link")]
         public void FailGenerateLocator_generateLocator(string type, string value)
         {
-            Assert.Throws<InvalidSelectorException>(delegate { GenericReusableComponents.generateLocator(type, value); });
+            Assert.Throws<InvalidSelectorException>(delegate { GenericReusableComponents.GenerateLocator(type, value); });
             
         }
     }

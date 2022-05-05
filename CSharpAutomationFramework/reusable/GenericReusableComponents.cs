@@ -18,7 +18,7 @@ namespace CSharpAutomationFramework.reusable
         /// <param name="locatorValue">Type of locator ("XPATH", "ID", "NAME" or "LINKTEXT)</param> 
         /// <param name="locatorType">Value of the locator</param>
         /// TODO: IMPLEMENT LOGGING FOR DEFAULT CASE
-        public static By generateLocator(string locatorType, string locatorValue)
+        public static By GenerateLocator(string locatorType, string locatorValue)
         {
             By loc;
             switch(locatorType)
@@ -45,7 +45,7 @@ namespace CSharpAutomationFramework.reusable
         ///     Function to pause the execution for the specified time period
         /// </summary>
         /// <param name="timeInSeconds">The wait time in seconds</param>
-        public static void wait(long timeInSeconds)
+        public static void Wait(long timeInSeconds)
         {
             long endTime = DateTimeOffset.Now.ToUnixTimeMilliseconds() + (timeInSeconds * 1000);
             while(DateTimeOffset.Now.ToUnixTimeMilliseconds() < endTime)
