@@ -1,1 +1,6 @@
-CSharpAutomationFramework/obj/
+.vs/
+obj/
+bin/
+Reports/
+Logs/
+*.csproj

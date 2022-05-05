@@ -51,24 +51,24 @@ namespace CSharpAutomationFramework.Pages
         }
 
 
-        public int ReturnFieldSize()
-        {
-            return textField.GetAttribute("value").Length;
-        }
+        //public int ReturnFieldSize()
+        //{
+        //    return textField.GetAttribute("value").Length;
+        //}
 
-        public string ReturnText()
-        {
-            return textField.GetAttribute("value");
-        }
+        //public string ReturnText()
+        //{
+        //    return textField.GetAttribute("value");
+        //}
 
-        public void SendKeys(string keysToSend)
-        {
-            textField.SendKeys(keysToSend);
-        }
+        //public void SendKeys(string keysToSend)
+        //{
+        //    textField.SendKeys(keysToSend);
+        //}
 
-        public void ClearField()
-        {
-            textField.Clear();
-        }
+        //public void ClearField()
+        //{
+        //    textField.Clear();
+        //}
     }
 }

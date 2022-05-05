@@ -1,0 +1,12 @@
+{
+  "ConnectionStrings": {
+    "SQLServer": ""
+  },
+  "URLs": {
+    "BaseURL": "https://reqres.in",
+    "GetRequest": "/api/users/2",
+    "PostRequest": "/api/users",
+    "PutRequest": "/api/users/2",
+    "DeleteRequest": "/api/users/2"
+  }
+}
