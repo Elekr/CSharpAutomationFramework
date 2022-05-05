@@ -1,6 +1,6 @@
 .vs/
-obj/
-bin/
-Reports/
-Logs/
+[Oo]bj/
+[Bb]in/
+[Rr]eports/
+[Ll]ogs/
 
