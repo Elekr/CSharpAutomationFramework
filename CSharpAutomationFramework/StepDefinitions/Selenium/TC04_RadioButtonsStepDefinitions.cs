@@ -10,57 +10,49 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
 {
     [TestFixture]
     [Binding]
-    public class TC04_RadioButtonsStepDefinitions
+    public class TC04_RadioButtonsStepDefinitions : AutomationPracticePage
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
-        GooglePage hubPage;
-
-        private DriverHelper _driverHelper;
-
-        (string websiteURL, string websiteTitle) homePage = ("https://www.google.com/", "Google");
-
-        public TC04_RadioButtonsStepDefinitions(DriverHelper driverHelper)
-        {
-            _driverHelper = driverHelper;
-
-        }
-
-        [Given(@"\[I have navigated to the TC(.*)Page]")]
-        public void GivenIHaveNavigatedToTheTCPage(int p0)
+        
+        public TC04_RadioButtonsStepDefinitions(DriverHelper driverHelper) : base(driverHelper.webDriver)
         {
 
         }
 
-        [Given(@"\[The webpage contains radio buttons]")]
-        public void GivenTheWebpageContainsRadioButtons()
+        [Given(@"\[I have navigated to AutomationPracticePage]")]
+        public void GivenIHaveNavigatedToAutomationPracticePage()
         {
-            throw new PendingStepException();
+            NavigateHome();
         }
 
-        [When(@"\[I select a radio button]")]
-        public void WhenISelectARadioButton()
+        [Given(@"\[The webpage contains more than (.*) radio button]")]
+        public void GivenTheWebpageContainsMoreThanxRadioButton(int x)
         {
-            throw new PendingStepException();
+            Assert.IsTrue(GetWebElementList(GenerateLocator("XPATH", "//input[@type='radio']")).Count > x);
         }
 
-        [Then(@"\[The correct radio button is selected]")]
-        public void ThenTheCorrectRadioButtonIsSelected()
+        [Given(@"\[Radio button (.*) is not selected]")]
+        public void GivenRadioButtonxIsNotSelected(int x)
         {
-            throw new PendingStepException();
+            Assert.IsFalse(driver.FindElement(GetRadio(x)).Selected);
         }
 
-        [When(@"\[I select a different radio button]")]
-        public void WhenISelectADifferentRadioButton()
+        [When(@"\[I click radio button (.*)]")]
+        public void WhenIClickRadioButtonx(int x)
         {
-            throw new PendingStepException();
+            ClickElement(GetRadio(x));
         }
 
-        [Then(@"\[The radio button selection is changed]")]
-        public void ThenTheRadioButtonSelectionIsChanged()
+        [Then(@"\[Radio button (.*) is now selected]")]
+        public void ThenRadioButtonxIsNowSelected(int x)
         {
-            throw new PendingStepException();
+            Assert.IsTrue(driver.FindElement(GetRadio(x)).Selected);
         }
 
+
+        [Then(@"\[Radio button (.*) is no longer selected]")]
+        public void ThenRadioButtonxIsNoLongerSelected(int x)
+        {
+            Assert.IsFalse(driver.FindElement(GetRadio(x)).Selected);
+        }
     }
 }
