@@ -16,5 +16,6 @@ namespace CSharpAutomationFramework.Pages
         }
 
         protected By currencyDropdown = By.Id("ctl00_mainContent_DropDownListCurrency");
+        protected By fromDropdown = By.Id("ctl00_mainContent_ddl_originStation1_CTXT");
     }
 }
