@@ -58,7 +58,7 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
             MaximizeWindow(); // This dropdown functions differently if the page is not maximized
         }
 
-        [When(@"\[I select (.*)]")]
+        [When(@"\[I select option (.*)]")]
         public void WhenISelect(string value)
         {
             SelectByValue(currencyDropdown, value);

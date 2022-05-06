@@ -108,7 +108,7 @@ this.ScenarioInitialize(scenarioInfo);
     testRunner.And("[The dropdown currently has INR selected]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 12
-    testRunner.When("[I select USD]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("[I select option USD]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 13
     testRunner.Then("[The dropdown now has USD selected]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");

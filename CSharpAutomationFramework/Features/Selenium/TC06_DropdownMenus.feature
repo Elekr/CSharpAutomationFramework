@@ -9,7 +9,7 @@ Scenario: [The user select an option from the dropdown]
     And [The dropdown contains the option INR]
     And [The dropdown contains the option USD]
     And [The dropdown currently has INR selected]
-    When [I select USD]
+    When [I select option USD]
     Then [The dropdown now has USD selected]
 
 Scenario: [The user select an option from the dynamic dropdown]
