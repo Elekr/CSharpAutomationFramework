@@ -1,5 +1,6 @@
 ﻿using CSharpAutomationFramework.Pages;
 using NUnit.Framework;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,45 +11,48 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
 {
     [TestFixture]
     [Binding]
-    public class TC05_CheckboxesStepDefinitions
+    public class TC05_CheckboxesStepDefinitions : AutomationPracticePage
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        public TC05_CheckboxesStepDefinitions(DriverHelper driverHelper) : base(driverHelper.webDriver) { }
 
-        GooglePage hubPage;
-
-        private DriverHelper _driverHelper;
-
-        (string websiteURL, string websiteTitle) homePage = ("https://www.google.com/", "Google");
-
-        public TC05_CheckboxesStepDefinitions(DriverHelper driverHelper)
+        [Given(@"\[I have navigated to the TC05 page]")]
+        public void GivenIHaveNavigatedToTC05()
         {
-            _driverHelper = driverHelper;
-
+            NavigateHome();
         }
 
-        [Given(@"\[I have navigated to the TC(.*)Page]")]
-        public void GivenIHaveNavigatedToTheTCPage(int p0)
+        private By checkbox;
+
+        [Given(@"\[The webpage contains a checkbox]")]
+        public void GivenTheWebpageContainsACheckbox()
         {
-            throw new PendingStepException();
+            checkbox = GetCheckbox(0);
+            Assert.IsTrue(IsElementVisible(checkbox));
         }
 
-        [Given(@"\[The webpage contains checkboxes]")]
-        public void GivenTheWebpageContainsCheckboxes()
+        [Given(@"\[The checkbox is not checked]")]
+        public void GivenTheCheckboxIsNotChecked()
         {
-            throw new PendingStepException();
+            Assert.IsFalse(driver.FindElement(checkbox).Selected);
         }
 
-        [When(@"\[I select a checkbox]")]
-        public void WhenISelectACheckbox()
+        [When(@"\[I click the checkbox]")]
+        public void WhenIClickACheckbox()
         {
-            throw new PendingStepException();
+            ClickElement(checkbox);
         }
+
 
         [Then(@"\[The checkbox is checked]")]
         public void ThenTheCheckboxIsChecked()
         {
-            throw new PendingStepException();
+            Assert.IsTrue(driver.FindElement(checkbox).Selected);
         }
 
+        [Then(@"\[The checkobox is unchecked]")]
+        public void ThenTheCheckboxIsUnchecked()
+        {
+            Assert.IsFalse(driver.FindElement(checkbox).Selected);
+        }
     }
 }
