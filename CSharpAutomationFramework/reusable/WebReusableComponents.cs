@@ -383,6 +383,35 @@ namespace CSharpAutomationFramework.reusable
             Hook.Log(AventStack.ExtentReports.Status.Pass, "The value " + value + " is selected");
         }
 
+        /// <summary>
+        ///     Function to get the options from a select
+        /// </summary>
+        /// <param name="by">The locator used to identify the listbox</param>
+        public List<string> GetSelectOptions(By by)
+        {
+            WaitUntilElementLocated(by, 3);
+            IWebElement listbox = driver.FindElement(by);
+            SelectElement select = new SelectElement(listbox);
+            List<string> optionStrings = new List<string>();
+            foreach(IWebElement option in select.Options)
+            {
+                optionStrings.Add(option.Text);
+            }
+            return optionStrings;
+        }
+
+        /// <summary>
+        ///     Function to get a string representing the currently selected option within a static dropdown
+        /// </summary>
+        /// <param name="by">The locator used to identify the listbox</param>
+        public string GetSelectSelected(By by)
+        {
+            WaitUntilElementLocated(by, 3);
+            IWebElement listbox = driver.FindElement(by);
+            SelectElement select = new SelectElement(listbox);
+            return select.SelectedOption.Text;
+        }
+
         // findJsonFilesInFolder and runAutomationTests will need major changes to layout and functionality of the framework before
         // they will work so that is why they have not yet been implemented
     }
