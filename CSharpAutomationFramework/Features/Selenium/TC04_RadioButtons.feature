@@ -4,7 +4,7 @@ This feature goes through interacting with radio button with the browser
 
 @Selenium
 Scenario: [Successfully interact with Radio buttons]
-    Given [I have navigated to AutomationPracticePage]
+    Given [I have navigated to the TC04 page]
     And [The webpage contains more than 1 radio button]
     And [Radio button 0 is not selected]
     When [I click radio button 0]

@@ -17,8 +17,8 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
 
         }
 
-        [Given(@"\[I have navigated to the HerokuPage]")]
-        public void GivenIHaveNavigatedToHerokuPage()
+        [Given(@"\[I have navigated to the TC02 page]")]
+        public void GivenIHaveNavigatedToTC02()
         {
             NavigateHome();
             Assert.AreEqual(homePage.websiteURL, driver.Url);

@@ -93,7 +93,7 @@ namespace CSharpAutomationFramework.Features.Selenium
             {
                 this.ScenarioStart();
 #line 7
-    testRunner.Given("[I have navigated to the HerokuPage]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("[I have navigated to the TC02 page]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
     testRunner.When("[I click link]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

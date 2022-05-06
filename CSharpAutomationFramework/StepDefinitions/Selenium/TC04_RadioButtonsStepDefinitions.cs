@@ -18,8 +18,8 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
 
         }
 
-        [Given(@"\[I have navigated to AutomationPracticePage]")]
-        public void GivenIHaveNavigatedToAutomationPracticePage()
+        [Given(@"\[I have navigated to the TC04 page]")]
+        public void GivenIHaveNavigatedToTC04()
         {
             NavigateHome();
         }
