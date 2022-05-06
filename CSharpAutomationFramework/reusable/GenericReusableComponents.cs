@@ -10,13 +10,13 @@ namespace CSharpAutomationFramework.reusable
 {
     
     public abstract class GenericReusableComponents
-    { 
+    {
 
         /// <summary>
         ///     Function to generate Locator
         /// </summary>
-        /// <param name="locatorValue">Type of locator ("XPATH", "ID", "NAME" or "LINKTEXT)</param> 
-        /// <param name="locatorType">Value of the locator</param>
+        /// <param name="locatorValue">Value of the locator</param> 
+        /// <param name="locatorType">Type of locator ("XPATH", "ID", "NAME" or "LINKTEXT)</param>
         public static By GenerateLocator(string locatorType, string locatorValue)
         {
             By loc;
