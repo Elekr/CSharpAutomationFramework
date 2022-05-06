@@ -10,76 +10,51 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
 {
     [TestFixture]
     [Binding]
-    public class TC06_DropdownMenusStepDefinitions
+    public class TC06_DropdownMenusStepDefinitions : QAClickJetPage
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
-        GooglePage hubPage;
-
-        private DriverHelper _driverHelper;
-
-        (string websiteURL, string websiteTitle) homePage = ("https://www.google.com/", "Google");
-
-        public TC06_DropdownMenusStepDefinitions(DriverHelper driverHelper)
+        public TC06_DropdownMenusStepDefinitions(DriverHelper driverHelper) : base(driverHelper.webDriver)
         {
-            _driverHelper = driverHelper;
-
+            
         }
 
-        [Given(@"\[I have navigated to the TC(.*)Page]")]
-        public void GivenIHaveNavigatedToTheTCPage(int p0)
+        [Given(@"\[I have navigated to the TC06 page]")]
+        public void GivenIHaveNavigatedToTC06()
         {
-            throw new PendingStepException();
+            NavigateHome();
         }
 
-        [Given(@"\[The webpage contains a static dropdown]")]
-        public void GivenTheWebpageContainsAStaticDropdown()
+        [Given(@"\[The webpage contains the currency static dropdown]")]
+        public void GivenTheWebpageContainsTheCurrencyStaticDropdown()
         {
-            throw new PendingStepException();
-        }
-
-        [When(@"\[I select an element from the dropdown]")]
-        public void WhenISelectAnElementFromTheDropdown()
-        {
-            throw new PendingStepException();
-        }
-
-        [Then(@"\[The option is selected and displayed]")]
-        public void ThenTheOptionIsSelectedAndDisplayed()
-        {
-            throw new PendingStepException();
-        }
-
-        [Given(@"\[There is an input for the query]")]
-        public void GivenThereIsAnInputForTheQuery()
-        {
-            throw new PendingStepException();
-        }
-
-        [When(@"\[I enter the query string]")]
-        public void WhenIEnterTheQueryString()
-        {
-            throw new PendingStepException();
-        }
-
-        [Then(@"\[The list is updated with elements that match the query]")]
-        public void ThenTheListIsUpdatedWithElementsThatMatchTheQuery()
-        {
-            throw new PendingStepException();
-        }
-
-        [When(@"\[I select an option]")]
-        public void WhenISelectAnOption()
-        {
-            throw new PendingStepException();
-        }
-
-        [Then(@"\[The option is displayed]")]
-        public void ThenTheOptionIsDisplayed()
-        {
-            throw new PendingStepException();
+            Assert.IsTrue(CanLocateElement(currencyDropdown));
         }
 
 
+        [Given(@"\[The dropdown contains the option (.*)]")]
+        public void GivenTheDropdownContains(string s)
+        {
+            var options = GetSelectOptions(currencyDropdown);
+            Assert.IsTrue(options.Contains(s), "The dropdown should contain "+s);
+
+        }
+
+
+        [Given(@"\[The dropdown currently has (.*) selected]")]
+        public void GivenTheDropdownHasxSelected(string x)
+        {
+            Assert.IsTrue(GetSelectSelected(currencyDropdown).Equals(x));
+        }
+
+        [When(@"\[I select (.*)]")]
+        public void WhenISelect(string value)
+        {
+            SelectByValue(currencyDropdown, value);
+        }
+
+        [Then(@"\[The dropdown now has (.*) selected]")]
+        public void ThenTheDropdownHasxSelected(string x)
+        {
+            Assert.IsTrue(GetSelectSelected(currencyDropdown).Equals(x));
+        }
     }
 }
