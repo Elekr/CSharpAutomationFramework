@@ -9,6 +9,7 @@ using CSharpAutomationFramework.API;
 using NUnit.Framework;
 using CSharpAutomationFramework.API.Models;
 using CSharpAutomationFramework.API.Config;
+using TechTalk.SpecFlow;
 
 namespace CSharpAutomationFramework.API.StepDefinitions
 {

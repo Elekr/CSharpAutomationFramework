@@ -1,0 +1,15 @@
+{
+  "ConnectionStrings": {
+    "SQLServer": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SAMPLEDATABASE.MDF;Integrated Security=True;Connection Timeout=300"
+  },
+  "URLs": {
+    "BaseURL": "https://reqres.in",
+    "GetRequest": "/api/users/2",
+    "PostRequest": "/api/users",
+    "PutRequest": "/api/users/2",
+    "DeleteRequest": "/api/users/2"
+  },
+  "SQLQueries": {
+    "GetQuery":  "Select * from dbo.Emp where Id=2"
+  }
+}

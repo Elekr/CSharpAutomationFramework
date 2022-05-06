@@ -4,6 +4,7 @@ using AventStack.ExtentReports.Reporter;
 using CSharpAutomationFramework.API.Config;
 using NUnit.Framework;
 using System.Reflection;
+using TechTalk.SpecFlow;
 
 [assembly: Parallelizable(ParallelScope.Fixtures)]
 namespace CSharpAutomationFramework.API.Hooks
