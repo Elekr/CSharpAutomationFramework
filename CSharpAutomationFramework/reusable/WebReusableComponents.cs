@@ -412,6 +412,17 @@ namespace CSharpAutomationFramework.reusable
             return select.SelectedOption.Text;
         }
 
+        /// <summary>
+        ///     Function to switch to a frame
+        /// </summary>
+        /// <param name="by">The locator used to identify the frame</param>
+        public void SwitchToframe(By by)
+        {
+            WaitUntilElementLocated(by, 3);
+            IWebElement frame = driver.FindElement(by);
+            driver.SwitchTo().Frame(frame);
+        }
+
         // findJsonFilesInFolder and runAutomationTests will need major changes to layout and functionality of the framework before
         // they will work so that is why they have not yet been implemented
     }
