@@ -3,11 +3,11 @@
 This feature goes through how to switch windows with the browser
 
 @Selenium
-Scenario: [User successfully opens, switches between and closes multiple windows]
-    Given [I have navigated to the "TC08Page"]
-    When [I click on a link to open a new window]
-    Then [I am able to navigate to the new window]
-    And [I am able to access elements within the new window]
-    And [I am able to close the child window]
-    And [I am able to navigate back to the original window]
+Scenario: [Switch to newly opened window]
+    Given [I have navigated to the TC08 page]
+    And [I have opened the new window with the new window link]
+    And [We are still on the page with the new window link]
+    When [I navigate to the latest window]
+    Then [We are now on a window that does not contain the new window link]
+    And [We are now on a window that contains the heading New Window]
 

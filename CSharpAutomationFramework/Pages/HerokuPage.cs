@@ -11,7 +11,9 @@ namespace CSharpAutomationFramework.Pages
     public class HerokuPage : WebReusableComponents
     {
 
-        public By link = By.LinkText("Add/Remove Elements");
+        public By addRemoveLink = By.LinkText("Add/Remove Elements");
+        public By multipleWindowsLink = By.LinkText("Multiple Windows");
+        public By newWindowLink = By.LinkText("Click Here");
         
         public HerokuPage(IWebDriver driver) : base(driver, ("https://the-internet.herokuapp.com/", "The Internet"))
         {

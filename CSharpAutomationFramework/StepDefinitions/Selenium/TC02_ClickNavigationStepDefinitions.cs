@@ -27,7 +27,7 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
         [When(@"\[I click link]")]
         public void WhenIClickLink()
         {
-            ClickElement(link);
+            ClickElement(addRemoveLink);
         }
 
         [Then(@"\[The driver Url should have changed]")]

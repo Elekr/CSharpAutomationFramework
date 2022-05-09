@@ -1,5 +1,6 @@
 ﻿using CSharpAutomationFramework.Pages;
 using NUnit.Framework;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,57 +11,48 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
 {
     [TestFixture]
     [Binding]
-    public class TC08_SwitchingWindowsStepDefinitions
+    public class TC08_SwitchingWindowsStepDefinitions : HerokuPage
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        public TC08_SwitchingWindowsStepDefinitions(DriverHelper driverHelper) : base(driverHelper.webDriver)
+        { }
 
-        GooglePage hubPage;
-
-        private DriverHelper _driverHelper;
-
-        (string websiteURL, string websiteTitle) homePage = ("https://www.google.com/", "Google");
-
-        public TC08_SwitchingWindowsStepDefinitions(DriverHelper driverHelper)
+        [Given(@"\[I have navigated to the TC08 page]")]
+        public void GivenIHaveNavigatedToTheTC08Page()
         {
-            _driverHelper = driverHelper;
-
+            NavigateHome();
+            ClickElement(multipleWindowsLink);
         }
 
-        [Given(@"\[I have navigated to the TC(.*)Page]")]
-        public void GivenIHaveNavigatedToTheTCPage(int p0)
+        [Given(@"\[I have opened the new window with the new window link]")]
+        public void GivenIHaveOpenedTheNewWindow()
         {
-            throw new PendingStepException();
+            ClickElement(newWindowLink);
         }
 
-        [When(@"\[I click on a link to open a new window]")]
-        public void WhenIClickOnALinkToOpenANewWindow()
+        [Given(@"\[We are still on the page with the new window link]")]
+        public void GivenThisWindowContainsTheHeading()
         {
-            throw new PendingStepException();
+            Assert.IsTrue(CanLocateElement(newWindowLink));
         }
 
-        [Then(@"\[I am able to navigate to the new window]")]
-        public void ThenIAmAbleToNavigateToTheNewWindow()
+
+        [When(@"\[I navigate to the latest window]")]
+        public void WhenINavigatetoTheLatestWindow()
         {
-            throw new PendingStepException();
+            SwitchToLatestWindow();
         }
 
-        [Then(@"\[I am able to access elements within the new window]")]
-        public void ThenIAmAbleToAccessElementsWithinTheNewWindow()
+        [Then(@"\[We are now on a window that does not contain the new window link]")]
+        public void ThenWeAreNoLongerOnParentWindow() // Prove we are no longer on the parent window
         {
-            throw new PendingStepException();
+            Assert.IsFalse(CanLocateElement(newWindowLink));
         }
 
-        [Then(@"\[I am able to close the child window]")]
-        public void ThenIAmAbleToCloseTheChildWindow()
-        {
-            throw new PendingStepException();
-        }
 
-        [Then(@"\[I am able to navigate back to the original window]")]
-        public void ThenIAmAbleToNavigateBackToTheOriginalWindow()
+        [Then(@"\[We are now on a window that contains the heading (.*)]")]
+        public void ThenThisWindowContainsHeading(string heading) // Prove we are on the correct window
         {
-            throw new PendingStepException();
+            Assert.IsTrue(CanLocateElement(By.XPath("//h3[text()='"+heading+"']")));
         }
-
     }
 }
