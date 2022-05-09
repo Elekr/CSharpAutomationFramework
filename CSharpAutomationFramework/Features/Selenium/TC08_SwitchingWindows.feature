@@ -12,3 +12,8 @@ Scenario: [Switch to newly opened window]
     And [I am now on a window that contains the heading New Window]
 
 
+@Selenium
+Scenario: [Switch back to the first window]
+    Given [I am on a child window]
+    When [I navigate to window 0]
+    Then [I am now on a window that contains the heading Opening a new window]

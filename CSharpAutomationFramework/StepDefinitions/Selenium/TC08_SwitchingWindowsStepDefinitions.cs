@@ -35,6 +35,20 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
             Assert.IsTrue(CanLocateElement(newWindowLink));
         }
 
+        [Given(@"\[I am on a child window]")]
+        public void GivenIAmOnAChildWindow()
+        {
+            GivenIHaveNavigatedToTheTC08Page();
+            GivenIHaveOpenedTheNewWindow();
+            WhenINavigatetoTheLatestWindow();
+            ThenThisWindowContainsHeading("New Window");
+        }
+
+        [When(@"\[I navigate to window (.*)]")]
+        public void WhenINavigateToWindow(int index)
+        {
+            SwitchToWindowIndex(index);
+        }
 
         [When(@"\[I navigate to the latest window]")]
         public void WhenINavigatetoTheLatestWindow()
