@@ -434,6 +434,18 @@ namespace CSharpAutomationFramework.reusable
             return table.FindElements(By.TagName("tr")).Count;
         }
 
+        /// <summary>
+        ///     Function to get the number of columns in a given table -- assumes that the table has the same number of cells in every row and that all columns have a heading
+        /// </summary>
+        /// <param name="by">The locator that identifies the table</param>
+        /// <returns></returns>
+        public int CountTableColumns(By by)
+        {
+            WaitUntilElementLocated(by, 3);
+            IWebElement table = driver.FindElement(by);
+            return table.FindElements(By.TagName("th")).Count;
+        }
+
         // findJsonFilesInFolder and runAutomationTests will need major changes to layout and functionality of the framework before
         // they will work so that is why they have not yet been implemented
     }

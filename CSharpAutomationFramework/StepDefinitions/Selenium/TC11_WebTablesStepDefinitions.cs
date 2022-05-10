@@ -27,6 +27,13 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
             count = CountTableRows(leftTable);
         }
 
+        [When(@"\[I count the number of columns in the left table]")]
+        public void WhenICountTheNumberOfColumnsInTheLeftTable()
+        {
+            count = CountTableColumns(leftTable);
+        }
+
+
         [Then(@"\[I should get a count of (.*)]")]
         public void ThenIShouldGetACountOf(int expectedCount)
         {

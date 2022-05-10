@@ -8,4 +8,10 @@ Scenario: [Successfully count the rows of a table]
     When [I count the number of rows in the left table]
     Then [I should get a count of 11]
 
+@Selenium
+Scenario: [Successfully count the columns of a table]
+    Given [I have navigated to the TC11 page]
+    When [I count the number of columns in the left table]
+    Then [I should get a count of 3]
+
 
