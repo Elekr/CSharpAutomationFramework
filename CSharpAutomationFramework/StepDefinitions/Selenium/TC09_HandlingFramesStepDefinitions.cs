@@ -26,7 +26,7 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
         [Given(@"\[I am unable to access the text displayed in middle]")]
         public void GivenIAmUnableToAccessTheTextInMiddle()
         {
-            Assert.IsFalse(CanLocateElement(By.XPath("//*[text()='MIDDLE']")));
+            Assert.IsFalse(CanLocateMiddleText());
         }
 
         [When(@"\[I switch focus to the middle frame]")]
@@ -39,7 +39,12 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
         [Then(@"\[I am able to access the text displayed in middle]")]
         public void ThenIAmAbleToAccessTheTextDisplayedInMiddle()
         {
-            Assert.IsTrue(CanLocateElement(By.XPath("//*[text()='MIDDLE']")));
+            Assert.IsTrue(CanLocateMiddleText());
+        }
+
+        private bool CanLocateMiddleText()
+        {
+            return CanLocateElement(By.XPath("//*[text()='MIDDLE']"));
         }
     }
 }
