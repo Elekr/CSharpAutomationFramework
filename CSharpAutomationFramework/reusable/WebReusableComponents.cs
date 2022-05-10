@@ -4,7 +4,8 @@ using OpenQA.Selenium.Support.UI;
 
 namespace CSharpAutomationFramework.reusable
 {
-    public abstract class WebReusableComponents : GenericReusableComponents
+
+    public partial class WebReusableComponents : GenericReusableComponents
     {
         protected IWebDriver driver;
         protected (string websiteURL, string websiteTitle) homePage;
@@ -222,8 +223,7 @@ namespace CSharpAutomationFramework.reusable
         /// <returns>Is the page loaded</returns>
         public bool IsPageLoaded(string url)
         {
-            IJavaScriptExecutor jse = (IJavaScriptExecutor)driver;
-            return jse.ExecuteScript("return document.URL").Equals(url);
+            return ExecuteScript("return document.URL").Equals(url);
 
         }
 
@@ -296,14 +296,14 @@ namespace CSharpAutomationFramework.reusable
         {
             titleName = titleName.ToLower();
             string currentHandle = driver.CurrentWindowHandle;
-            foreach(string windowHandle in driver.WindowHandles)
+            foreach (string windowHandle in driver.WindowHandles)
             {
                 if (driver.SwitchTo().Window(windowHandle).Title.ToLower().Contains(titleName))
                 {
                     break;
                 }
             }
-            if(!driver.Title.ToLower().Contains(titleName))
+            if (!driver.Title.ToLower().Contains(titleName))
             {
                 driver.SwitchTo().Window(currentHandle);
                 throw new NoSuchWindowException("No window with a matching title was found");
@@ -316,7 +316,7 @@ namespace CSharpAutomationFramework.reusable
         ///     Function to click on an element using the action builder class
         /// </summary>
         /// <param name="by">The locator for the element</param>
-        public void  ClickOnElementaction(By by)
+        public void ClickOnElementaction(By by)
         {
             IWebElement element = GetElement(by);
             Actions action = new Actions(driver);
@@ -353,7 +353,7 @@ namespace CSharpAutomationFramework.reusable
         {
             string handle = driver.WindowHandles[index];
             driver.SwitchTo().Window(handle);
-            Hook.Log(AventStack.ExtentReports.Status.Pass, "Switched to window index "+index);
+            Hook.Log(AventStack.ExtentReports.Status.Pass, "Switched to window index " + index);
         }
 
         /// <summary>
@@ -389,7 +389,7 @@ namespace CSharpAutomationFramework.reusable
             IWebElement listbox = GetElement(by);
             SelectElement select = new SelectElement(listbox);
             List<string> optionStrings = new List<string>();
-            foreach(IWebElement option in select.Options)
+            foreach (IWebElement option in select.Options)
             {
                 optionStrings.Add(option.Text);
             }
@@ -417,6 +417,11 @@ namespace CSharpAutomationFramework.reusable
             driver.SwitchTo().Frame(frame);
         }
 
+        public static class Table
+        {
+
+        }
+
         /// <summary>
         ///     Function to get the number of rows in a given table
         /// </summary>
@@ -426,6 +431,7 @@ namespace CSharpAutomationFramework.reusable
             IWebElement table = GetElement(by);
             return table.FindElements(By.TagName("tr")).Count;
         }
+
 
         /// <summary>
         ///     Function to get the number of columns in a given table -- assumes that the table has the same number of cells in every row and that all columns have a heading
@@ -437,6 +443,8 @@ namespace CSharpAutomationFramework.reusable
             IWebElement table = GetElement(by);
             return table.FindElements(By.TagName("th")).Count;
         }
+
+
 
         /// <summary>
         ///     Fuction to get the total of a column of a table
@@ -485,6 +493,13 @@ namespace CSharpAutomationFramework.reusable
         {
             WaitUntilElementLocated(by, 3);
             return driver.FindElement(by);
+        }
+
+
+        public object ExecuteScript(string script)
+        {
+            IJavaScriptExecutor jse = (IJavaScriptExecutor)driver;
+            return jse.ExecuteScript(script);
         }
 
         // findJsonFilesInFolder and runAutomationTests will need major changes to layout and functionality of the framework before
