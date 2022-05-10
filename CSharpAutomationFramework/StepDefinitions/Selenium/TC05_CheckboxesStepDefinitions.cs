@@ -46,13 +46,18 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
         [Then(@"\[The checkbox is checked]")]
         public void ThenTheCheckboxIsChecked()
         {
-            Assert.IsTrue(driver.FindElement(checkbox).Selected);
+            Assert.IsTrue(IsCheckboxChecked());
         }
 
         [Then(@"\[The checkobox is unchecked]")]
         public void ThenTheCheckboxIsUnchecked()
         {
-            Assert.IsFalse(driver.FindElement(checkbox).Selected);
+            Assert.IsFalse(IsCheckboxChecked());
+        }
+
+        private bool IsCheckboxChecked()
+        {
+            return driver.FindElement(checkbox).Selected;
         }
     }
 }
