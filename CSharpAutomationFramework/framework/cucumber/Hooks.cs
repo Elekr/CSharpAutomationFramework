@@ -5,6 +5,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System.Reflection;
+using TechTalk.SpecFlow;
 
 [assembly: Parallelizable(ParallelScope.Fixtures)]
 namespace CSharpAutomationFramework

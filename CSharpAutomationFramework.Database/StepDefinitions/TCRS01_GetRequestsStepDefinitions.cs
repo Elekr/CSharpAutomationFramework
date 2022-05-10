@@ -12,6 +12,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TechTalk.SpecFlow;
+using CSharpAutomationFramework.Extensions;
+using TechTalk.SpecFlow.Assist;
 
 namespace CSharpAutomationFramework.Database.StepDefinitions
 {
@@ -49,7 +51,6 @@ namespace CSharpAutomationFramework.Database.StepDefinitions
         public void WhenTheRequestIsSuccessful()
         {
             Assert.AreEqual("OK", content.StatusCode.ToString());
-
         }
 
         [Then(@"\[I am able to validate the returned object]")]
@@ -57,35 +58,15 @@ namespace CSharpAutomationFramework.Database.StepDefinitions
         {
             Root person = JsonConvert.DeserializeObject<Root>(content.Content);
 
-            var dataFromDb = new Data();
+            var specTable = ConnectionStrings.SQLServer.GetData(SQLQueries.GetQuery);
+            var dataFromDb = specTable.CreateInstance<Data>();
 
-            using (var connection = new SqlConnection(ConnectionStrings.SQLServer))
-            {
-                connection.Open();
-                SqlCommand cmd = connection.CreateCommand();
-
-                cmd.CommandText = SQLQueries.GetQuery;
-                var table = new DataTable();
-
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        dataFromDb.id = (int) reader["Id"];
-                        dataFromDb.email = reader["Email"].ToString();
-                        dataFromDb.first_name = reader["First_Name"].ToString();
-                        dataFromDb.last_name = reader["Last_Name"].ToString();
-                        dataFromDb.avatar = reader["Avatar"].ToString();
-                    }
-
-                    connection.Close();
-                }
-            }
             Assert.AreEqual(dataFromDb.id, person.data.id, "id doesn't match");
             Assert.AreEqual(dataFromDb.email, person.data.email, "email doesn't match");
             Assert.AreEqual(dataFromDb.first_name, person.data.first_name, "first_name doesn't match");
             Assert.AreEqual(dataFromDb.last_name, person.data.last_name, "last_name doesn't match");
             Assert.AreEqual(dataFromDb.avatar, person.data.avatar, "avatar doesn't match");
+
         }
 
     }
