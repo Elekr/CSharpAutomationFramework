@@ -168,7 +168,6 @@ namespace CSharpAutomationFramework.reusable
         /// <returns>Text within the element</returns>
         public string GetTextFromElement(By by)
         {
-            WaitUntilElementLocated(by, 3);
             string text = driver.FindElement(by).Text;
             Hook.Log(AventStack.ExtentReports.Status.Pass, "Text retrieved successfully for " + by + ". The text is - " + text);
             return text;
@@ -245,7 +244,7 @@ namespace CSharpAutomationFramework.reusable
         /// <param name="attributeName">Name of the attribute we wish to get the value of</param>
         public string GetAttribute(By by, string attributeName)
         {
-            string value = driver.FindElement(by).GetAttribute(attributeName);
+            string value = GetElement(by).GetAttribute(attributeName);
             Hook.Log(AventStack.ExtentReports.Status.Pass, "Got value '" + value + "' from attribute '" + attributeName + "' of element '" + by + "'");
             return value;
         }
@@ -319,8 +318,7 @@ namespace CSharpAutomationFramework.reusable
         /// <param name="by">The locator for the element</param>
         public void  ClickOnElementaction(By by)
         {
-            WaitUntilElementLocated(by, 3);
-            IWebElement element = driver.FindElement(by);
+            IWebElement element = GetElement(by);
             Actions action = new Actions(driver);
             action.MoveToElement(element).Click().Perform();
             Hook.Log(AventStack.ExtentReports.Status.Pass, "The element - " + by + " is clicked successfully");
@@ -376,8 +374,7 @@ namespace CSharpAutomationFramework.reusable
         /// <param name="value">The value we wish to select</param>
         public void SelectByValue(By by, string value)
         {
-            WaitUntilElementLocated(by, 3);
-            IWebElement listbox = driver.FindElement(by);
+            IWebElement listbox = GetElement(by);
             SelectElement select = new SelectElement(listbox);
             select.SelectByText(value);
             Hook.Log(AventStack.ExtentReports.Status.Pass, "The value " + value + " is selected");
@@ -389,8 +386,7 @@ namespace CSharpAutomationFramework.reusable
         /// <param name="by">The locator used to identify the listbox</param>
         public List<string> GetSelectOptions(By by)
         {
-            WaitUntilElementLocated(by, 3);
-            IWebElement listbox = driver.FindElement(by);
+            IWebElement listbox = GetElement(by);
             SelectElement select = new SelectElement(listbox);
             List<string> optionStrings = new List<string>();
             foreach(IWebElement option in select.Options)
@@ -406,8 +402,7 @@ namespace CSharpAutomationFramework.reusable
         /// <param name="by">The locator used to identify the listbox</param>
         public string GetSelectSelected(By by)
         {
-            WaitUntilElementLocated(by, 3);
-            IWebElement listbox = driver.FindElement(by);
+            IWebElement listbox = GetElement(by);
             SelectElement select = new SelectElement(listbox);
             return select.SelectedOption.Text;
         }
@@ -418,8 +413,7 @@ namespace CSharpAutomationFramework.reusable
         /// <param name="by">The locator used to identify the frame</param>
         public void SwitchToframe(By by)
         {
-            WaitUntilElementLocated(by, 3);
-            IWebElement frame = driver.FindElement(by);
+            IWebElement frame = GetElement(by);
             driver.SwitchTo().Frame(frame);
         }
 
@@ -429,8 +423,7 @@ namespace CSharpAutomationFramework.reusable
         /// <param name="by">The locator that identifies the table</param>
         public int CountTableRows(By by)
         {
-            WaitUntilElementLocated(by, 3);
-            IWebElement table = driver.FindElement(by);
+            IWebElement table = GetElement(by);
             return table.FindElements(By.TagName("tr")).Count;
         }
 
@@ -441,8 +434,7 @@ namespace CSharpAutomationFramework.reusable
         /// <returns></returns>
         public int CountTableColumns(By by)
         {
-            WaitUntilElementLocated(by, 3);
-            IWebElement table = driver.FindElement(by);
+            IWebElement table = GetElement(by);
             return table.FindElements(By.TagName("th")).Count;
         }
 
@@ -453,8 +445,7 @@ namespace CSharpAutomationFramework.reusable
         /// <param name="columnName">The name of the column we want to total</param>
         public int TotalTableColumn(By by, string columnName)
         {
-            WaitUntilElementLocated(by, 3);
-            IWebElement table = driver.FindElement(by);
+            IWebElement table = GetElement(by);
             IList<IWebElement> headingsElementList = table.FindElements(By.TagName("th"));
             IList<string> headingsList = new List<string>();
             foreach (IWebElement headingElement in headingsElementList)
@@ -471,6 +462,17 @@ namespace CSharpAutomationFramework.reusable
                 total += value;
             }
             return total;
+        }
+
+
+        /// <summary>
+        ///     Function to get to the specified WebElement
+        /// </summary>
+        /// <param name="by">The locator for the element</param>
+        public IWebElement GetElement(By by)
+        {
+            WaitUntilElementLocated(by, 3);
+            return driver.FindElement(by);
         }
 
         // findJsonFilesInFolder and runAutomationTests will need major changes to layout and functionality of the framework before
