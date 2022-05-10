@@ -10,39 +10,39 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
 {
     [TestFixture]
     [Binding]
-    public class TC12_ScrollingStepDefinitions
+    public class TC12_ScrollingStepDefinitions : HerokuPage
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        GooglePage hubPage;
+        public TC12_ScrollingStepDefinitions(DriverHelper driverHelper) : base(driverHelper.webDriver) { }
 
-        private DriverHelper _driverHelper;
-
-        (string websiteURL, string websiteTitle) homePage = ("https://www.google.com/", "Google");
-
-        public TC12_ScrollingStepDefinitions(DriverHelper driverHelper)
+        [Given(@"\[I have navigated to the TC12 page]")]
+        public void GiveIHaveNavigatedToTheTC12Page()
         {
-            _driverHelper = driverHelper;
-
+            NavigateHome();
         }
 
-        [Given(@"\[I have navigated to the TC(.*)Page]")]
-        public void GivenIHaveNavigatedToTheTCPage(int p0)
+        [Given(@"\[The current y offset of the window is (.*)]")]
+        public void GivenTheCurrentYOffset(int startingScroll)
         {
-            throw new PendingStepException();
+            AssertScrollIs(startingScroll);
         }
 
-        [When(@"\[I scroll the page down a specific amount]")]
-        public void WhenIScrollThePageDownASpecificAmount()
+        [When(@"\[I scroll the page down by (.*)]")]
+        public void WhenIScrollThePageDownBy(int deltaY)
         {
-            throw new PendingStepException();
+            ExecuteScript(String.Format("window.scrollBy(0,{0})", deltaY));
         }
 
-        [Then(@"\[The offset of the window has changed by the specific amount]")]
-        public void ThenTheOffsetOfTheWindowHasChangedByTheSpecificAmount()
+        [Then(@"\[The y offset of the window is now (.*)]")]
+        public void ThentheOffsetOfTheWindowIsNow(int expectedScroll)
         {
-            throw new PendingStepException();
+            AssertScrollIs(expectedScroll);
         }
 
+        private void AssertScrollIs(int expectedScroll)
+        {
+            long value = (long)ExecuteScript("return window.pageYOffset;");
+            Assert.AreEqual(expectedScroll, value);
+        }
     }
 }
