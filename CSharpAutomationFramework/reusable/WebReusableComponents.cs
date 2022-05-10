@@ -446,6 +446,33 @@ namespace CSharpAutomationFramework.reusable
             return table.FindElements(By.TagName("th")).Count;
         }
 
+        /// <summary>
+        ///     Fuction to get the total of a column of a table
+        /// </summary>
+        /// <param name="by">The locator that identifies the table</param>
+        /// <param name="columnName">The name of the column we want to total</param>
+        public int TotalTableColumn(By by, string columnName)
+        {
+            WaitUntilElementLocated(by, 3);
+            IWebElement table = driver.FindElement(by);
+            IList<IWebElement> headingsElementList = table.FindElements(By.TagName("th"));
+            IList<string> headingsList = new List<string>();
+            foreach (IWebElement headingElement in headingsElementList)
+            {
+                headingsList.Add(headingElement.Text);
+            }
+            int columnIndex = headingsList.IndexOf(columnName);
+            IList<IWebElement> column = table.FindElements(By.XPath("tbody/tr/td[" + (columnIndex + 1).ToString() + "]"));
+            int total = 0;
+            foreach (IWebElement columnElement in column)
+            {
+                Hook.Log(AventStack.ExtentReports.Status.Info, columnElement.Text);
+                int value = int.Parse(columnElement.Text);
+                total += value;
+            }
+            return total;
+        }
+
         // findJsonFilesInFolder and runAutomationTests will need major changes to layout and functionality of the framework before
         // they will work so that is why they have not yet been implemented
     }

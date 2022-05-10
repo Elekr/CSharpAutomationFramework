@@ -14,4 +14,9 @@ Scenario: [Successfully count the columns of a table]
     When [I count the number of columns in the left table]
     Then [I should get a count of 3]
 
+@Selenium
+Scenario: [Successfully total a column]
+    Given [I have navigated to the TC11 page]
+    When [I calculate the total of the Price column in the left table]
+    Then [I should get a total of 235]
 

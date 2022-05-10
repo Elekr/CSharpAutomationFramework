@@ -33,6 +33,19 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
             count = CountTableColumns(leftTable);
         }
 
+        int total;
+        [When(@"\[I calculate the total of the (.*) column in the left table]")]
+        public void WhenICalculateTheTotalOfColumn(string columnName)
+        {
+            total = TotalTableColumn(leftTable, columnName);
+        }
+
+
+        [Then(@"\[I should get a total of (.*)]")]
+        public void ThenIShouldATotalOf(int expectedTotal)
+        { 
+            Assert.AreEqual(expectedTotal, total);
+        }
 
         [Then(@"\[I should get a count of (.*)]")]
         public void ThenIShouldGetACountOf(int expectedCount)
