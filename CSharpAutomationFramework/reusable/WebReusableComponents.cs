@@ -453,6 +453,18 @@ namespace CSharpAutomationFramework.reusable
                 headingsList.Add(headingElement.Text);
             }
             int columnIndex = headingsList.IndexOf(columnName);
+            return TotalTableColumn(by, columnIndex);
+        }
+
+
+        /// <summary>
+        ///     Fuction to get the total of a column of a table
+        /// </summary>
+        /// <param name="by">The locator that identifies the table</param>
+        /// <param name="columnIndex">The index of the column we want to total</param>
+        public int TotalTableColumn(By by, int columnIndex)
+        {
+            IWebElement table = GetElement(by);
             IList<IWebElement> column = table.FindElements(By.XPath("tbody/tr/td[" + (columnIndex + 1).ToString() + "]"));
             int total = 0;
             foreach (IWebElement columnElement in column)
