@@ -423,6 +423,17 @@ namespace CSharpAutomationFramework.reusable
             driver.SwitchTo().Frame(frame);
         }
 
+        /// <summary>
+        ///     Function to get the number of rows in a given table
+        /// </summary>
+        /// <param name="by">The locator that identifies the table</param>
+        public int CountTableRows(By by)
+        {
+            WaitUntilElementLocated(by, 3);
+            IWebElement table = driver.FindElement(by);
+            return table.FindElements(By.TagName("tr")).Count;
+        }
+
         // findJsonFilesInFolder and runAutomationTests will need major changes to layout and functionality of the framework before
         // they will work so that is why they have not yet been implemented
     }

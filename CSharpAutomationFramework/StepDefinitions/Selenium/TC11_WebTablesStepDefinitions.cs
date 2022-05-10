@@ -10,63 +10,27 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
 {
     [TestFixture]
     [Binding]
-    public class TC11_WebTablesStepDefinitions
+    public class TC11_WebTablesStepDefinitions : AutomationPracticePage
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        public TC11_WebTablesStepDefinitions(DriverHelper driverHelper) : base(driverHelper.webDriver) { }
 
-        GooglePage hubPage;
-
-        private DriverHelper _driverHelper;
-
-        (string websiteURL, string websiteTitle) homePage = ("https://www.google.com/", "Google");
-
-        public TC11_WebTablesStepDefinitions(DriverHelper driverHelper)
+        [Given(@"\[I have navigated to the TC11 page]")]
+        public void GivenIHaveNavigatedToTheTC11Page()
         {
-            _driverHelper = driverHelper;
-
+            NavigateHome();
         }
 
-        [Given(@"\[I have navigated to the TC(.*)Page]")]
-        public void GivenIHaveNavigatedToTheTCPage(int p0)
+        int count;
+        [When(@"\[I count the number of rows in the left table]")]
+        public void WhenICountTheNumberOfRowsInTheLeftTable()
         {
-            throw new PendingStepException();
+            count = CountTableRows(leftTable);
         }
 
-        [When(@"\[I locate all the columns in the table]")]
-        public void WhenILocateAllTheColumnsInTheTable()
+        [Then(@"\[I should get a count of (.*)]")]
+        public void ThenIShouldGetACountOf(int expectedCount)
         {
-            throw new PendingStepException();
+            Assert.AreEqual(expectedCount, count);
         }
-
-        [Then(@"\[I am able to get the number of columns]")]
-        public void ThenIAmAbleToGetTheNumberOfColumns()
-        {
-            throw new PendingStepException();
-        }
-
-        [When(@"\[I locate all the rows in the table]")]
-        public void WhenILocateAllTheRowsInTheTable()
-        {
-            throw new PendingStepException();
-        }
-
-        [Then(@"\[I am able to get the number of rows]")]
-        public void ThenIAmAbleToGetTheNumberOfRows()
-        {
-            throw new PendingStepException();
-        }
-
-        [When(@"\[I locate a specific row in the table]")]
-        public void WhenILocateASpecificRowInTheTable()
-        {
-            throw new PendingStepException();
-        }
-
-        [Then(@"\[I am able to get all the data for that row]")]
-        public void ThenIAmAbleToGetAllTheDataForThatRow()
-        {
-            throw new PendingStepException();
-        }
-
     }
 }

@@ -15,6 +15,7 @@ namespace CSharpAutomationFramework.Pages
 
         protected By btnAlert = By.Id("alertbtn");
         protected By btnConfirm = By.Id("confirmbtn");
+        protected By leftTable = By.Name("courses");
 
         public By GetRadio(int index)
         {
