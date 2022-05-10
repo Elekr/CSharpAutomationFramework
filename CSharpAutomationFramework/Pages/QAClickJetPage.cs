@@ -18,3 +18,7 @@ namespace CSharpAutomationFramework.Pages
         protected By currencyDropdown = By.Id("ctl00_mainContent_DropDownListCurrency");
     }
 }
+
+ 
+
+ 
