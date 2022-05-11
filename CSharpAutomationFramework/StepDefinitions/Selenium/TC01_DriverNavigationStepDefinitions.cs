@@ -5,53 +5,48 @@ using System.Text;
 using System.Threading.Tasks;
 using CSharpAutomationFramework.Pages;
 using NUnit.Framework;
+using OpenQA.Selenium;
 
 namespace CSharpAutomationFramework.StepDefinitions.Selenium
 {
     [TestFixture]
     [Binding]
-    public class TC01_DriverNavigationStepDefinitions
+    public class TC01_DriverNavigationStepDefinitions : GooglePage
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
-
-        HerokuPage heroPage;
-
-        private DriverHelper _driverHelper;
-
-        (string websiteURL, string websiteTitle) homePage = ("https://the-internet.herokuapp.com/", "The Internet");
-
-        public TC01_DriverNavigationStepDefinitions(DriverHelper driverHelper)
+        public TC01_DriverNavigationStepDefinitions(DriverHelper driverHelper) : base(driverHelper.webDriver)
         {
-            _driverHelper = driverHelper;
 
         }
 
         [Given(@"\[I have navigated to the ""([^""]*)""]")]
         public void GivenIHaveNavigatedToThe(string webpage)
         {
-            heroPage = new HerokuPage(_driverHelper.webDriver);
-            _driverHelper.webDriver.Navigate().GoToUrl(homePage.websiteURL);
-
-            //Check that the website is correct
-            Assert.AreEqual(homePage.websiteURL, heroPage.ReturnURL(), "incorrect URL");
-
+            //Assert.IsNotNull(driver);
         }
 
-        [When(@"\[I use the Navigate method]")]
-        public void WhenIUseTheNavigateMethod()
+        [Given(@"\[This page object has the url (.*)]")]
+        public void GivenThisPageObjectHasTheURL(string url)
         {
-            _driverHelper.webDriver.Navigate().GoToUrl(homePage.websiteURL);
-
-            //Check that the website is correct
-            Assert.AreEqual(homePage.websiteURL, heroPage.ReturnURL(), "incorrect URL");
+            Assert.AreEqual(url, homePage.websiteURL);
         }
 
-        [Then(@"\[The correct page will be displayed]")]
-        public void ThenTheCorrectPageWillBeDisplayed()
+        [Given(@"\[The page object has the title (.*)]")]
+        public void GivenThePageObjecteHasTheTitle(string title)
         {
-            Assert.AreEqual(homePage.websiteTitle, heroPage.ReturnTitle(), "URLs do not match");
-            log.Info("Test passed correctly");
+            Assert.AreEqual(title, homePage.websiteTitle);
         }
+
+        [When(@"\[I use the NavigateHome method]")]
+        public void WhenIUseTheNavigateHomeMethod()
+        {
+            NavigateHome();
+        }
+
+        [Then(@"\[The webpage open in the driver will have the same title as the page object]")]
+        public void ThenWebPageTitleEqualGooglePageTitle()
+        {
+            Assert.AreEqual(homePage.websiteTitle, driver.Title);
+        }
+
     }
 }

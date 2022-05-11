@@ -10,17 +10,16 @@ namespace CSharpAutomationFramework.reusable
 {
     
     public abstract class GenericReusableComponents
-    { 
+    {
 
         /// <summary>
         ///     Function to generate Locator
         /// </summary>
-        /// <param name="locatorValue">Type of locator ("XPATH", "ID", "NAME" or "LINKTEXT)</param> 
-        /// <param name="locatorType">Value of the locator</param>
-        /// TODO: IMPLEMENT LOGGING FOR DEFAULT CASE
-        public By generateLocator(string locatorType, string locatorValue)
+        /// <param name="locatorValue">Value of the locator</param> 
+        /// <param name="locatorType">Type of locator ("XPATH", "ID", "NAME" or "LINKTEXT)</param>
+        public static By GenerateLocator(string locatorType, string locatorValue)
         {
-            By loc = null;
+            By loc;
             switch(locatorType)
             {
                 case "XPATH":
@@ -45,7 +44,7 @@ namespace CSharpAutomationFramework.reusable
         ///     Function to pause the execution for the specified time period
         /// </summary>
         /// <param name="timeInSeconds">The wait time in seconds</param>
-        public void wait(long timeInSeconds)
+        public static void Wait(long timeInSeconds)
         {
             long endTime = DateTimeOffset.Now.ToUnixTimeMilliseconds() + (timeInSeconds * 1000);
             while(DateTimeOffset.Now.ToUnixTimeMilliseconds() < endTime)

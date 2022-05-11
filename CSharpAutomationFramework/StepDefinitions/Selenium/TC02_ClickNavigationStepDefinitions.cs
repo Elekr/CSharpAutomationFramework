@@ -10,46 +10,30 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
 {
     [TestFixture]
     [Binding]
-    public class TC02_ClickNavigationStepDefinitions
+    public class TC02_ClickNavigationStepDefinitions : HerokuPage
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
-        HerokuPage heroPage;
-
-        private DriverHelper _driverHelper;
-
-        (string websiteURL, string websiteTitle) homePage = ("https://the-internet.herokuapp.com/", "The Internet");
-
-        public TC02_ClickNavigationStepDefinitions(DriverHelper driverHelper)
+        public TC02_ClickNavigationStepDefinitions(DriverHelper driverHelper) : base(driverHelper.webDriver)
         {
-            _driverHelper = driverHelper;
 
         }
 
-        [Given(@"\[I have navigated to the ""([^""]*)""]")]
-        public void GivenIHaveNavigatedToThe(string webpage)
+        [Given(@"\[I have navigated to the TC02 page]")]
+        public void GivenIHaveNavigatedToTC02()
         {
-            heroPage = new HerokuPage(_driverHelper.webDriver);
-            _driverHelper.webDriver.Navigate().GoToUrl(homePage.websiteURL);
-
-            //Check that the website is correct
-            Assert.AreEqual(homePage.websiteURL, heroPage.ReturnURL(), "incorrect URL");
-
+            NavigateHome();
+            Assert.AreEqual(homePage.websiteURL, driver.Url);
         }
 
-        [When(@"\[I click on a link]")]
-        public void WhenIClickOnALink()
+        [When(@"\[I click link]")]
+        public void WhenIClickLink()
         {
-            heroPage.ClickButton();
+            ClickElement(addRemoveLink);
         }
 
-        [Then(@"\[I am navigated to another ""([^""]*)""]")]
-        public void ThenIAmNavigatedToAnother(string webpage)
+        [Then(@"\[The driver Url should have changed]")]
+        public void ThenTheDriverUrlShouldHaveChanged()
         {
-
-            Assert.IsTrue(!(heroPage.ReturnURL().Equals(homePage.websiteURL)));
+            Assert.AreNotEqual(driver.Url, homePage.websiteURL);
         }
-
-
     }
 }

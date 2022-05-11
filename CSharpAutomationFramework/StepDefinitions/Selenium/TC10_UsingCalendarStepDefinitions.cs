@@ -1,5 +1,6 @@
 ﻿using CSharpAutomationFramework.Pages;
 using NUnit.Framework;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,49 +11,51 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
 {
     [TestFixture]
     [Binding]
-    public class TC10_UsingCalendarStepDefinitions
+    public class TC10_UsingCalendarStepDefinitions : QAClickJetPage
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        public TC10_UsingCalendarStepDefinitions(DriverHelper driverHelper) : base(driverHelper.webDriver) { }
 
-        HerokuPage heroPage;
-
-        private DriverHelper _driverHelper;
-
-        (string websiteURL, string websiteTitle) homePage = ("https://the-internet.herokuapp.com/", "The Internet");
-
-        public TC10_UsingCalendarStepDefinitions(DriverHelper driverHelper)
+        [Given(@"\[I have navigated to the TC10 page]")]
+        public void GivenIHaveNavigatedToTheTC10Page()
         {
-            _driverHelper = driverHelper;
-
+            NavigateHome();
         }
 
-        [Given(@"\[I have navigated to the TC(.*)Page]")]
-        public void GivenIHaveNavigatedToTheTCPage(int p0)
+        [Given(@"\[I have maximized the page]")]
+        public void GivenIHaveMaximizedThePage()
         {
-            heroPage = new HerokuPage(_driverHelper.webDriver);
-            _driverHelper.webDriver.Navigate().GoToUrl(homePage.websiteURL);
-
-            //Check that the website is correct
-            Assert.AreEqual(homePage.websiteURL, heroPage.ReturnURL(), "incorrect URL");
+            MaximizeWindow();
         }
 
         [When(@"\[I click to open the calendar]")]
         public void WhenIClickToOpenTheCalendar()
         {
-            throw new PendingStepException();
+            ClickElement(calendarOpener);
         }
 
-        [When(@"\[I enter the day required]")]
-        public void WhenIEnterTheDayRequired()
+        [When(@"\[I enter the date (.*)]")]
+        public void WhenIEnterTheDate(string date)
         {
-            throw new PendingStepException();
+            string day = date.Split(" ")[0], month = date.Split(" ")[1];
+            List<string> months = new List<string>();
+            do
+            {
+                months = GetDisplayedMonths();
+                if (!month.Contains(day)) ClickElement(btnNextMonth);
+            } while (!months.Contains(month));
+            By monthDiv;
+            if (months[0] == month) monthDiv = firstMonthDiv;
+            else monthDiv = lastMonthDiv;
+            WaitUntilElementLocated(monthDiv, 3);
+            IWebElement monthToChooseFrom = driver.FindElement(monthDiv);
+            Wait(2);
+            monthToChooseFrom.FindElement(By.LinkText(day)).Click();
         }
 
-        [Then(@"\[The specific day is selected]")]
-        public void ThenTheSpecificDayIsSelected()
+        [Then(@"\[(.*) is selected]")]
+        public void ThenxIsSelected(string x)
         {
-            throw new PendingStepException();
+            Assert.AreEqual(x, GetAttribute(calendarOpener, "value"));
         }
-
     }
 }
