@@ -1,1 +1,6 @@
-CSharpAutomationFramework/obj/
+.vs/
+[Oo]bj/
+[Bb]in/
+[Rr]eports/
+[Ll]ogs/
+

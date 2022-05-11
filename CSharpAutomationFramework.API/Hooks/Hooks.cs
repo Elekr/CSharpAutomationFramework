@@ -1,14 +1,13 @@
 ﻿using AventStack.ExtentReports;
 using AventStack.ExtentReports.Gherkin.Model;
 using AventStack.ExtentReports.Reporter;
+using CSharpAutomationFramework.API.Config;
 using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using System.Reflection;
 using TechTalk.SpecFlow;
 
 [assembly: Parallelizable(ParallelScope.Fixtures)]
-namespace CSharpAutomationFramework
+namespace CSharpAutomationFramework.API.Hooks
 {
     [Binding]
     class Hook
@@ -21,13 +20,10 @@ namespace CSharpAutomationFramework
 
         private static List<(Status status, string text)> logs = new List<(Status status, string text)>();
 
-        private DriverHelper _driverHelper;
-
         private readonly ScenarioContext _scenarioContext;
 
-        public Hook(DriverHelper driverHelper, ScenarioContext scenarioContext)
+        public Hook(ScenarioContext scenarioContext)
         {
-            _driverHelper = driverHelper;
             _scenarioContext = scenarioContext;
         }
 
@@ -38,7 +34,7 @@ namespace CSharpAutomationFramework
 
 
         [BeforeTestRun]
-        public static void InitializeReport()
+        public static void TestInitialize()
         {
             var htmlReporter = new ExtentHtmlReporter(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Reports\\" + "ExtentReports.html");
             htmlReporter.Config.Theme = AventStack.ExtentReports.Reporter.Configuration.Theme.Dark;
@@ -46,6 +42,8 @@ namespace CSharpAutomationFramework
 
             extent = new ExtentReports();
             extent.AttachReporter(htmlReporter);
+
+            ConfigReader.SetFrameworkSettings();
         }
 
         [AfterTestRun]
@@ -122,10 +120,6 @@ namespace CSharpAutomationFramework
         [BeforeScenario]
         public void Initialize()
         {
-            ChromeOptions options = new ChromeOptions();
-            //options.AddArgument("-headless");
-            _driverHelper.webDriver = new ChromeDriver(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Drivers\\", options);
-           
             //Create dynamic scenario name
             scenario = featureName.CreateNode<Scenario>(_scenarioContext.ScenarioInfo.Title);
         }
@@ -133,15 +127,7 @@ namespace CSharpAutomationFramework
         [AfterScenario]
         public void TearDown()
         {
-            _driverHelper.webDriver.Close();
-            _driverHelper.webDriver.Dispose();
         }
     }
 
-    enum WebDriver
-    {
-        Chrome,
-        Firefox,
-        IE
-    }
 }

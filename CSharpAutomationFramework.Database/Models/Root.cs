@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSharpAutomationFramework.API.Models
+namespace CSharpAutomationFramework.Database.Models
 {
     internal class Root
     {
