@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 using CSharpAutomationFramework.Extensions;
 using TechTalk.SpecFlow.Assist;
+using FluentAssertions;
 
 namespace CSharpAutomationFramework.Database.StepDefinitions
 {
@@ -21,7 +22,6 @@ namespace CSharpAutomationFramework.Database.StepDefinitions
     public class TCRS01_GetRequestsStepDefinitions
     {
         
-
         RestResponse? content;
         dynamic jsonResponse;
 
@@ -59,13 +59,25 @@ namespace CSharpAutomationFramework.Database.StepDefinitions
             Root person = JsonConvert.DeserializeObject<Root>(content.Content);
 
             var specTable = ConnectionStrings.SQLServer.GetData(SQLQueries.GetQuery);
-            var dataFromDb = specTable.CreateInstance<Data>();
+            var dataFromDb = specTable.Rows[0].CreateInstance<Data>();
 
+            //NUnit Assertions
             Assert.AreEqual(dataFromDb.id, person.data.id, "id doesn't match");
             Assert.AreEqual(dataFromDb.email, person.data.email, "email doesn't match");
             Assert.AreEqual(dataFromDb.first_name, person.data.first_name, "first_name doesn't match");
             Assert.AreEqual(dataFromDb.last_name, person.data.last_name, "last_name doesn't match");
             Assert.AreEqual(dataFromDb.avatar, person.data.avatar, "avatar doesn't match");
+
+            //FluentAssertions
+            person.Should().NotBeNull();
+            specTable.Should().NotBeNull();
+            specTable.RowCount.Should().Be(1, "becasue there should be only one record");
+            dataFromDb.id.Should().Be(person.data.id, "");
+            dataFromDb.email.Should().Be(person.data.email, "");
+            dataFromDb.first_name.Should().Be(person.data.first_name, "");
+            dataFromDb.last_name.Should().Be(person.data.last_name, "");
+            dataFromDb.avatar.Should().Be(person.data.avatar, "");
+
 
         }
 
