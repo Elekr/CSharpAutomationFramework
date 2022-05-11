@@ -10,11 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-<<<<<<< HEAD:CSharpAutomationFramework.Selenium/Features/Calculator.feature.cs
-namespace CSharpAutomationFramework.Selenium.Features
-=======
 namespace CSharpAutomationFramework.Selenium
->>>>>>> main:CSharpAutomationFramework/Selenium/TC05_Checkboxes.feature.cs
 {
     using TechTalk.SpecFlow;
     using System;
@@ -24,30 +20,22 @@ namespace CSharpAutomationFramework.Selenium
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Calculator")]
-    public partial class CalculatorFeature
+    [NUnit.Framework.DescriptionAttribute("TC12_Scrolling")]
+    public partial class TC12_ScrollingFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
         
-#line 1 "Calculator.feature"
+#line 1 "TC12_Scrolling.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-<<<<<<< HEAD:CSharpAutomationFramework.Selenium/Features/Calculator.feature.cs
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Calculator", @"![Calculator](https://specflow.org/wp-content/uploads/2020/09/calculator.png)
-Simple calculator for adding **two** numbers
-
-Link to a feature: [Calculator](CSharpAutomationFramework.Selenium/Features/Calculator.feature)
-***Further read***: **[Learn more about how to generate Living Documentation](https://docs.specflow.org/projects/specflow-livingdoc/en/latest/LivingDocGenerator/Generating-Documentation.html)**", ProgrammingLanguage.CSharp, featureTags);
-=======
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Selenium", "TC05_Checkboxes", "This feature goes through interacting with checkboxes with the browser", ProgrammingLanguage.CSharp, featureTags);
->>>>>>> main:CSharpAutomationFramework/Selenium/TC05_Checkboxes.feature.cs
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Selenium", "TC12_Scrolling", "This feature goes through how to scroll using the browser", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -86,15 +74,15 @@ Link to a feature: [Calculator](CSharpAutomationFramework.Selenium/Features/Calc
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add two numbers")]
-        [NUnit.Framework.CategoryAttribute("mytag")]
-        public void AddTwoNumbers()
+        [NUnit.Framework.DescriptionAttribute("[Successfully scroll the page and and scroll down an internal table]")]
+        [NUnit.Framework.CategoryAttribute("Selenium")]
+        public void SuccessfullyScrollThePageAndAndScrollDownAnInternalTable()
         {
             string[] tagsOfScenario = new string[] {
-                    "mytag"};
+                    "Selenium"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add two numbers", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 9
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[Successfully scroll the page and and scroll down an internal table]", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -104,17 +92,19 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 10
- testRunner.Given("the first number is 50", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 7
+<<<<<<< HEAD:CSharpAutomationFramework/Selenium/TC12_Scrolling.feature.cs
+    testRunner.Given("[I have navigated to the \"TC12Page\"]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+=======
+    testRunner.Given("[I send a put request for employee with name \"Employee1\" to update the designatio" +
+                        "n as \"Team Lead\"]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+>>>>>>> d165a4a9d70e890ba9e62d3c2390f0f37ee961fc:CSharpAutomationFramework/cucumber.steps/Features/RestSharp/TCRS03_PutRequests.feature.cs
 #line hidden
-#line 11
- testRunner.And("the second number is 70", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 8
+    testRunner.When("[I scroll the page down a specific amount]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 12
- testRunner.When("the two numbers are added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 13
- testRunner.Then("the result should be 120", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 9
+    testRunner.Then("[The offset of the window has changed by the specific amount]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

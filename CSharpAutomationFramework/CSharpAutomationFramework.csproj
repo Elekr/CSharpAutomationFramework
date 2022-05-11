@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -11,6 +11,19 @@
     <SpecFlowObsoleteCodeBehindFiles Remove="Features\TCRS02_PostRequests.feature.cs" />
     <SpecFlowObsoleteCodeBehindFiles Remove="Features\TCRS03_PutRequests.feature.cs" />
     <SpecFlowObsoleteCodeBehindFiles Remove="Features\TCRS04_DeleteRequests.feature.cs" />
+    <Compile Remove="Support\**" />
+    <EmbeddedResource Remove="Support\**" />
+    <None Remove="Support\**" />
+    <SpecFlowFeatureFiles Remove="Support\**" />
+    <SpecFlowObsoleteCodeBehindFiles Remove="Support\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <SpecFlowFeatureFiles Remove="Selenium\TC18_QTContactPage.feature" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Selenium\TC18_QTContactPage.feature" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +43,21 @@
   <ItemGroup>
     <Folder Include="Drivers\" />
     <Folder Include="Support\" />
+    <PackageReference Include="FluentAssertions" Version="6.6.0" />
+    <PackageReference Include="WebDriverManager" Version="2.12.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\NUnit\" />
+    <Folder Include="Logs\" />
+    <Folder Include="Screenshots\" />
+    <Folder Include="StepDefinitions\NUnit\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
