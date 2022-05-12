@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSharpAutomationFramework.Selenium.Pages
+namespace CSharpAutomationFramework.Pages
 {
     public class QAClickJetPage : WebReusableComponents
     {

@@ -1,12 +1,13 @@
 ﻿using CSharpAutomationFramework.reusable;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSharpAutomationFramework.Selenium.Pages
+namespace CSharpAutomationFramework.Pages
 {
     public class AutomationPracticePage : WebReusableComponents
     {
@@ -16,6 +17,9 @@ namespace CSharpAutomationFramework.Selenium.Pages
         protected By btnAlert = By.Id("alertbtn");
         protected By btnConfirm = By.Id("confirmbtn");
         protected By leftTable = By.Name("courses");
+        protected By rightTable = By.XPath("//div[@class='tableFixHead']/table");
+        protected By hoverTopLink = By.LinkText("Top");
+        protected By hoverButton = By.Id("mousehover");
 
         public By GetRadio(int index)
         {
@@ -36,5 +40,18 @@ namespace CSharpAutomationFramework.Selenium.Pages
         {
             driver.SwitchTo().Alert().Accept();
         }
+
+        public bool HoverTopLinkVisible()
+        {
+            return IsElementVisible(hoverTopLink);
+        }
+
+        public void HoverOverHoverMouseButton()
+        {
+            Actions action = new Actions(driver);
+            action.MoveToElement(GetElement(hoverButton)).Build().Perform();
+        }
+
+
     }
 }

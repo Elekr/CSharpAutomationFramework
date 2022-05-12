@@ -8,7 +8,7 @@ using System.Reflection;
 namespace CSharpAutomationFramework.Selenium
 {
     [Binding]
-    class Hook
+    public class Hook
     {
 
         private static ExtentTest? featureName;
