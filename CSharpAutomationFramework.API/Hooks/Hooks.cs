@@ -1,7 +1,7 @@
 ﻿using AventStack.ExtentReports;
 using AventStack.ExtentReports.Gherkin.Model;
 using AventStack.ExtentReports.Reporter;
-using CSharpAutomationFramework.API.Config;
+using CSharpAutomationFramework.API.Configs;
 using NUnit.Framework;
 using System.Reflection;
 using TechTalk.SpecFlow;
@@ -15,7 +15,7 @@ namespace CSharpAutomationFramework.API.Hooks
 
         private static ExtentTest? featureName;
         private static ExtentTest? scenario;
-        
+
         private static ExtentReports? extent;
 
         private static List<(Status status, string text)> logs = new List<(Status status, string text)>();
@@ -61,7 +61,7 @@ namespace CSharpAutomationFramework.API.Hooks
         [AfterStep]
         public void InsertReportingSteps()
         {
-            var stepType = _scenarioContext.StepContext.StepInfo.StepDefinitionType.ToString(); 
+            var stepType = _scenarioContext.StepContext.StepInfo.StepDefinitionType.ToString();
 
             PropertyInfo pInfo = typeof(ScenarioContext).GetProperty("ScenarioExecutionStatus", BindingFlags.Instance | BindingFlags.Public);
             MethodInfo getter = pInfo.GetGetMethod(nonPublic: true);

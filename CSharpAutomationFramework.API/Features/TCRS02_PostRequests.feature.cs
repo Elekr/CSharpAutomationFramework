@@ -10,11 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-<<<<<<< HEAD:CSharpAutomationFramework.API/Features/TCRS02_PostRequests.feature.cs
 namespace CSharpAutomationFramework.API.Features
-=======
-namespace CSharpAutomationFramework.Selenium
->>>>>>> main:CSharpAutomationFramework/Selenium/TC01_DriverNavigation.feature.cs
 {
     using TechTalk.SpecFlow;
     using System;
@@ -24,26 +20,22 @@ namespace CSharpAutomationFramework.Selenium
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("TC01_DriverNavigation")]
-    public partial class TC01_DriverNavigationFeature
+    [NUnit.Framework.DescriptionAttribute("TCRS02_PostRequests")]
+    public partial class TCRS02_PostRequestsFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
         
-#line 1 "TC01_DriverNavigation.feature"
+#line 1 "TCRS02_PostRequests.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-<<<<<<< HEAD:CSharpAutomationFramework.API/Features/TCRS02_PostRequests.feature.cs
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "TCRS02_PostRequests", "A short summary of the feature", ProgrammingLanguage.CSharp, featureTags);
-=======
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Selenium", "TC01_DriverNavigation", "This feature goes through using the navigation method of Selenium", ProgrammingLanguage.CSharp, featureTags);
->>>>>>> main:CSharpAutomationFramework/Selenium/TC01_DriverNavigation.feature.cs
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -82,16 +74,6 @@ namespace CSharpAutomationFramework.Selenium
         }
         
         [NUnit.Framework.TestAttribute()]
-<<<<<<< HEAD:CSharpAutomationFramework/Selenium/TC01_DriverNavigation.feature.cs
-        [NUnit.Framework.DescriptionAttribute("Moving driver to a website")]
-        [NUnit.Framework.CategoryAttribute("Selenium")]
-        public void MovingDriverToAWebsite()
-        {
-            string[] tagsOfScenario = new string[] {
-                    "Selenium"};
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Moving driver to a website", null, tagsOfScenario, argumentsOfScenario, featureTags);
-=======
         [NUnit.Framework.DescriptionAttribute("[A user creates an entry using a post request]")]
         [NUnit.Framework.CategoryAttribute("RestSharp")]
         [NUnit.Framework.TestCaseAttribute("Employee1", "SoftwareEngineer", null)]
@@ -108,7 +90,6 @@ namespace CSharpAutomationFramework.Selenium
             argumentsOfScenario.Add("Employee_name", employee_Name);
             argumentsOfScenario.Add("Designation", designation);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[A user creates an entry using a post request]", null, tagsOfScenario, argumentsOfScenario, featureTags);
->>>>>>> d165a4a9d70e890ba9e62d3c2390f0f37ee961fc:CSharpAutomationFramework/cucumber.steps/Features/RestSharp/TCRS02_PostRequests.feature.cs
 #line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -120,17 +101,13 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 7
-<<<<<<< HEAD:CSharpAutomationFramework/Selenium/TC01_DriverNavigation.feature.cs
- testRunner.Given("I have a browser driver", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-=======
     testRunner.Given(string.Format("[I create a post request with {0} and {1}]", employee_Name, designation), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
->>>>>>> d165a4a9d70e890ba9e62d3c2390f0f37ee961fc:CSharpAutomationFramework/cucumber.steps/Features/RestSharp/TCRS02_PostRequests.feature.cs
 #line hidden
 #line 8
- testRunner.When("I use the Navigate method", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("[The post request is successful]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
- testRunner.Then("The correct page will be displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("[I am able to validate the entry has been added]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

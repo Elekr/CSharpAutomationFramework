@@ -18,8 +18,8 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
 
         }
 
-        [Given(@"\[I have navigated to the ""([^""]*)""]")]
-        public void GivenIHaveNavigatedToThe(string webpage)
+        [Given(@"\[I have a browser driver]")]
+        public void GivenIHaveABrowserDriver()
         {
             //Assert.IsNotNull(driver);
         }

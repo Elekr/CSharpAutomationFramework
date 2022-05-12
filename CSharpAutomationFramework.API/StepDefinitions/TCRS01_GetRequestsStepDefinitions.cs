@@ -1,23 +1,20 @@
-﻿using CSharpAutomationFramework.API.Config;
+﻿using CSharpAutomationFramework.API.Configs;
 using CSharpAutomationFramework.API.Models;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
 using TechTalk.SpecFlow;
+using CSharpAutomationFramework.Extensions;
+using TechTalk.SpecFlow.Assist;
+using FluentAssertions;
 
 namespace CSharpAutomationFramework.API.StepDefinitions
 {
     [Binding]
     public class TCRS01_GetRequestsStepDefinitions
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
+        
         RestResponse? content;
         dynamic jsonResponse;
 
@@ -47,7 +44,6 @@ namespace CSharpAutomationFramework.API.StepDefinitions
         public void WhenTheRequestIsSuccessful()
         {
             Assert.AreEqual("OK", content.StatusCode.ToString());
-
         }
 
         [Then(@"\[I am able to validate the returned object]")]
@@ -55,18 +51,27 @@ namespace CSharpAutomationFramework.API.StepDefinitions
         {
             Root person = JsonConvert.DeserializeObject<Root>(content.Content);
 
-            (int id, string email, string first_name, string last_name,
-             string avatar) testPerson = (2, "janet.weaver@reqres.in", 
-                                          "Janet", "Weaver", 
-                                          "https://reqres.in/img/faces/2-image.jpg");
+            var specTable = ConnectionStrings.SQLServer.GetData(SQLQueries.GetQuery);
+            var dataFromDb = specTable.Rows[0].CreateInstance<Data>();
 
-            Assert.AreEqual(testPerson.id, person.data.id, "id doesn't match");
-            Assert.AreEqual(testPerson.email, person.data.email, "email doesn't match");
-            Assert.AreEqual(testPerson.first_name, person.data.first_name, "first_name doesn't match");
-            Assert.AreEqual(testPerson.last_name, person.data.last_name, "last_name doesn't match");
-            Assert.AreEqual(testPerson.avatar, person.data.avatar, "avatar doesn't match");
+            //NUnit Assertions
+            Assert.AreEqual(dataFromDb.id, person.data.id, "id doesn't match");
+            Assert.AreEqual(dataFromDb.email, person.data.email, "email doesn't match");
+            Assert.AreEqual(dataFromDb.first_name, person.data.first_name, "first_name doesn't match");
+            Assert.AreEqual(dataFromDb.last_name, person.data.last_name, "last_name doesn't match");
+            Assert.AreEqual(dataFromDb.avatar, person.data.avatar, "avatar doesn't match");
 
-            log.Info(person.data.id);
+            //FluentAssertions
+            person.Should().NotBeNull();
+            specTable.Should().NotBeNull();
+            specTable.RowCount.Should().Be(1, "becasue there should be only one record");
+            dataFromDb.id.Should().Be(person.data.id, "");
+            dataFromDb.email.Should().Be(person.data.email, "");
+            dataFromDb.first_name.Should().Be(person.data.first_name, "");
+            dataFromDb.last_name.Should().Be(person.data.last_name, "");
+            dataFromDb.avatar.Should().Be(person.data.avatar, "");
+
+
         }
 
     }

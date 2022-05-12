@@ -14,11 +14,11 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        HerokuPage heroPage;
+        GooglePage hubPage;
 
         private DriverHelper _driverHelper;
 
-        (string websiteURL, string websiteTitle) homePage = ("https://the-internet.herokuapp.com/", "The Internet");
+        (string websiteURL, string websiteTitle) homePage = ("https://www.google.com/", "Google");
 
         public TC15_ImplicitWaitStepDefinitions(DriverHelper driverHelper)
         {
@@ -29,11 +29,7 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
         [Given(@"\[I have supplied the correct setup to add an implicit wait]")]
         public void GivenIHaveSuppliedTheCorrectSetupToAddAnImplicitWait()
         {
-            heroPage = new HerokuPage(_driverHelper.webDriver);
-            _driverHelper.webDriver.Navigate().GoToUrl(homePage.websiteURL);
-
-            //Check that the website is correct
-            Assert.AreEqual(homePage.websiteURL, heroPage.ReturnURL(), "incorrect URL");
+            throw new PendingStepException();
         }
 
         [When(@"\[I navigate to the ""([^""]*)""]")]

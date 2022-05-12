@@ -1,13 +1,10 @@
 ﻿using AventStack.ExtentReports;
 using AventStack.ExtentReports.Gherkin.Model;
 using AventStack.ExtentReports.Reporter;
-using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System.Reflection;
-using TechTalk.SpecFlow;
 
-[assembly: Parallelizable(ParallelScope.Fixtures)]
 namespace CSharpAutomationFramework
 {
     [Binding]
@@ -23,12 +20,9 @@ namespace CSharpAutomationFramework
 
         private DriverHelper _driverHelper;
 
-        private readonly ScenarioContext _scenarioContext;
-
-        public Hook(DriverHelper driverHelper, ScenarioContext scenarioContext)
+        public Hook(DriverHelper driverHelper)
         {
             _driverHelper = driverHelper;
-            _scenarioContext = scenarioContext;
         }
 
         public static void Log(Status status, string text)
@@ -61,48 +55,47 @@ namespace CSharpAutomationFramework
         }
 
         [AfterStep]
-        public void InsertReportingSteps()
+        public void InsertReportingSteps(ScenarioContext sc)
         {
-            var stepType = _scenarioContext.StepContext.StepInfo.StepDefinitionType.ToString(); 
-
+            var stepType = ScenarioStepContext.Current.StepInfo.StepDefinitionType.ToString();
             PropertyInfo pInfo = typeof(ScenarioContext).GetProperty("ScenarioExecutionStatus", BindingFlags.Instance | BindingFlags.Public);
             MethodInfo getter = pInfo.GetGetMethod(nonPublic: true);
-            object TestResult = getter.Invoke(_scenarioContext, null);
+            object TestResult = getter.Invoke(sc, null);
             ExtentTest? step = null;
-            if (_scenarioContext.TestError == null)
+            if (sc.TestError == null)
             {
                 if (stepType == "Given")
-                    step = scenario.CreateNode<Given>(_scenarioContext.StepContext.StepInfo.Text);
+                    step = scenario.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text);
                 else if (stepType == "When")
-                    step = scenario.CreateNode<When>(_scenarioContext.StepContext.StepInfo.Text);
+                    step = scenario.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text);
                 else if (stepType == "Then")
-                    step = scenario.CreateNode<Then>(_scenarioContext.StepContext.StepInfo.Text);
+                    step = scenario.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text);
                 else if (stepType == "And")
-                    step = scenario.CreateNode<And>(_scenarioContext.StepContext.StepInfo.Text);
+                    step = scenario.CreateNode<And>(ScenarioStepContext.Current.StepInfo.Text);
             }
-            if (_scenarioContext.TestError != null)
+            if (sc.TestError != null)
             {
                 // https://www.extentreports.com/docs/versions/4/net/index.html
                 // MediaEntityBuilder.CreateScreenCaptureFromPath("screenshot.png").Build()); used to take the screenshots when the tests fail
                 if (stepType == "Given")
-                    step = scenario.CreateNode<Given>(_scenarioContext.StepContext.StepInfo.Text).Fail(_scenarioContext.TestError.Message, MediaEntityBuilder.CreateScreenCaptureFromPath("C:\\Users\\thomas.crosby\\Documents\\Projects\\C#\\CSharpAutomationFramework\\CSharpAutomationFramework\\Screenshots\\", "screenshot.png").Build());
+                    step = scenario.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text).Fail(sc.TestError.Message, MediaEntityBuilder.CreateScreenCaptureFromPath("C:\\Users\\thomas.crosby\\Documents\\Projects\\C#\\CSharpAutomationFramework\\CSharpAutomationFramework\\Screenshots\\", "screenshot.png").Build());
                 if (stepType == "When")
-                    step = scenario.CreateNode<When>(_scenarioContext.StepContext.StepInfo.Text).Fail(_scenarioContext.TestError.Message, MediaEntityBuilder.CreateScreenCaptureFromPath("screenshot.png").Build());
+                    step = scenario.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text).Fail(sc.TestError.Message, MediaEntityBuilder.CreateScreenCaptureFromPath("screenshot.png").Build());
                 if (stepType == "Then")
-                    step = scenario.CreateNode<Then>(_scenarioContext.StepContext.StepInfo.Text).Fail(_scenarioContext.TestError.Message, MediaEntityBuilder.CreateScreenCaptureFromPath("screenshot.png").Build());
+                    step = scenario.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text).Fail(sc.TestError.Message, MediaEntityBuilder.CreateScreenCaptureFromPath("screenshot.png").Build());
                 if (stepType == "And")
-                    step = scenario.CreateNode<And>(_scenarioContext.StepContext.StepInfo.Text).Fail(_scenarioContext.TestError.Message, MediaEntityBuilder.CreateScreenCaptureFromPath("screenshot.png").Build());
+                    step = scenario.CreateNode<And>(ScenarioStepContext.Current.StepInfo.Text).Fail(sc.TestError.Message, MediaEntityBuilder.CreateScreenCaptureFromPath("screenshot.png").Build());
             }
 
             //Pending Status
             if (TestResult.ToString() == "StepDefinitionPending")
             {
                 if (stepType == "Given")
-                    step = scenario.CreateNode<Given>(_scenarioContext.StepContext.StepInfo.Text).Skip("Step Definition Pending", MediaEntityBuilder.CreateScreenCaptureFromPath("C:\\Users\\thomas.crosby\\Documents\\Projects\\C#\\CSharpAutomationFramework\\CSharpAutomationFramework\\Screenshots\\", "screenshot.png").Build());
+                    step = scenario.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text).Skip("Step Definition Pending", MediaEntityBuilder.CreateScreenCaptureFromPath("C:\\Users\\thomas.crosby\\Documents\\Projects\\C#\\CSharpAutomationFramework\\CSharpAutomationFramework\\Screenshots\\", "screenshot.png").Build());
                 else if (stepType == "When")
-                    step = scenario.CreateNode<When>(_scenarioContext.StepContext.StepInfo.Text).Skip("Step Definition Pending");
+                    step = scenario.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text).Skip("Step Definition Pending");
                 else if (stepType == "Then")
-                    step = scenario.CreateNode<Then>(_scenarioContext.StepContext.StepInfo.Text).Skip("Step Definition Pending");
+                    step = scenario.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text).Skip("Step Definition Pending");
 
             }
 
@@ -127,7 +120,7 @@ namespace CSharpAutomationFramework
             _driverHelper.webDriver = new ChromeDriver(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Drivers\\", options);
            
             //Create dynamic scenario name
-            scenario = featureName.CreateNode<Scenario>(_scenarioContext.ScenarioInfo.Title);
+            scenario = featureName.CreateNode<Scenario>(ScenarioContext.Current.ScenarioInfo.Title);
         }
 
         [AfterScenario]

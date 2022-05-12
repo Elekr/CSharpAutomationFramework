@@ -10,6 +10,6 @@
     "DeleteRequest": "/api/users/2"
   },
   "SQLQueries": {
-    "GetQuery": "Select * from dbo.Employee where Id=2"
+    "GetQuery":  "Select * from dbo.Employee where Id=2"
   }
 }
