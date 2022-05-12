@@ -3,11 +3,13 @@
 This feature goes through how to navigate tabs using the browser
 
 @Selenium
-Scenario: [Grab text from two different tabs and add it to form in another tab]
-    Given [I have navigated to a form]
-    And [I have opened two extra tabs]
-    And [I have navigated to two separate pages on the other tabs]
-    When [I grab the text from the second tab]
-    Then [I am able to insert it into the first name input in the first tab]
-    When [I grab the text from the third tab]
-    Then [I am able to insert it into the last name input in the first tab]
+Scenario: [Grab text from a new tab]
+	Given [I have navigated to the TC17 page]
+	And [The username textbox is empty]
+	When [I open a new tab]
+	And [I navigate to tab 1]
+	And [I navigate the new tab to the Rahul Shetty Academy login page]
+	And [I grab the tagline]
+	And [I navigate to tab 0]
+	And [I enter the tagline into the textbox]
+	Then [The username textbox should contain the text An Academy to Learn Earn & Shine in your QA Career]

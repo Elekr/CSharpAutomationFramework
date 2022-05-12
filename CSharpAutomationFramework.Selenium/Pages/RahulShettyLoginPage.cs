@@ -16,8 +16,14 @@ namespace CSharpAutomationFramework.Pages
         protected By btnVisitUs = By.Id("visitUsTwo");
         protected By btnSubmit = By.CssSelector("button.submit");
         protected By msgIncorrectCreds = By.CssSelector("p.error");
+        protected By paraTagline = By.XPath("//div[@class='overlay-panel overlay-right']/p");
         public RahulShettyLoginPage(IWebDriver driver) : base(driver, ("https://rahulshettyacademy.com/locatorspractice/", "Rahul Shetty Academy - Login page"))
         {
+        }
+
+        public string GetTagline()
+        {
+            return GetTextFromElement(paraTagline);
         }
     }
 }

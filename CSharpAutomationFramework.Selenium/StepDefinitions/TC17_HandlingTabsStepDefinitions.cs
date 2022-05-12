@@ -1,72 +1,65 @@
-﻿using CSharpAutomationFramework.Pages;
+using CSharpAutomationFramework.Pages;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TechTalk.SpecFlow;
 
-namespace CSharpAutomationFramework.StepDefinitions.Selenium
+namespace CSharpAutomationFramework.Selenium.StepDefinitions
 {
-    [TestFixture]
     [Binding]
-    public class TC17_HandlingTabsStepDefinitions
+    public class TC17_HandlingTabsStepDefinitions : PracticePage
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        public TC17_HandlingTabsStepDefinitions(DriverHelper driverHelper) : base(driverHelper.webDriver) { }
 
-        GooglePage hubPage;
-
-        private DriverHelper _driverHelper;
-
-        (string websiteURL, string websiteTitle) homePage = ("https://www.google.com/", "Google");
-
-        public TC17_HandlingTabsStepDefinitions(DriverHelper driverHelper)
+        [Given(@"\[I have navigated to the TC17 page]")]
+        public void GivenIHaveNavigatedToTheTCPage()
         {
-            _driverHelper = driverHelper;
-
+            NavigateHome();
         }
 
-        [Given(@"\[I have navigated to a form]")]
-        public void GivenIHaveNavigatedToAForm()
+        [Given(@"\[The username textbox is empty]")]
+        public void GivenTheUsernameTextboxIsEmpty()
         {
-            throw new PendingStepException();
+            Assert.AreEqual("", GetAttribute(textInput, "value"));
         }
 
-        [Given(@"\[I have opened two extra tabs]")]
-        public void GivenIHaveOpenedTwoExtraTabs()
+        [When(@"\[I open a new tab]")]
+        public void WhenIOpenANewTab()
         {
-            throw new PendingStepException();
+            OpenNewTab();
         }
 
-        [Given(@"\[I have navigated to two separate pages on the other tabs]")]
-        public void GivenIHaveNavigatedToTwoSeparatePagesOnTheOtherTabs()
+        RahulShettyLoginPage loginPage;
+
+        [When(@"\[I navigate the new tab to the Rahul Shetty Academy login page]")]
+        public void WhenINavigateTheNewTabToTheRahulShettyAcademyLoginPage()
         {
-            throw new PendingStepException();
+            loginPage = new RahulShettyLoginPage(driver);
+            loginPage.NavigateHome();
         }
 
-        [When(@"\[I grab the text from the second tab]")]
-        public void WhenIGrabTheTextFromTheSecondTab()
+        string tagline;
+        [When(@"\[I grab the tagline]")]
+        public void WhenIGrabTheTagline()
         {
-            throw new PendingStepException();
+            tagline = loginPage.GetTagline();
         }
 
-        [Then(@"\[I am able to insert it into the first name input in the first tab]")]
-        public void ThenIAmAbleToInsertItIntoTheFirstNameInputInTheFirstTab()
+        [When(@"\[I navigate to tab (.*)]")]
+        public void WhenINavigateBackToTab(int p0)
         {
-            throw new PendingStepException();
+            SwitchToWindowIndex(p0);
         }
 
-        [When(@"\[I grab the text from the third tab]")]
-        public void WhenIGrabTheTextFromTheThirdTab()
+        [When(@"\[I enter the tagline into the textbox]")]
+        public void WhenIEnterTheTaglineIntoTheTextbox()
         {
-            throw new PendingStepException();
+            EnterText(textInput, tagline);
         }
 
-        [Then(@"\[I am able to insert it into the last name input in the first tab]")]
-        public void ThenIAmAbleToInsertItIntoTheLastNameInputInTheFirstTab()
+        [Then(@"\[The username textbox should contain the text (.*)]")]
+        public void ThenTheTextboxShouldContainTheText(string expectedText)
         {
-            throw new PendingStepException();
+            Assert.AreEqual(expectedText, GetAttribute(textInput, "value"));
         }
-
     }
 }
