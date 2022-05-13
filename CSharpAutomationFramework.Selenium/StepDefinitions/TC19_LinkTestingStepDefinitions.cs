@@ -1,13 +1,11 @@
-using CSharpAutomationFramework.Pages;
+using CSharpAutomationFramework.Selenium.Pages;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using System;
-using TechTalk.SpecFlow;
 
 namespace CSharpAutomationFramework.Selenium.StepDefinitions
 {
     [Binding]
-    public class TC19_LinkTestingStepDefinitions : HerokuPage
+    public class TC19_LinkTestingStepDefinitions : LinksPage
     {
         public TC19_LinkTestingStepDefinitions(DriverHelper driverHelper) : base(driverHelper.webDriver) { }
 
@@ -19,13 +17,33 @@ namespace CSharpAutomationFramework.Selenium.StepDefinitions
 
 
         bool working = true;
-        [When(@"\[I test all links]")]
-        public void WhenITestAllLinks()
+        List<IWebElement> links;
+        [When(@"\[I get all the links]")]
+        public void WhenIGettAllLinks()
         {
-            List<IWebElement> links = GetWebElementList(By.TagName("a"));
+            links = GetWebElementList(By.TagName("a"));
+
+        }
+
+        [When(@"\[I discard the disabled links]")]
+        public void WhenIDiscardAllDisabledLinks()
+        {
             foreach(IWebElement link in links)
             {
+                if(!link.Enabled)
+                {
+                    links.Remove(link);
+                }
+            }
+        }
+
+        [When(@"\[I test the remaining links]")]
+        public void WhenITestRemainingLinks()
+        {
+            foreach (IWebElement link in links)
+            {
                 string url = link.GetAttribute("href");
+                if (!url.Contains("http")) url = homePage.websiteURL + url;
                 working = working && IsSiteWorking(url);
             }
         }
