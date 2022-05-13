@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,6 +12,9 @@ namespace CSharpAutomationFramework.reusable
     
     public abstract class GenericReusableComponents
     {
+        protected Hook hook;
+
+        public abstract void Log(AventStack.ExtentReports.Status status, string messsage);
 
         /// <summary>
         ///     Function to generate Locator
@@ -50,6 +54,33 @@ namespace CSharpAutomationFramework.reusable
             while(DateTimeOffset.Now.ToUnixTimeMilliseconds() < endTime)
             {
             }
+        }
+
+        /// <summary>
+        ///     Function to test whether a site is working
+        /// </summary>
+        /// <param name="url">url to test</param>
+        public bool IsSiteWorking(string url)
+        {
+            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(url);
+            request.AllowAutoRedirect = true;
+            try
+            {
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    Log(AventStack.ExtentReports.Status.Pass, url + " is working");
+                    return true;
+                }
+                Log(AventStack.ExtentReports.Status.Warning, url + " is not working");
+                return false;
+            }
+            catch(Exception e)
+            {
+                Log(AventStack.ExtentReports.Status.Warning, url + " is not working: " +e.Message);
+                return false;
+            }
+
         }
     }
 }

@@ -25,7 +25,7 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
         public void GivenIHaveSetAnimplicitWait()
         {
             SetImplicitWait(10);
-            Hook.Log(AventStack.ExtentReports.Status.Debug, driver.Manage().Timeouts().ImplicitWait.ToString());
+            Log(AventStack.ExtentReports.Status.Debug, driver.Manage().Timeouts().ImplicitWait.ToString());
             
         }
 
