@@ -1,3 +1,4 @@
+using CSharpAutomationFramework.Pages;
 using CSharpAutomationFramework.Selenium.Pages;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -9,12 +10,17 @@ namespace CSharpAutomationFramework.Selenium.StepDefinitions
     {
         public TC19_LinkTestingStepDefinitions(DriverHelper driverHelper) : base(driverHelper.webDriver) { }
 
-        [Given(@"\[We have navigated to the TC19 page]")]
+        [Given(@"\[We have navigated to the TC19A page]")]
         public void GivenWeHaveNavigatedToTheTC19Page()
         {
             NavigateHome();
         }
 
+        [Given(@"\[We have navigated to the TC19B page]")]
+        public void GivenWeHaveNavigatedToTheTC19BPage()
+        {
+            driver.Navigate().GoToUrl("https://rahulshettyacademy.com/AutomationPractice/");
+        }
 
         bool working = true;
         List<IWebElement> links;
@@ -22,15 +28,15 @@ namespace CSharpAutomationFramework.Selenium.StepDefinitions
         public void WhenIGettAllLinks()
         {
             links = GetWebElementList(By.TagName("a"));
-
+            Console.WriteLine("test");
         }
 
         [When(@"\[I discard the disabled links]")]
         public void WhenIDiscardAllDisabledLinks()
         {
-            foreach(IWebElement link in links)
+            foreach (IWebElement link in links)
             {
-                if(!link.Enabled)
+                if (!link.Enabled)
                 {
                     links.Remove(link);
                 }
@@ -53,5 +59,12 @@ namespace CSharpAutomationFramework.Selenium.StepDefinitions
         {
             Assert.IsTrue(working);
         }
+
+        [Then(@"\[They should not all be working]")]
+        public void ThenTheyShouldNoAllBeWorking()
+        {
+            Assert.IsFalse(working);
+        }
+
     }
 }

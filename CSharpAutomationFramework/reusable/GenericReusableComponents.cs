@@ -69,15 +69,15 @@ namespace CSharpAutomationFramework.reusable
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
-                    Log(AventStack.ExtentReports.Status.Pass, url + " is working");
+                    Log(AventStack.ExtentReports.Status.Pass, String.Format("{0} {1} ({2})", url, ((int)response.StatusCode), response.StatusCode));
                     return true;
                 }
-                Log(AventStack.ExtentReports.Status.Warning, url + " is not working");
+                Log(AventStack.ExtentReports.Status.Warning, String.Format("{0} {1} ({2})", url, ((int)response.StatusCode), response.StatusCode));
                 return false;
             }
-            catch(Exception e)
+            catch(WebException WebEx)
             {
-                Log(AventStack.ExtentReports.Status.Warning, url + " is not working: " +e.Message);
+                Log(AventStack.ExtentReports.Status.Warning, String.Format("{0} {1} ({2})", url, ((int)WebEx.Status), WebEx.Status));
                 return false;
             }
 
