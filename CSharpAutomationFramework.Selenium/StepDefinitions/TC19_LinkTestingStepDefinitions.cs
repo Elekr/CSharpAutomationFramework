@@ -22,7 +22,7 @@ namespace CSharpAutomationFramework.Selenium.StepDefinitions
             driver.Navigate().GoToUrl("https://rahulshettyacademy.com/AutomationPractice/");
         }
 
-        bool working = true;
+        int broken = 0; // Using a bool causes  WhenITestRemainingLinks() to stop looking when it finds a broken one
         List<IWebElement> links;
         [When(@"\[I get all the links]")]
         public void WhenIGettAllLinks()
@@ -50,20 +50,20 @@ namespace CSharpAutomationFramework.Selenium.StepDefinitions
             {
                 string url = link.GetAttribute("href");
                 if (!url.Contains("http")) url = homePage.websiteURL + url;
-                working = working && IsSiteWorking(url);
+                if(!IsSiteWorking(url)) broken++;
             }
         }
 
         [Then(@"\[They should all be working]")]
         public void ThenAllLinksWorking()
         {
-            Assert.IsTrue(working);
+            Assert.AreEqual(0, broken);
         }
 
         [Then(@"\[They should not all be working]")]
         public void ThenTheyShouldNoAllBeWorking()
         {
-            Assert.IsFalse(working);
+            Assert.IsTrue(broken > 0);
         }
 
     }
