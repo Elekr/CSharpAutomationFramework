@@ -1,17 +1,18 @@
-﻿Feature: TC19_QTContactPage
+﻿Feature: TC18_QTContactPage
 
 User launches Qualitest site and explores
 
-Scenario: [The user launches Qualitest site]
-    Given [the user loads Qualitest official site]
-    Then  [the user is able to access the Qualitest site]
-    And   [the title of the page is The World’s Leading AI-Led Quality Engineering Company | Qualitest]
+Scenario: [Launch the Qualitest Official Site]
+    When [I load the Qualitest site homepage]
+    Then [The current page title is The World’s Leading AI-Led Quality Engineering Company | Qualitest]
+    And [The current url is https://qualitestgroup.com/]
 
-Scenario: [The user opens contact us page]
-    Given [the user is on Qualitest site]
-    When  [the user clicks on Contact us button]
-    Then  [the user is able to access the Qualitest Contact us web page]
-    And   [the page contains a form for the user]
+Scenario: [Get to the Contact Us page by clicking the button]
+    Given [I am on the Qualitest site homepage]
+    And [I maximize the page]
+    When  [I click the Contact us button]
+    Then  [The current page title is Contact Us – Independent Software Testing Company | Quality Assurance Services | Qualitest]
+    And   [The page contains the contact form]
 
 Scenario: [The user fills up Contact Us form]
     Given [the user is on contact us page]
