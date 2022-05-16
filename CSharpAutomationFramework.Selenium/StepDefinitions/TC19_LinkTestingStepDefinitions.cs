@@ -8,7 +8,12 @@ namespace CSharpAutomationFramework.Selenium.StepDefinitions
     [Binding]
     public class TC19_LinkTestingStepDefinitions : LinksPage
     {
-        public TC19_LinkTestingStepDefinitions(DriverHelper driverHelper) : base(driverHelper.webDriver) { }
+
+        string currentPage;
+        public TC19_LinkTestingStepDefinitions(DriverHelper driverHelper) : base(driverHelper.webDriver) 
+        {
+            currentPage = homePage.websiteURL;
+        }
 
         [Given(@"\[We have navigated to the TC19A page]")]
         public void GivenWeHaveNavigatedToTheTC19Page()
@@ -20,6 +25,7 @@ namespace CSharpAutomationFramework.Selenium.StepDefinitions
         public void GivenWeHaveNavigatedToTheTC19BPage()
         {
             driver.Navigate().GoToUrl("https://rahulshettyacademy.com/AutomationPractice/");
+            currentPage = "https://rahulshettyacademy.com/AutomationPractice/";
         }
 
         int broken = 0; // Using a bool causes  WhenITestRemainingLinks() to stop looking when it finds a broken one
@@ -49,7 +55,7 @@ namespace CSharpAutomationFramework.Selenium.StepDefinitions
             foreach (IWebElement link in links)
             {
                 string url = link.GetAttribute("href");
-                if (!url.Contains("http")) url = homePage.websiteURL + url;
+                if (!url.Contains("http")) url = currentPage + url;
                 if(!IsSiteWorking(url)) broken++;
             }
         }
