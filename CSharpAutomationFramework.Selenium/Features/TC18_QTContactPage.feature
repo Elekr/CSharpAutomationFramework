@@ -13,7 +13,7 @@ Scenario: [The user opens contact us page]
     Then  [the user is able to access the Qualitest Contact us web page]
     And   [the page contains a form for the user]
 
-Scenario: [The user fills up Contact Us form
+Scenario: [The user fills up Contact Us form]
     Given [the user is on contact us page]
     When  [the user enters first name]
     And   [the user enters last name]
