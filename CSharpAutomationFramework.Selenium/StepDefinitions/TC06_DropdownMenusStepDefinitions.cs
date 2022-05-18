@@ -80,7 +80,7 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
         [When(@"\[I click the option (.*)]")]
         public void WhenIClick(string optionToClick)
         {
-            var links = GetWebElementList(By.XPath("//a"));
+            var links = GetWebElementList(By.TagName("a"));
             foreach(var link in links)
             {
                 if(link.Text.Contains(optionToClick))
