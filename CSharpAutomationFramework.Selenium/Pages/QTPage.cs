@@ -14,6 +14,9 @@ namespace CSharpAutomationFramework.Selenium.Pages
 
         protected readonly By btnContactUs = By.XPath("//a[@href='/contact-us/']");
         protected readonly By frmContact = By.XPath("//form[@class='hs-form stacked hs-form-private hsForm_34dd68e0-b077-4e95-9243-b861f3f2fd7d hs-form-34dd68e0-b077-4e95-9243-b861f3f2fd7d hs-form-34dd68e0-b077-4e95-9243-b861f3f2fd7d_68161d33-37f9-41f6-b593-f338f4c5cdb2']");
+       
+        
+        
         protected By txtFirstname { get { AssertContactUs(); return By.Name("firstname"); } }
         protected By txtLastname { get { AssertContactUs(); return By.Name("lastname"); } }
         protected By txtCompany { get { AssertContactUs(); return By.Name("company"); } }
@@ -34,7 +37,11 @@ namespace CSharpAutomationFramework.Selenium.Pages
 
         private void AssertContactUs()
         {
-            Assert.AreEqual(urlContactUs, driver.Url, "This field is on the present on the contact us page. Navigate there to use it.");
+            if(!urlContactUs.Equals(driver.Url))
+            {
+                throw new Exception("This field is on the present on the contact us page. Navigate there to use it.");
+            }
+
         }
 
 
