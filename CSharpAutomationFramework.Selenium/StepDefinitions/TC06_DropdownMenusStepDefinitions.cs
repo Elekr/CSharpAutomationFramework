@@ -27,13 +27,13 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
         [Given(@"\[The webpage contains the currency static dropdown]")]
         public void GivenTheWebpageContainsTheCurrencyStaticDropdown()
         {
-            Assert.IsTrue(CanLocateElement(currencyDropdown));
+            Assert.IsTrue(CanLocateElement(currencyDropdown), "We should be able to locate the curency static dropdown");
         }
 
         [Given(@"\[The webpage contains the from input]")]
         public void GivenTheWebpageContainsTheFromInput()
         {
-            Assert.IsTrue(CanLocateElement(fromDropdown));
+            Assert.IsTrue(CanLocateElement(fromDropdown), "We should be able to locate the from input field");
         }
 
 
@@ -50,7 +50,7 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
         [Then(@"\[The dropdown now has (.*) selected]")]
         public void GivenTheDropdownHasxSelected(string expectedSelected )
         {
-            Assert.AreEqual(expectedSelected, GetSelectSelected(currencyDropdown) );
+            Assert.AreEqual(expectedSelected, GetSelectSelected(currencyDropdown), expectedSelected+" should be selected" );
         }
 
         [Given(@"\[We have maximized the window]")]
@@ -68,7 +68,7 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
         [When(@"\[I click onto the fromDropdown]")]
         public void WhenIClickOntoTheFromDropdown()
         {
-            GetElement(fromDropdown).Click();
+            ClickElement(fromDropdown);
         }
 
         [When(@"\[I enter the query string (.*)]")]
