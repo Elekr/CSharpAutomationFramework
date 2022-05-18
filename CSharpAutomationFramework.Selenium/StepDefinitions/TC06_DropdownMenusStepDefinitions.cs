@@ -67,7 +67,7 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
         [When(@"\[I click onto the fromDropdown]")]
         public void WhenIClickOntoTheFromDropdown()
         {
-            driver.FindElement(fromDropdown).Click();
+            GetElement(fromDropdown).Click();
         }
 
         [When(@"\[I enter the query string (.*)]")]
