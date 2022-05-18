@@ -47,9 +47,10 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
 
 
         [Given(@"\[The dropdown currently has (.*) selected]")]
-        public void GivenTheDropdownHasxSelected(string x)
+        [Then(@"\[The dropdown now has (.*) selected]")]
+        public void GivenTheDropdownHasxSelected(string expectedSelected )
         {
-            AssertSelected(x);
+            Assert.AreEqual(GetSelectSelected(currencyDropdown), expectedSelected);
         }
 
         [Given(@"\[We have maximized the window]")]
@@ -89,11 +90,6 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
             }
         }
 
-        [Then(@"\[The dropdown now has (.*) selected]")]
-        public void ThenTheDropdownHasxSelected(string x)
-        {
-            AssertSelected(x);
-        }
 
         [Then(@"\[The input now contains (.*)]")]
         public void ThenTheInputNowContains(string contained)
@@ -101,9 +97,5 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
             Assert.AreEqual(contained, GetAttribute(fromDropdown, "value"));
         }
 
-        private void AssertSelected(string expectedSelected)
-        {
-            Assert.AreEqual(GetSelectSelected(currencyDropdown), expectedSelected);
-        }
     }
 }

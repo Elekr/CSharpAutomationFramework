@@ -142,12 +142,12 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("[The user fills up Contact Us form]")]
-        public void TheUserFillsUpContactUsForm()
+        [NUnit.Framework.DescriptionAttribute("[Filling out the Contact Us form]")]
+        public void FillingOutTheContactUsForm()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[The user fills up Contact Us form]", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[Filling out the Contact Us form]", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 17
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -174,7 +174,7 @@ this.ScenarioInitialize(scenarioInfo);
     testRunner.And("[I select that I want to talk about Media]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 23
-    testRunner.And("[I enter the email fakeemail@fakedomain.fake]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And("[I enter the email fakeemail@fakedomain.com]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 24
     testRunner.And("[I enter the phone number 01253 123456]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
