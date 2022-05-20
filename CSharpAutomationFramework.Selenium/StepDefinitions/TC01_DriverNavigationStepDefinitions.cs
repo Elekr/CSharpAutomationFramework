@@ -21,7 +21,8 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
         [Given(@"\[I have a browser driver]")]
         public void GivenIHaveABrowserDriver()
         {
-            //Assert.IsNotNull(driver);
+            Assert.IsNotNull(driver);
+            Log(AventStack.ExtentReports.Status.Pass, "We have a browser driver");
         }
 
         [Given(@"\[This page object has the url (.*)]")]

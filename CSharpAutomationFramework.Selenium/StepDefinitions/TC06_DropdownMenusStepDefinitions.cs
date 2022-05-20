@@ -27,29 +27,30 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
         [Given(@"\[The webpage contains the currency static dropdown]")]
         public void GivenTheWebpageContainsTheCurrencyStaticDropdown()
         {
-            Assert.IsTrue(CanLocateElement(currencyDropdown));
+            Assert.IsTrue(CanLocateElement(currencyDropdown), "We should be able to locate the curency static dropdown");
         }
 
         [Given(@"\[The webpage contains the from input]")]
         public void GivenTheWebpageContainsTheFromInput()
         {
-            Assert.IsTrue(CanLocateElement(fromDropdown));
+            Assert.IsTrue(CanLocateElement(fromDropdown), "We should be able to locate the from input field");
         }
 
 
         [Given(@"\[The dropdown contains the option (.*)]")]
-        public void GivenTheDropdownContains(string s)
+        public void GivenTheDropdownContains(string option)
         {
             var options = GetSelectOptions(currencyDropdown);
-            Assert.IsTrue(options.Contains(s), "The dropdown should contain "+s);
+            Assert.IsTrue(options.Contains(option), "The dropdown should contain "+option);
 
         }
 
 
         [Given(@"\[The dropdown currently has (.*) selected]")]
-        public void GivenTheDropdownHasxSelected(string x)
+        [Then(@"\[The dropdown now has (.*) selected]")]
+        public void GivenTheDropdownHasxSelected(string expectedSelected )
         {
-            AssertSelected(x);
+            Assert.AreEqual(expectedSelected, GetSelectSelected(currencyDropdown), expectedSelected+" should be selected" );
         }
 
         [Given(@"\[We have maximized the window]")]
@@ -67,7 +68,7 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
         [When(@"\[I click onto the fromDropdown]")]
         public void WhenIClickOntoTheFromDropdown()
         {
-            driver.FindElement(fromDropdown).Click();
+            ClickElement(fromDropdown);
         }
 
         [When(@"\[I enter the query string (.*)]")]
@@ -79,7 +80,7 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
         [When(@"\[I click the option (.*)]")]
         public void WhenIClick(string optionToClick)
         {
-            var links = GetWebElementList(By.XPath("//a"));
+            var links = GetWebElementList(By.TagName("a"));
             foreach(var link in links)
             {
                 if(link.Text.Contains(optionToClick))
@@ -89,11 +90,6 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
             }
         }
 
-        [Then(@"\[The dropdown now has (.*) selected]")]
-        public void ThenTheDropdownHasxSelected(string x)
-        {
-            AssertSelected(x);
-        }
 
         [Then(@"\[The input now contains (.*)]")]
         public void ThenTheInputNowContains(string contained)
@@ -101,9 +97,5 @@ namespace CSharpAutomationFramework.StepDefinitions.Selenium
             Assert.AreEqual(contained, GetAttribute(fromDropdown, "value"));
         }
 
-        private void AssertSelected(string expectedSelected)
-        {
-            Assert.AreEqual(GetSelectSelected(currencyDropdown), expectedSelected);
-        }
     }
 }

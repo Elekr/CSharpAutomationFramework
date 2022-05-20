@@ -1,4 +1,5 @@
 ﻿using CSharpAutomationFramework.reusable;
+using CSharpAutomationFramework.Selenium;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using System;
@@ -12,7 +13,9 @@ namespace CSharpAutomationFramework.Pages
     public class AutomationPracticePage : WebReusableComponents
     {
         public AutomationPracticePage(IWebDriver driver) : base(driver, ("https://rahulshettyacademy.com/AutomationPractice/", "Practice Page"))
-        { }
+        {
+            
+        }
 
         protected By btnAlert = By.Id("alertbtn");
         protected By btnConfirm = By.Id("confirmbtn");

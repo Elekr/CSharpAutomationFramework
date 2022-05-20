@@ -8,7 +8,7 @@ using System.Reflection;
 namespace CSharpAutomationFramework
 {
     [Binding]
-    class Hook
+    public class Hook
     {
 
         private static ExtentTest? featureName;
@@ -28,6 +28,7 @@ namespace CSharpAutomationFramework
         public static void Log(Status status, string text)
         {
             logs.Add((status, text));
+            Console.WriteLine(">>" + text);
         }
 
 

@@ -1,8 +1,9 @@
-﻿using OpenQA.Selenium;
+﻿using CSharpAutomationFramework.reusable;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 
-namespace CSharpAutomationFramework.reusable
+namespace CSharpAutomationFramework.Selenium
 {
 
     public partial class WebReusableComponents : GenericReusableComponents
@@ -14,6 +15,11 @@ namespace CSharpAutomationFramework.reusable
         {
             this.driver = driver;
             this.homePage = homePage;
+        }
+
+        public override void Log(AventStack.ExtentReports.Status status, string message)
+        {
+            Hook.Log(status, message);
         }
 
         /// <summary>
@@ -116,7 +122,7 @@ namespace CSharpAutomationFramework.reusable
 
             WaitUntilElementVisible(by, 3);
             driver.FindElement(by).Click();
-            Hook.Log(AventStack.ExtentReports.Status.Pass, "Element clicked successfully");
+            Log(AventStack.ExtentReports.Status.Pass, "Element clicked successfully");
 
         }
 
@@ -129,7 +135,7 @@ namespace CSharpAutomationFramework.reusable
         {
             WaitUntilElementVisible(by, 3);
             driver.FindElement(by).SendKeys(valueToEnter);
-            Hook.Log(AventStack.ExtentReports.Status.Pass, "Text '" + valueToEnter + "' entered successfully");
+            Log(AventStack.ExtentReports.Status.Pass, "Text '" + valueToEnter + "' entered successfully");
 
         }
 
@@ -143,7 +149,7 @@ namespace CSharpAutomationFramework.reusable
             string currentURL = GetCurrentUrl();
             if (expectedUrl.Equals(currentURL))
             {
-                Hook.Log(AventStack.ExtentReports.Status.Pass, "Redirect successful, current URL matches expected URL '" + expectedUrl + "'");
+                Log(AventStack.ExtentReports.Status.Pass, "Redirect successful, current URL matches expected URL '" + expectedUrl + "'");
                 return;
             }
             throw new Exception("Redirect failed, current URL '" + currentURL + "' does not match expected URL '" + expectedUrl + "'");
@@ -170,7 +176,7 @@ namespace CSharpAutomationFramework.reusable
         public string GetTextFromElement(By by)
         {
             string text = driver.FindElement(by).Text;
-            Hook.Log(AventStack.ExtentReports.Status.Pass, "Text retrieved successfully for " + by + ". The text is - " + text);
+            Log(AventStack.ExtentReports.Status.Pass, "Text retrieved successfully for " + by + ". The text is - " + text);
             return text;
         }
 
@@ -181,7 +187,7 @@ namespace CSharpAutomationFramework.reusable
         public string GetCurrentUrl()
         {
             string currentURL = driver.Url.ToLower();
-            Hook.Log(AventStack.ExtentReports.Status.Pass, "Successfully retrieved current url '" + currentURL + "'");
+            Log(AventStack.ExtentReports.Status.Pass, "Successfully retrieved current url '" + currentURL + "'");
             return currentURL;
         }
 
@@ -192,7 +198,7 @@ namespace CSharpAutomationFramework.reusable
         {
             string handle = driver.WindowHandles.Last();
             driver.SwitchTo().Window(handle);
-            Hook.Log(AventStack.ExtentReports.Status.Pass, "Window switched successfully. Window - " + handle);
+            Log(AventStack.ExtentReports.Status.Pass, "Window switched successfully. Window - " + handle);
         }
 
         /// <summary>
@@ -201,7 +207,7 @@ namespace CSharpAutomationFramework.reusable
         public void SwitchToParentWindow()
         {
             driver.SwitchTo().DefaultContent();
-            Hook.Log(AventStack.ExtentReports.Status.Pass, "Window switched to parent successfully");
+            Log(AventStack.ExtentReports.Status.Pass, "Window switched to parent successfully");
         }
 
         /// <summary>
@@ -245,7 +251,7 @@ namespace CSharpAutomationFramework.reusable
         public string GetAttribute(By by, string attributeName)
         {
             string value = GetElement(by).GetAttribute(attributeName);
-            Hook.Log(AventStack.ExtentReports.Status.Pass, "Got value '" + value + "' from attribute '" + attributeName + "' of element '" + by + "'");
+            Log(AventStack.ExtentReports.Status.Pass, "Got value '" + value + "' from attribute '" + attributeName + "' of element '" + by + "'");
             return value;
         }
 
@@ -263,7 +269,7 @@ namespace CSharpAutomationFramework.reusable
             {
                 throw new Exception("Failed to create new window -- unknown error");
             }
-            Hook.Log(AventStack.ExtentReports.Status.Pass, "New tab opened successfully");
+            Log(AventStack.ExtentReports.Status.Pass, "New tab opened successfully");
         }
 
         /// <summary>
@@ -285,7 +291,7 @@ namespace CSharpAutomationFramework.reusable
         {
             TimeSpan timeOut = TimeSpan.FromSeconds(timeOutInSeconds);
             (new WebDriverWait(driver, timeOut)).Until(_ => IsElementInvisible(by));
-            Hook.Log(AventStack.ExtentReports.Status.Pass, "Element is now invisible");
+            Log(AventStack.ExtentReports.Status.Pass, "Element is now invisible");
         }
 
         /// <summary>
@@ -308,7 +314,7 @@ namespace CSharpAutomationFramework.reusable
                 driver.SwitchTo().Window(currentHandle);
                 throw new NoSuchWindowException("No window with a matching title was found");
             }
-            Hook.Log(AventStack.ExtentReports.Status.Pass, "Switched to window '" + driver.CurrentWindowHandle + "' with title '" + driver.Title + "'");
+            Log(AventStack.ExtentReports.Status.Pass, "Switched to window '" + driver.CurrentWindowHandle + "' with title '" + driver.Title + "'");
         }
 
 
@@ -321,7 +327,7 @@ namespace CSharpAutomationFramework.reusable
             IWebElement element = GetElement(by);
             Actions action = new Actions(driver);
             action.MoveToElement(element).Click().Perform();
-            Hook.Log(AventStack.ExtentReports.Status.Pass, "The element - " + by + " is clicked successfully");
+            Log(AventStack.ExtentReports.Status.Pass, "The element - " + by + " is clicked successfully");
         }
 
         /// <summary>
@@ -331,7 +337,7 @@ namespace CSharpAutomationFramework.reusable
         public void LaunchUrl(string url)
         {
             driver.Navigate().GoToUrl(url);
-            Hook.Log(AventStack.ExtentReports.Status.Pass, "Navigated to " + url);
+            Log(AventStack.ExtentReports.Status.Pass, "Navigated to " + url);
 
         }
 
@@ -342,7 +348,7 @@ namespace CSharpAutomationFramework.reusable
         {
             // May need to update if/when Appium integration is added
             driver.Manage().Window.Maximize();
-            Hook.Log(AventStack.ExtentReports.Status.Pass, "Window Maximized Successfully");
+            Log(AventStack.ExtentReports.Status.Pass, "Window Maximized Successfully");
         }
 
         /// <summary>
@@ -353,7 +359,7 @@ namespace CSharpAutomationFramework.reusable
         {
             string handle = driver.WindowHandles[index];
             driver.SwitchTo().Window(handle);
-            Hook.Log(AventStack.ExtentReports.Status.Pass, "Switched to window index " + index);
+            Log(AventStack.ExtentReports.Status.Pass, "Switched to window index " + index);
         }
 
         /// <summary>
@@ -363,7 +369,7 @@ namespace CSharpAutomationFramework.reusable
         public void SetImplicitWait(long timeInSeconds)
         {
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(timeInSeconds);
-            Hook.Log(AventStack.ExtentReports.Status.Pass, "Implicit wait set successfully");
+            Log(AventStack.ExtentReports.Status.Pass, "Implicit wait set successfully");
         }
 
 
@@ -377,7 +383,7 @@ namespace CSharpAutomationFramework.reusable
             IWebElement listbox = GetElement(by);
             SelectElement select = new SelectElement(listbox);
             select.SelectByText(value);
-            Hook.Log(AventStack.ExtentReports.Status.Pass, "The value " + value + " is selected");
+            Log(AventStack.ExtentReports.Status.Pass, "The value " + value + " is selected");
         }
 
         /// <summary>
@@ -477,7 +483,7 @@ namespace CSharpAutomationFramework.reusable
             int total = 0;
             foreach (IWebElement columnElement in column)
             {
-                Hook.Log(AventStack.ExtentReports.Status.Info, columnElement.Text);
+                Log(AventStack.ExtentReports.Status.Info, columnElement.Text);
                 int value = int.Parse(columnElement.Text);
                 total += value;
             }
@@ -501,6 +507,8 @@ namespace CSharpAutomationFramework.reusable
             IJavaScriptExecutor jse = (IJavaScriptExecutor)driver;
             return jse.ExecuteScript(script);
         }
+
+
 
         // findJsonFilesInFolder and runAutomationTests will need major changes to layout and functionality of the framework before
         // they will work so that is why they have not yet been implemented

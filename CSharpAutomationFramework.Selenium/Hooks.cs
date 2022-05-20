@@ -28,6 +28,7 @@ namespace CSharpAutomationFramework.Selenium
         public static void Log(Status status, string text)
         {
             logs.Add((status, text));
+            Console.WriteLine(">>"+text);
         }
 
 
