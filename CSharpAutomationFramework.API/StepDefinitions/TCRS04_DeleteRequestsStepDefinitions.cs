@@ -1,4 +1,4 @@
-﻿using CSharpAutomationFramework.API.Configs;
+﻿using CSharpAutomationFramework.API.Config;
 using NUnit.Framework;
 using RestSharp;
 using System;

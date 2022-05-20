@@ -1,4 +1,4 @@
-﻿using CSharpAutomationFramework.API.Configs;
+﻿using CSharpAutomationFramework.API.Config;
 using CSharpAutomationFramework.API.Models;
 using Newtonsoft.Json;
 using NUnit.Framework;
@@ -51,8 +51,14 @@ namespace CSharpAutomationFramework.API.StepDefinitions
         {
             Root person = JsonConvert.DeserializeObject<Root>(content.Content);
 
-            var specTable = ConnectionStrings.SQLServer.GetData(SQLQueries.GetQuery);
+            Console.WriteLine("Response from the service: ");
+            Console.WriteLine(JsonConvert.SerializeObject(person));
+
+            var specTable = ConnectionStrings.SQLServer.GetDataSQLServer(SQLQueries.GetQuery);
             var dataFromDb = specTable.Rows[0].CreateInstance<Data>();
+
+            Console.WriteLine("Data fetched from the database: ");
+            Console.WriteLine(JsonConvert.SerializeObject(dataFromDb));
 
             //NUnit Assertions
             Assert.AreEqual(dataFromDb.id, person.data.id, "id doesn't match");
@@ -65,11 +71,11 @@ namespace CSharpAutomationFramework.API.StepDefinitions
             person.Should().NotBeNull();
             specTable.Should().NotBeNull();
             specTable.RowCount.Should().Be(1, "becasue there should be only one record");
-            dataFromDb.id.Should().Be(person.data.id, "");
-            dataFromDb.email.Should().Be(person.data.email, "");
-            dataFromDb.first_name.Should().Be(person.data.first_name, "");
-            dataFromDb.last_name.Should().Be(person.data.last_name, "");
-            dataFromDb.avatar.Should().Be(person.data.avatar, "");
+            dataFromDb.id.Should().Be(person.data.id, "id doesn't match");
+            dataFromDb.email.Should().Be(person.data.email, "email doesn't match");
+            dataFromDb.first_name.Should().Be(person.data.first_name, "first_name doesn't match");
+            dataFromDb.last_name.Should().Be(person.data.last_name, "last_name doesn't match");
+            dataFromDb.avatar.Should().Be(person.data.avatar, "avatar doesn't match");
 
 
         }

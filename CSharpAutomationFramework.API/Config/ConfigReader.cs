@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSharpAutomationFramework.API.Configs
+namespace CSharpAutomationFramework.API.Config
 {
     public class ConfigReader
     {
@@ -22,7 +22,13 @@ namespace CSharpAutomationFramework.API.Configs
             URLs.PutRequest = config.GetSection("URLs")["PutRequest"];
             URLs.DeleteRequest = config.GetSection("URLs")["DeleteRequest"];
             ConnectionStrings.SQLServer = config.GetSection("ConnectionStrings")["SQLServer"];
+            ConnectionStrings.MongoServer = config.GetSection("ConnectionStrings")["MongoServer"];
+            ConnectionStrings.MongoDatabase = config.GetSection("ConnectionStrings")["MongoDatabase"];
+            ConnectionStrings.MongoCollection = config.GetSection("ConnectionStrings")["MongoCollection"];
             SQLQueries.GetQuery = config.GetSection("SQLQueries")["GetQuery"];  
+            NoSQLQueries.FilterColumn = config.GetSection("NoSQLQueries")["FilterColumn"];
+            NoSQLQueries.FilterColumn = config.GetSection("NoSQLQueries")["FilterColumn"];
+
         }
     }
 }

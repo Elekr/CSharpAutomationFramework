@@ -1,6 +1,9 @@
 {
   "ConnectionStrings": {
-    "SQLServer": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Sample;Integrated Security=True;Connection Timeout=300"
+    "SQLServer": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Sample;Integrated Security=True;Connection Timeout=300",
+    "MongoServer": "mongodb://localhost:27017",
+    "MongoDatabase": "sampleDB",
+    "MongoCollection":  "Employee"
   },
   "URLs": {
     "BaseURL": "https://reqres.in",
@@ -10,6 +13,10 @@
     "DeleteRequest": "/api/users/2"
   },
   "SQLQueries": {
-    "GetQuery":  "Select * from dbo.Employee where Id=2"
+    "GetQuery": "Select * from dbo.Employee where Id=2"
+  },
+  "NoSQLQueries": {
+    "FilterColumn": "Name",
+    "FilterValue": "Employee1"
   }
 }

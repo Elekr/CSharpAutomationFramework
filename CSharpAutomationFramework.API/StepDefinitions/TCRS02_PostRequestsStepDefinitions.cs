@@ -8,8 +8,11 @@ using System.Threading.Tasks;
 using CSharpAutomationFramework.API;
 using NUnit.Framework;
 using CSharpAutomationFramework.API.Models;
-using CSharpAutomationFramework.API.Configs;
+using CSharpAutomationFramework.API.Config;
+using CSharpAutomationFramework.Extensions;
 using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Assist;
+using FluentAssertions;
 
 namespace CSharpAutomationFramework.API.StepDefinitions
 {
@@ -58,11 +61,17 @@ namespace CSharpAutomationFramework.API.StepDefinitions
         {
             EmployeeResponse employee = JsonConvert.DeserializeObject<EmployeeResponse>(response.Content);
 
-            (string name, string designation) testEmployee = ("Employee1",
-                                          "SoftwareEngineer");
+            Console.WriteLine("Response from the service: ");
+            Console.WriteLine(JsonConvert.SerializeObject(employee));
 
-            Assert.AreEqual(employee.name, employee.name, "name doesn't match");
-            Assert.AreEqual(testEmployee.designation, employee.designation, "desigation doesn't match");
+            var specTable = ConnectionStrings.MongoServer.GetDataMongoDB(ConnectionStrings.MongoDatabase,ConnectionStrings.MongoCollection, NoSQLQueries.FilterColumn,NoSQLQueries.FilterValue);
+            var dataFromDb = specTable.Rows[0].CreateInstance<EmployeeResponse>();
+
+            Console.WriteLine("Data fetched from the database: ");
+            Console.WriteLine(JsonConvert.SerializeObject(dataFromDb));
+
+            dataFromDb.name.Should().Be(employee.name, "");
+            dataFromDb.designation.Should().Be(employee.designation, "");
         }
 
     }

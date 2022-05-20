@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace CSharpAutomationFramework.API.Configs
+namespace CSharpAutomationFramework.API.Config
 {
     [JsonObject("URLs")]
     public class URLs
@@ -27,6 +27,15 @@ namespace CSharpAutomationFramework.API.Configs
         [JsonProperty("SQLServer")]
         public static string SQLServer { get; set; }
 
+        [JsonProperty("MongoServer")]
+        public static string MongoServer { get; set; }
+
+        [JsonProperty("MongoDatabase")]
+        public static string MongoDatabase { get; set; }
+
+        [JsonProperty("MongoCollection")]
+        public static string MongoCollection { get; set; }
+
     }
 
     [JsonObject("SQLQueries")]
@@ -34,6 +43,17 @@ namespace CSharpAutomationFramework.API.Configs
     {
         [JsonProperty("GetQuery")]
         public static string GetQuery { get; set; }
+
+    }
+
+    [JsonObject("NoSQLQueries")]
+    public class NoSQLQueries
+    {
+        [JsonProperty("FilterColumn")]
+        public static string FilterColumn { get; set; }
+
+        [JsonProperty("FilterValue")]
+        public static string FilterValue { get; set; }
 
     }
 }

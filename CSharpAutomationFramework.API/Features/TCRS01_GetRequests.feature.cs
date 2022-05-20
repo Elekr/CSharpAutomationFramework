@@ -20,8 +20,8 @@ namespace CSharpAutomationFramework.API.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("TCRS01_GetRequests")]
-    public partial class TCRS01_GetRequestsFeature
+    [NUnit.Framework.DescriptionAttribute("TCRS01_GetRequests_SqlServer")]
+    public partial class TCRS01_GetRequests_SqlServerFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
@@ -35,7 +35,7 @@ namespace CSharpAutomationFramework.API.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "TCRS01_GetRequests", "This feature goes over get requests using the Rest Sharp API", ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "TCRS01_GetRequests_SqlServer", "This feature goes over get requests using the Rest Sharp API", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         

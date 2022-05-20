@@ -1,4 +1,4 @@
-﻿using CSharpAutomationFramework.API.Configs;
+﻿using CSharpAutomationFramework.API.Config;
 using CSharpAutomationFramework.API.Models;
 using Newtonsoft.Json;
 using NUnit.Framework;

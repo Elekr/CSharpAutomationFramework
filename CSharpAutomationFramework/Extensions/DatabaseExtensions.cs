@@ -1,12 +1,14 @@
 ﻿using Microsoft.Data.SqlClient;
 using System.Data;
 using TechTalk.SpecFlow;
+using MongoDB.Driver;
+using MongoDB.Bson;
 
 namespace CSharpAutomationFramework.Extensions
 {
     public static class DatabaseExtensions
     {
-        public static Table GetData(this string connectionString,string query, int timeOutSeconds = 30)
+        public static Table GetDataSQLServer(this string connectionString,string query, int timeOutSeconds = 30)
         {
             try
             {
@@ -36,5 +38,52 @@ namespace CSharpAutomationFramework.Extensions
                 return null;
             }
         }
+
+        public static Table GetDataMongoDB(this string mongoServer, string database, string collection, string filterColumn = null, string filterValue = null, int timeOutSeconds = 30)
+        {
+            try
+            {
+                var dbClient = new MongoClient(mongoServer);
+                IMongoDatabase db = dbClient.GetDatabase(database);
+                var data = db.GetCollection<BsonDocument>(collection);
+
+                //var filter = Builders<BsonDocument>.Filter.Eq(filterColumn, filterValue);
+
+                //var doc = data.Find(filter).FirstOrDefault();
+                var doc = data.Find(new BsonDocument()).FirstOrDefault().GetDataTableFromBSonDoc().ToTable();
+
+
+                return doc;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public static DataTable GetDataTableFromBSonDoc(this BsonDocument doc)
+        {
+            
+                DataTable dt = new DataTable();
+
+                    foreach (BsonElement elm in doc.Elements)
+                    {
+                        if (!dt.Columns.Contains(elm.Name))
+                        {
+                            dt.Columns.Add(new DataColumn(elm.Name));
+                        }
+
+                    }
+                    DataRow dr = dt.NewRow();
+                    foreach (BsonElement elm in doc.Elements)
+                    {
+                        dr[elm.Name] = elm.Value;
+
+                    }
+                    dt.Rows.Add(dr);
+
+                return dt;
+
+            }
     }
 }

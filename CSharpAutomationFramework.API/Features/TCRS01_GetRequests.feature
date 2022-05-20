@@ -1,4 +1,4 @@
-﻿Feature: TCRS01_GetRequests
+﻿Feature: TCRS01_GetRequests_SqlServer
 
 This feature goes over get requests using the Rest Sharp API
 

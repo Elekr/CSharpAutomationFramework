@@ -1,7 +1,7 @@
 ﻿using AventStack.ExtentReports;
 using AventStack.ExtentReports.Gherkin.Model;
 using AventStack.ExtentReports.Reporter;
-using CSharpAutomationFramework.API.Configs;
+using CSharpAutomationFramework.API.Config;
 using NUnit.Framework;
 using System.Reflection;
 using TechTalk.SpecFlow;
@@ -12,36 +12,17 @@ namespace CSharpAutomationFramework.API.Hooks
     [Binding]
     class Hook
     {
-
-        private static ExtentTest? featureName;
-        private static ExtentTest? scenario;
-
-        private static ExtentReports? extent;
-
-        private static List<(Status status, string text)> logs = new List<(Status status, string text)>();
-
         private readonly ScenarioContext _scenarioContext;
-
+        
         public Hook(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
-        }
-
-        public static void Log(Status status, string text)
-        {
-            logs.Add((status, text));
-        }
-
+        }        
 
         [BeforeTestRun]
         public static void TestInitialize()
         {
-            var htmlReporter = new ExtentHtmlReporter(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Reports\\" + "ExtentReports.html");
-            htmlReporter.Config.Theme = AventStack.ExtentReports.Reporter.Configuration.Theme.Dark;
-            htmlReporter.Config.DocumentTitle = "C# Automation Framework Report";
-
-            extent = new ExtentReports();
-            extent.AttachReporter(htmlReporter);
+            ReportSetup.InitializeReporter();
 
             ConfigReader.SetFrameworkSettings();
         }
@@ -49,79 +30,32 @@ namespace CSharpAutomationFramework.API.Hooks
         [AfterTestRun]
         public static void TearDownReport()
         {
-            extent.Flush();
+            ReportSetup.TearDownReport();
         }
 
         [BeforeStep]
         public void BeforeStep()
         {
-            logs.Clear();
+            ReportSetup.ClearLogsBeforeEachStep();
         }
 
         [AfterStep]
         public void InsertReportingSteps()
         {
-            var stepType = _scenarioContext.StepContext.StepInfo.StepDefinitionType.ToString();
-
-            PropertyInfo pInfo = typeof(ScenarioContext).GetProperty("ScenarioExecutionStatus", BindingFlags.Instance | BindingFlags.Public);
-            MethodInfo getter = pInfo.GetGetMethod(nonPublic: true);
-            object TestResult = getter.Invoke(_scenarioContext, null);
-            ExtentTest? step = null;
-            if (_scenarioContext.TestError == null)
-            {
-                if (stepType == "Given")
-                    step = scenario.CreateNode<Given>(_scenarioContext.StepContext.StepInfo.Text);
-                else if (stepType == "When")
-                    step = scenario.CreateNode<When>(_scenarioContext.StepContext.StepInfo.Text);
-                else if (stepType == "Then")
-                    step = scenario.CreateNode<Then>(_scenarioContext.StepContext.StepInfo.Text);
-                else if (stepType == "And")
-                    step = scenario.CreateNode<And>(_scenarioContext.StepContext.StepInfo.Text);
-            }
-            if (_scenarioContext.TestError != null)
-            {
-                // https://www.extentreports.com/docs/versions/4/net/index.html
-                // MediaEntityBuilder.CreateScreenCaptureFromPath("screenshot.png").Build()); used to take the screenshots when the tests fail
-                if (stepType == "Given")
-                    step = scenario.CreateNode<Given>(_scenarioContext.StepContext.StepInfo.Text).Fail(_scenarioContext.TestError.Message, MediaEntityBuilder.CreateScreenCaptureFromPath("C:\\Users\\thomas.crosby\\Documents\\Projects\\C#\\CSharpAutomationFramework\\CSharpAutomationFramework\\Screenshots\\", "screenshot.png").Build());
-                if (stepType == "When")
-                    step = scenario.CreateNode<When>(_scenarioContext.StepContext.StepInfo.Text).Fail(_scenarioContext.TestError.Message, MediaEntityBuilder.CreateScreenCaptureFromPath("screenshot.png").Build());
-                if (stepType == "Then")
-                    step = scenario.CreateNode<Then>(_scenarioContext.StepContext.StepInfo.Text).Fail(_scenarioContext.TestError.Message, MediaEntityBuilder.CreateScreenCaptureFromPath("screenshot.png").Build());
-                if (stepType == "And")
-                    step = scenario.CreateNode<And>(_scenarioContext.StepContext.StepInfo.Text).Fail(_scenarioContext.TestError.Message, MediaEntityBuilder.CreateScreenCaptureFromPath("screenshot.png").Build());
-            }
-
-            //Pending Status
-            if (TestResult.ToString() == "StepDefinitionPending")
-            {
-                if (stepType == "Given")
-                    step = scenario.CreateNode<Given>(_scenarioContext.StepContext.StepInfo.Text).Skip("Step Definition Pending", MediaEntityBuilder.CreateScreenCaptureFromPath("C:\\Users\\thomas.crosby\\Documents\\Projects\\C#\\CSharpAutomationFramework\\CSharpAutomationFramework\\Screenshots\\", "screenshot.png").Build());
-                else if (stepType == "When")
-                    step = scenario.CreateNode<When>(_scenarioContext.StepContext.StepInfo.Text).Skip("Step Definition Pending");
-                else if (stepType == "Then")
-                    step = scenario.CreateNode<Then>(_scenarioContext.StepContext.StepInfo.Text).Skip("Step Definition Pending");
-
-            }
-
-            foreach (var log in logs)
-            {
-                step.Log(log.status, log.text);
-            }
+            ReportSetup.InsertReportingSteps(_scenarioContext);
 
         }
         [BeforeFeature]
         public static void BeforeFeature(FeatureContext featurecontext)
         {
-            featureName = extent.CreateTest(featurecontext.FeatureInfo.Title);
+            ReportSetup.BeforeFeature(featurecontext);
         }
 
 
         [BeforeScenario]
         public void Initialize()
         {
-            //Create dynamic scenario name
-            scenario = featureName.CreateNode<Scenario>(_scenarioContext.ScenarioInfo.Title);
+            ReportSetup.BeforeScenarioInitialize(_scenarioContext);
         }
 
         [AfterScenario]

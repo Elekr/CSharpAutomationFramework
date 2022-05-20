@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <Folder Include="Drivers\" />
+    <Folder Include="Reports\" />
     <Folder Include="Support\" />
   </ItemGroup>
 
