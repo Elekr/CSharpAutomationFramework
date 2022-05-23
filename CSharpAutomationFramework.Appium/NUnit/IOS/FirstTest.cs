@@ -1,32 +1,27 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium;
+﻿using System;
+using CSharpAutomationFramework.Appium.NUnit.IOS;
+using NUnit.Framework;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.iOS;
 using OpenQA.Selenium.Support.UI;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace CSharpAutomationFramework.Appium.NUnit.IOS
 {
-    [TestFixture("first", "pixel-3")]
+    [TestFixture("iPhone XS")]
+    [TestFixture("iphone 11 pro")]
+    [Parallelizable(ParallelScope.Fixtures)]
     public class SingleTest : BrowserStackNUnitTest
     {
-        public SingleTest(string profile, string device) : base(profile, device) { }
+        public SingleTest(string environment) : base( environment) { }
         [Test]
-        public void searchWikipedia()
+        public void textVerificationTest()
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
-            IOSElement searchElement = (IOSElement)wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(MobileBy.AccessibilityId("Search Wikipedia")));
-            searchElement.Click();
-            IOSElement insertTextElement = (IOSElement)wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.Id("org.wikipedia.alpha:id/search_src_text")));
-            insertTextElement.SendKeys("BrowserStack");
-            Thread.Sleep(5000);
-            ReadOnlyCollection<IOSElement> allProductsName = driver.FindElements(By.ClassName("android.widget.TextView"));
-            Assert.True(allProductsName.Count > 0);
+            IOSElement textButton = (IOSElement)wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(MobileBy.AccessibilityId("Text Button")));
+            textButton.Click();
+            IOSElement textInput = (IOSElement)wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(MobileBy.AccessibilityId("Text Input")));
+            textInput.SendKeys("hello@browserstack.com" + "\n");
+            IOSElement textOutput = (IOSElement)wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(MobileBy.AccessibilityId("Text Output")));
+            Assert.AreEqual(textOutput.Text, "hello@browserstack.com");
         }
     }
 }

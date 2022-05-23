@@ -19,7 +19,7 @@ namespace CSharpAutomationFramework.Selenium
 
         public override void Log(AventStack.ExtentReports.Status status, string message)
         {
-            Hook.Log(status, message);
+            ReportSetup.Log(status, message);
         }
 
         /// <summary>

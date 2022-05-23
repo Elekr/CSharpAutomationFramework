@@ -23,7 +23,7 @@ namespace CSharpAutomationFramework.Appium.NUnit.Android
 		[SetUp]
 		public void Init()
 		{
-			ConfigReader.SetFrameworkSettings(device);
+			ConfigReader.SetFrameworkSettings("Android",device);
 
 			driver = new AndroidDriver<AndroidElement>(ConfigReader.uri, ConfigReader.options);
 		}

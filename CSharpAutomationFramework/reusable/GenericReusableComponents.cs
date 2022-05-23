@@ -12,7 +12,6 @@ namespace CSharpAutomationFramework.reusable
     
     public abstract class GenericReusableComponents
     {
-        protected Hook hook;
 
         public abstract void Log(AventStack.ExtentReports.Status status, string messsage);
 

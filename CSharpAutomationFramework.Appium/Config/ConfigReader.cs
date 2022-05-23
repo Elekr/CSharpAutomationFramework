@@ -16,7 +16,7 @@ namespace CSharpAutomationFramework.Appium.Config
     {
 		public static AppiumOptions options;
 		public static Uri uri;
-		public static void SetFrameworkSettings(string device)
+		public static void SetFrameworkSettings(string os,string device)
         {
             var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -26,24 +26,50 @@ namespace CSharpAutomationFramework.Appium.Config
             var section = config.GetSection(nameof(BrowserStackConfig));
             section.Get<BrowserStackConfig>();
 
-            var capability = config.GetSection(nameof(BrowserStackAndroid)).GetChildren().ToDictionary(x => x.Key, x => x.Value);
-			var devices = config.GetSection("AndroidDevices").Get<List<Devices>>().ToDictionary(x => x.Device, x => x.Os_Version);
-
 			options = new AppiumOptions();
 
-			foreach (KeyValuePair<string, string> kvp in capability)
-			{
-				options.AddAdditionalCapability(kvp.Key, kvp.Value);
+			if(os == "Android")
+            {
+				var capability = config.GetSection(nameof(BrowserStackAndroid)).GetChildren().ToDictionary(x => x.Key, x => x.Value);
+				var devices = config.GetSection("AndroidDevices").Get<List<Devices>>().ToDictionary(x => x.Device, x => x.Os_Version);
+
+
+				foreach (KeyValuePair<string, string> kvp in capability)
+				{
+					options.AddAdditionalCapability(kvp.Key, kvp.Value);
+				}
+
+				foreach (KeyValuePair<string, string> kvp in devices)
+				{
+					if (kvp.Key == device)
+					{
+						options.AddAdditionalCapability("device", kvp.Key);
+						options.AddAdditionalCapability("os_version", kvp.Value);
+					}
+				}
+			}
+			else
+            {
+				var capability = config.GetSection(nameof(BrowserStackIOS)).GetChildren().ToDictionary(x => x.Key, x => x.Value);
+				var devices = config.GetSection("IOSDevices").Get<List<Devices>>().ToDictionary(x => x.Device, x => x.Os_Version);
+
+
+				foreach (KeyValuePair<string, string> kvp in capability)
+				{
+					options.AddAdditionalCapability(kvp.Key, kvp.Value);
+				}
+
+				foreach (KeyValuePair<string, string> kvp in devices)
+				{
+					if (kvp.Key == device)
+					{
+						options.AddAdditionalCapability("device", kvp.Key);
+						options.AddAdditionalCapability("os_version", kvp.Value);
+					}
+				}
 			}
 
-            foreach (KeyValuePair<string, string> kvp in devices)
-            {
-				if (kvp.Key == device)
-				{
-					options.AddAdditionalCapability("device", kvp.Key);
-					options.AddAdditionalCapability("os_version", kvp.Value);
-				}
-            }
+			
 
             String username = Environment.GetEnvironmentVariable("BROWSERSTACK_USERNAME");
 			if (username == null)

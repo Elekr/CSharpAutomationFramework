@@ -36,6 +36,26 @@ namespace CSharpAutomationFramework.Appium.Config
 
     }
 
+    [JsonObject("BrowserStackIOS")]
+    public class BrowserStackIOS
+    {
+        [JsonProperty("project")]
+        public static string Project { get; set; }
+
+        [JsonProperty("build")]
+        public static string Build { get; set; }
+
+        [JsonProperty("name")]
+        public static string Name { get; set; }
+
+        [JsonProperty("browserstack.debug")]
+        public static string BrowserstackDebug { get; set; }
+
+        [JsonProperty("app")]
+        public static string App { get; set; }
+
+    }
+
     //[JsonObject("AndroidDevices")]
     //public class AndroidDevices
     //{
